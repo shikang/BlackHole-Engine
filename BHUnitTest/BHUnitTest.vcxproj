@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Test\TestDelegate.h" />
+    <ClInclude Include="..\include\Test\TestEvent.h" />
+    <ClInclude Include="..\include\Test\TestEventManager.h" />
+    <ClInclude Include="..\include\Test\TestHandleManager.h" />
+    <ClInclude Include="..\include\Test\TestHash.h" />
+    <ClInclude Include="..\include\Test\TestMutex.h" />
+    <ClInclude Include="..\include\Test\TestProfile.h" />
+    <ClInclude Include="..\include\Test\TestReflection.h" />
+    <ClInclude Include="..\include\Test\TestScript.h" />
+    <ClInclude Include="..\include\Test\TestSystem.h" />
+    <ClInclude Include="..\include\Test\TestThread.h" />
+    <ClInclude Include="..\include\Test\TestVector2f.h" />
+    <ClInclude Include="..\include\Test\TestXMLSerialiser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Test\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BHScript\BHScript.vcxproj">
+      <Project>{1571525a-a829-4f2f-b369-89e54f79f558}</Project>
+      <Private>true</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9F0AF806-E8AC-472A-A643-B79EEB04BE60}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>BHUnitTest</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include;$(SolutionDir)\include\Dependencies</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)Lib\BHCoreSystem_d.lib;$(SolutionDir)Lib\BHWin32Layer_d.lib;$(SolutionDir)Lib\BHScript_d.lib;$(SolutionDir)Lib\BHScriptComponent_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(LibraryPath);$(DXSDK_DIR)Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)lib\tinyxml2.dll" "$(TargetDir)"
+copy "$(SolutionDir)lib\libfbxsdk.dll" "$(TargetDir)"
+copy "$(SolutionDir)lib\BHScriptBridge.dll" "$(TargetDir)"
+copy "$(SolutionDir)lib\BHScriptCompiler.dll" "$(TargetDir)"
+copy "$(SolutionDir)lib\BHScript_d.dll" "$(TargetDir)"
+copy "$(SolutionDir)lib\BHScriptComponent_d.dll" "$(TargetDir)"
+copy "$(SolutionDir)BHScriptCompiler\CPlusPlusInterface.cs" "../scripts/Engine"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include;$(SolutionDir)\include\Dependencies</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>$(SolutionDir)/Lib/BHCoreSystem.lib;$(SolutionDir)/Lib/BHWin32Layer.lib;$(SolutionDir)/Lib/BHScript.lib;$(SolutionDir)/Lib/BHScriptComponent.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(LibraryPath);$(DXSDK_DIR)Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)lib\tinyxml2.dll" "$(TargetDir)"
+copy "$(SolutionDir)lib\libfbxsdk.dll" "$(TargetDir)"
+copy "$(SolutionDir)lib\BHScriptBridge.dll" "$(TargetDir)"
+copy "$(SolutionDir)lib\BHScriptCompiler.dll" "$(TargetDir)"
+copy "$(SolutionDir)lib\BHScript.dll" "$(TargetDir)"
+copy "$(SolutionDir)lib\BHScriptComponent.dll" "$(TargetDir)"
+copy "$(SolutionDir)BHScriptCompiler\CPlusPlusInterface.cs" "../scripts/Engine"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

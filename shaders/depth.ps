@@ -1,0 +1,22 @@
+////////////////////////////////////////////////////////////////////////////////
+// Filename: depth.ps
+////////////////////////////////////////////////////////////////////////////////
+
+//////////////
+// TYPEDEFS //
+//////////////
+struct PixelInputType
+{
+    float4 position : SV_POSITION;
+	float4 shadowPosition : TEXCOORD0;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// Pixel Shader
+////////////////////////////////////////////////////////////////////////////////
+float4 DepthPixelShader( PixelInputType input ) : SV_TARGET
+{
+	//return float4( input.shadowPosition.z / input.shadowPosition.w, input.shadowPosition.z / input.shadowPosition.w, input.shadowPosition.z / input.shadowPosition.w, 1.0f );
+	//return input.shadowPosition;
+	return float4( input.shadowPosition.z, input.shadowPosition.z, input.shadowPosition.z, 1.0f );
+}

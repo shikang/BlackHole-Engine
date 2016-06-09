@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\include\Script\CommonFunctions.h" />
+    <ClInclude Include="..\include\Script\VectorBridgeFramework.h" />
+    <ClInclude Include="..\include\Script\VectorBridge.h" />
+    <ClInclude Include="..\include\Script\QuaternionBridge.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Script\CommonFunctions.cpp" />
+    <ClCompile Include="..\src\Script\VectorBridge.cpp" />
+    <ClCompile Include="..\src\Script\QuaternionBridge.cpp" />
+  </ItemGroup>
+</Project>

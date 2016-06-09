@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Platform\AABB.h" />
+    <ClInclude Include="..\include\Platform\Animation.h" />
+    <ClInclude Include="..\include\Platform\Camera.h" />
+    <ClInclude Include="..\include\Platform\ClockCycle.h" />
+    <ClInclude Include="..\include\Platform\ConsoleColor.h" />
+    <ClInclude Include="..\include\Platform\DepthRenderTarget.h" />
+    <ClInclude Include="..\include\Platform\FileInfo.h" />
+    <ClInclude Include="..\include\Platform\FileSystem.h" />
+    <ClInclude Include="..\include\Platform\GPUOBuffer.h" />
+    <ClInclude Include="..\include\Platform\Graphics.h" />
+    <ClInclude Include="..\include\Platform\GraphicsPipeline.h" />
+    <ClInclude Include="..\include\Platform\HDRTexture.h" />
+    <ClInclude Include="..\include\Platform\Keybind.h" />
+    <ClInclude Include="..\include\Platform\Matrix4.h" />
+    <ClInclude Include="..\include\Platform\Mesh.h" />
+    <ClInclude Include="..\include\Platform\MeshLoader.h" />
+    <ClInclude Include="..\include\Platform\MultiRenderTarget.h" />
+    <ClInclude Include="..\include\Platform\Mutex.h" />
+    <ClInclude Include="..\include\Platform\Plane.h" />
+    <ClInclude Include="..\include\Platform\Platform.h" />
+    <ClInclude Include="..\include\Platform\PlatformEssential.h" />
+    <ClInclude Include="..\include\Platform\Quaternion.h" />
+    <ClInclude Include="..\include\Platform\RenderTarget.h" />
+    <ClInclude Include="..\include\Platform\Shader.h" />
+    <ClInclude Include="..\include\Platform\Stdafx.h" />
+    <ClInclude Include="..\include\Platform\Texture.h" />
+    <ClInclude Include="..\include\Platform\Thread.h" />
+    <ClInclude Include="..\include\Platform\Typedefs.h" />
+    <ClInclude Include="..\include\Platform\UAVTexture.h" />
+    <ClInclude Include="..\include\Platform\Utilities.h" />
+    <ClInclude Include="..\include\Platform\Vector2f.h" />
+    <ClInclude Include="..\include\Platform\Vector3f.h" />
+    <ClInclude Include="..\include\Platform\Vector4f.h" />
+    <ClInclude Include="..\include\Platform\MessageBox.h" />
+    <ClInclude Include="..\include\Platform\PlatformWindow.h" />
+    <ClInclude Include="..\include\Platform\Vertex.h" />
+    <ClInclude Include="..\include\Platform\WICFunctions.h" />
+    <ClInclude Include="..\include\Platform\WindowSettings.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\Platform\Matrix4.inl" />
+    <None Include="..\include\Platform\Mesh.inl" />
+    <None Include="..\include\Platform\Mutex.inl" />
+    <None Include="..\include\Platform\Plane.inl" />
+    <None Include="..\include\Platform\Quaternion.inl" />
+    <None Include="..\include\Platform\Shader.inl" />
+    <None Include="..\include\Platform\Thread.inl" />
+    <None Include="..\include\Platform\Vector2f.inl" />
+    <None Include="..\include\Platform\Vector3f.inl" />
+    <None Include="..\include\Platform\Vector4f.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Dependencies\rgbe.cpp" />
+    <ClCompile Include="..\src\Platform\Camera.cpp" />
+    <ClCompile Include="..\src\Platform\ClockCycle.cpp" />
+    <ClCompile Include="..\src\Platform\ConsoleColor.cpp" />
+    <ClCompile Include="..\src\Platform\DepthRenderTarget.cpp" />
+    <ClCompile Include="..\src\Platform\FileInfo.cpp" />
+    <ClCompile Include="..\src\Platform\FileSystem.cpp" />
+    <ClCompile Include="..\src\Platform\GPUOBuffer.cpp" />
+    <ClCompile Include="..\src\Platform\Graphics.cpp" />
+    <ClCompile Include="..\src\Platform\GraphicsPipeline.cpp" />
+    <ClCompile Include="..\src\Platform\HDRTexture.cpp" />
+    <ClCompile Include="..\src\Platform\Keybind.cpp" />
+    <ClCompile Include="..\src\Platform\Matrix4.cpp" />
+    <ClCompile Include="..\src\Platform\Mesh.cpp" />
+    <ClCompile Include="..\src\Platform\MeshLoader.cpp" />
+    <ClCompile Include="..\src\Platform\MultiRenderTarget.cpp" />
+    <ClCompile Include="..\src\Platform\Mutex.cpp" />
+    <ClCompile Include="..\src\Platform\Plane.cpp" />
+    <ClCompile Include="..\src\Platform\Quaternion.cpp" />
+    <ClCompile Include="..\src\Platform\RenderTarget.cpp" />
+    <ClCompile Include="..\src\Platform\Shader.cpp" />
+    <ClCompile Include="..\src\Platform\Stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Texture.cpp" />
+    <ClCompile Include="..\src\Platform\Thread.cpp" />
+    <ClCompile Include="..\src\Platform\UAVTexture.cpp" />
+    <ClCompile Include="..\src\Platform\Utilities.cpp" />
+    <ClCompile Include="..\src\Platform\Vector2f.cpp" />
+    <ClCompile Include="..\src\Platform\Vector3f.cpp" />
+    <ClCompile Include="..\src\Platform\Vector4f.cpp" />
+    <ClCompile Include="..\src\Platform\MessageBox.cpp" />
+    <ClCompile Include="..\src\Platform\PlatformWindow.cpp" />
+    <ClCompile Include="..\src\Platform\WICFunctions.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C840963F-3853-4285-895B-10A9D2CAE7DB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>BHWin32Layer</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\Lib\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_d</TargetName>
+    <IncludePath>$(SolutionDir)/$(ProjectName);$(IncludePath)</IncludePath>
+    <SourcePath>$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\Lib\</OutDir>
+    <IncludePath>$(SolutionDir)/$(ProjectName);$(IncludePath)</IncludePath>
+    <IntDir>$(Configuration)\</IntDir>
+    <SourcePath>$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;FBXSDK_SHARED;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>Platform/Stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include;%(AdditionalIncludeDirectories);$(SolutionDir)\include\Dependencies</AdditionalIncludeDirectories>
+      <AdditionalOptions>/Zm120 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;FBXSDK_SHARED;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>Platform/Stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include;$(SolutionDir)\include\Dependencies</AdditionalIncludeDirectories>
+      <AdditionalOptions>/Zm120 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

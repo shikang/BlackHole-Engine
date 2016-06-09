@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout version="4" >
+    <Window type="Vanilla/FrameWindow" name="FrameWindow" >
+        <Property name="Area" value="{{0,-2},{0,1},{0.3,-123},{0.3,506}}" />
+        <Property name="Text" value="Object Propeties" />
+    </Window>
+</GUILayout>

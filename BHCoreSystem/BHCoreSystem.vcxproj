@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Core\ArrayFieldContainer.h" />
+    <ClInclude Include="..\include\Core\Assert.h" />
+    <ClInclude Include="..\include\Core\CName.h" />
+    <ClInclude Include="..\include\Core\CollisionFunctions.h" />
+    <ClInclude Include="..\include\Core\CollisionManager.h" />
+    <ClInclude Include="..\include\Core\Color.h" />
+    <ClInclude Include="..\include\Core\CoreConfig.h" />
+    <ClInclude Include="..\include\Core\CoreEssential.h" />
+    <ClInclude Include="..\include\Core\Delegate.h" />
+    <ClInclude Include="..\include\Core\Deserialiser.h" />
+    <ClInclude Include="..\include\Core\Duration.h" />
+    <ClInclude Include="..\include\Core\Entity.h" />
+    <ClInclude Include="..\include\Core\EntityManager.h" />
+    <ClInclude Include="..\include\Core\EnumConst.h" />
+    <ClInclude Include="..\include\Core\Event.h" />
+    <ClInclude Include="..\include\Core\EventManager.h" />
+    <ClInclude Include="..\include\Core\Game.h" />
+    <ClInclude Include="..\include\Core\GameState.h" />
+    <ClInclude Include="..\include\Core\GameStateManager.h" />
+    <ClInclude Include="..\include\Core\HDRTextureManager.h" />
+    <ClInclude Include="..\include\Core\InputManager.h" />
+    <ClInclude Include="..\include\Core\JobQueue.h" />
+    <ClInclude Include="..\include\Core\Field.h" />
+    <ClInclude Include="..\include\Core\FieldContainer.h" />
+    <ClInclude Include="..\include\Core\FunctionsFramework.h" />
+    <ClInclude Include="..\include\Core\GameComponent.h" />
+    <ClInclude Include="..\include\Core\Handle.h" />
+    <ClInclude Include="..\include\Core\HandleManager.h" />
+    <ClInclude Include="..\include\Core\Hash.h" />
+    <ClInclude Include="..\include\Core\IDrawable.h" />
+    <ClInclude Include="..\include\Core\IUpdatable.h" />
+    <ClInclude Include="..\include\Core\LevelManager.h" />
+    <ClInclude Include="..\include\Core\LevelState.h" />
+    <ClInclude Include="..\include\Core\Light.h" />
+    <ClInclude Include="..\include\Core\LogManager.h" />
+    <ClInclude Include="..\include\Core\Contact.h" />
+    <ClInclude Include="..\include\Core\MapFieldContainer.h" />
+    <ClInclude Include="..\include\Core\MaterialManager.h" />
+    <ClInclude Include="..\include\Core\Math.h" />
+    <ClInclude Include="..\include\Core\MeshManager.h" />
+    <ClInclude Include="..\include\Core\Message.h" />
+    <ClInclude Include="..\include\Core\OBB.h" />
+    <ClInclude Include="..\include\Core\Object.h" />
+    <ClInclude Include="..\include\Core\ObjectAllocator.h" />
+    <ClInclude Include="..\include\Core\ObjectComponent.h" />
+    <ClInclude Include="..\include\Core\ObjectManager.h" />
+    <ClInclude Include="..\include\Core\Materials.h" />
+    <ClInclude Include="..\include\Core\Picking.h" />
+    <ClInclude Include="..\include\Core\ProfileManager.h" />
+    <ClInclude Include="..\include\Core\Profiler.h" />
+    <ClInclude Include="..\include\Core\Profiling.h" />
+    <ClInclude Include="..\include\Core\Renderer.h" />
+    <ClInclude Include="..\include\Core\Serialiser.h" />
+    <ClInclude Include="..\include\Core\SetFieldContainer.h" />
+    <ClInclude Include="..\include\Core\Singleton.h" />
+    <ClInclude Include="..\include\Core\Stdafx.h" />
+    <ClInclude Include="..\include\Core\Stopwatch.h" />
+    <ClInclude Include="..\include\Core\System.h" />
+    <ClInclude Include="..\include\Core\SystemManager.h" />
+    <ClInclude Include="..\include\Core\SystemMessaging.h" />
+    <ClInclude Include="..\include\Core\TextureManager.h" />
+    <ClInclude Include="..\include\Core\Time.h" />
+    <ClInclude Include="..\include\Core\TimePoint.h" />
+    <ClInclude Include="..\include\Core\Type.h" />
+    <ClInclude Include="..\include\Core\TypeCreator.h" />
+    <ClInclude Include="..\include\Core\TypeDB.h" />
+    <ClInclude Include="..\include\Core\TypeRegistrar.h" />
+    <ClInclude Include="..\include\Core\TypeStringifier.h" />
+    <ClInclude Include="..\include\Core\Typing.h" />
+    <ClInclude Include="..\include\Core\Uncopyable.h" />
+    <ClInclude Include="..\include\Core\VectorFieldContainer.h" />
+    <ClInclude Include="..\include\Core\XMLDeserialiser.h" />
+    <ClInclude Include="..\include\Core\XMLSerialiser.h" />
+    <ClInclude Include="..\include\Core\XMLSerialiseType.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Core\Assert.cpp" />
+    <ClCompile Include="..\src\Core\CollisionFunctions.cpp" />
+    <ClCompile Include="..\src\Core\CollisionManager.cpp" />
+    <ClCompile Include="..\src\Core\Color.cpp" />
+    <ClCompile Include="..\src\Core\Deserialiser.cpp" />
+    <ClCompile Include="..\src\Core\Duration.cpp" />
+    <ClCompile Include="..\src\Core\EntityManager.cpp" />
+    <ClCompile Include="..\src\Core\EventManager.cpp" />
+    <ClCompile Include="..\src\Core\Game.cpp" />
+    <ClCompile Include="..\src\Core\GameState.cpp" />
+    <ClCompile Include="..\src\Core\GameStateManager.cpp" />
+    <ClCompile Include="..\src\Core\HDRTextureManager.cpp" />
+    <ClCompile Include="..\src\Core\InputManager.cpp" />
+    <ClCompile Include="..\src\Core\JobQueue.cpp" />
+    <ClCompile Include="..\src\Core\GameComponent.cpp" />
+    <ClCompile Include="..\src\Core\Handle.cpp" />
+    <ClCompile Include="..\src\Core\HandleManager.cpp" />
+    <ClCompile Include="..\src\Core\Hash.cpp" />
+    <ClCompile Include="..\src\Core\IDrawable.cpp" />
+    <ClCompile Include="..\src\Core\IUpdatable.cpp" />
+    <ClCompile Include="..\src\Core\LevelManager.cpp" />
+    <ClCompile Include="..\src\Core\LevelState.cpp" />
+    <ClCompile Include="..\src\Core\LogManager.cpp" />
+    <ClCompile Include="..\src\Core\MaterialManager.cpp" />
+    <ClCompile Include="..\src\Core\Materials.cpp" />
+    <ClCompile Include="..\src\Core\Math.cpp" />
+    <ClCompile Include="..\src\Core\MeshManager.cpp" />
+    <ClCompile Include="..\src\Core\Object.cpp" />
+    <ClCompile Include="..\src\Core\ObjectComponent.cpp" />
+    <ClCompile Include="..\src\Core\ObjectManager.cpp" />
+    <ClCompile Include="..\src\Core\Picking.cpp" />
+    <ClCompile Include="..\src\Core\ProfileManager.cpp" />
+    <ClCompile Include="..\src\Core\Profiler.cpp" />
+    <ClCompile Include="..\src\Core\Renderer.cpp" />
+    <ClCompile Include="..\src\Core\Serialiser.cpp" />
+    <ClCompile Include="..\src\Core\Stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Stopwatch.cpp" />
+    <ClCompile Include="..\src\Core\System.cpp" />
+    <ClCompile Include="..\src\Core\SystemManager.cpp" />
+    <ClCompile Include="..\src\Core\TextureManager.cpp" />
+    <ClCompile Include="..\src\Core\Time.cpp" />
+    <ClCompile Include="..\src\Core\TimePoint.cpp" />
+    <ClCompile Include="..\src\Core\Type.cpp" />
+    <ClCompile Include="..\src\Core\TypeDB.cpp" />
+    <ClCompile Include="..\src\Core\TypeRegistrar.cpp" />
+    <ClCompile Include="..\src\Core\TypeStringifier.cpp" />
+    <ClCompile Include="..\src\Core\XMLDeserialiser.cpp" />
+    <ClCompile Include="..\src\Core\XMLSerialiser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\Core\CName.inl" />
+    <None Include="..\include\Core\EntityManager.inl" />
+    <None Include="..\include\Core\EventManager.inl" />
+    <None Include="..\include\Core\GameStateManager.inl" />
+    <None Include="..\include\Core\JobQueue.inl" />
+    <None Include="..\include\Core\Field.inl" />
+    <None Include="..\include\Core\Handle.inl" />
+    <None Include="..\include\Core\HandleManager.inl" />
+    <None Include="..\include\Core\Hash.inl" />
+    <None Include="..\include\Core\LogManager.inl" />
+    <None Include="..\include\Core\Math.inl" />
+    <None Include="..\include\Core\Message.inl" />
+    <None Include="..\include\Core\Object.inl" />
+    <None Include="..\include\Core\ObjectAllocator.inl" />
+    <None Include="..\include\Core\ObjectManager.inl" />
+    <None Include="..\include\Core\Stopwatch.inl" />
+    <None Include="..\include\Core\System.inl" />
+    <None Include="..\include\Core\SystemManager.inl" />
+    <None Include="..\include\Core\Time.inl" />
+    <None Include="..\include\Core\Type.inl" />
+    <None Include="..\include\Core\TypeDB.inl" />
+    <None Include="..\include\Core\TypeRegistrar.inl" />
+    <None Include="..\include\Core\TypeStringifier.inl" />
+    <None Include="..\include\Core\XMLDeserialiser.inl" />
+    <None Include="..\include\Core\XMLSerialiser.inl" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A8EF5146-C575-4516-B13C-4DB223362AB8}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>BHCoreSystem</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\Lib\</OutDir>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\Lib\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include;$(SolutionDir)\include\Dependencies</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>Core/Stdafx.h</PrecompiledHeaderFile>
+      <AdditionalOptions>/Zm120 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>$(SolutionDir)/Lib/BHWin32Layer_d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include;$(SolutionDir)\include\Dependencies</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>Core/Stdafx.h</PrecompiledHeaderFile>
+      <AdditionalOptions>/Zm120 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>$(SolutionDir)/Lib/BHWin32Layer.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\include\Platform\Typedefs.h">
+      <Filter>DataType</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Matrix4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Plane.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Quaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vector2f.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vector3f.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vector4f.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\FileSystem.h">
+      <Filter>FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\FileInfo.h">
+      <Filter>FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Platform.h" />
+    <ClInclude Include="..\include\Platform\PlatformEssential.h" />
+    <ClInclude Include="..\include\Platform\Stdafx.h" />
+    <ClInclude Include="..\include\Platform\Mutex.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Thread.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\ClockCycle.h">
+      <Filter>Profiling</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\ConsoleColor.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\MessageBox.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Keybind.h">
+      <Filter>Key Binding</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\PlatformWindow.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\WindowSettings.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Utilities.h" />
+    <ClInclude Include="..\include\Platform\GraphicsPipeline.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Camera.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Mesh.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Shader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Graphics.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\MeshLoader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vertex.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Animation.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Texture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\WICFunctions.h">
+      <Filter>Graphics\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\RenderTarget.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\GPUOBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\MultiRenderTarget.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DepthRenderTarget.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\UAVTexture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\AABB.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\HDRTexture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="DataType">
+      <UniqueIdentifier>{9be71379-b1be-47e3-b1f0-859421686401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileSystem">
+      <UniqueIdentifier>{b4ff19b1-68fc-48c6-9cf4-466296579b77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{532358f3-e9da-4cb6-97a4-f043070d7c62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{437bb650-1e3f-4c58-b48d-0751753c89d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{7aaf50ea-0fdc-4f07-8b8c-057c92230341}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{ab395d8e-df8e-4ac4-a689-25d38f29087c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Profiling">
+      <UniqueIdentifier>{11379c24-531a-436a-b8fd-2e04306afaa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{3686a9d7-0a96-48c9-a461-cb7504a620b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debug">
+      <UniqueIdentifier>{1da3101d-6159-4102-b4a0-b0b68e22f006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Key Binding">
+      <UniqueIdentifier>{523d84ec-852d-4bf8-bb1c-b9aa0397777f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Detail">
+      <UniqueIdentifier>{90ddeee6-494a-4e9f-a5d8-a5318946ef73}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\Platform\Matrix4.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="..\include\Platform\Plane.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="..\include\Platform\Quaternion.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="..\include\Platform\Vector2f.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="..\include\Platform\Vector3f.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="..\include\Platform\Vector4f.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="..\include\Platform\Thread.inl">
+      <Filter>Thread</Filter>
+    </None>
+    <None Include="..\include\Platform\Mutex.inl">
+      <Filter>Thread</Filter>
+    </None>
+    <None Include="..\include\Platform\Mesh.inl">
+      <Filter>Graphics</Filter>
+    </None>
+    <None Include="..\include\Platform\Shader.inl">
+      <Filter>Graphics</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Platform\Stdafx.cpp" />
+    <ClCompile Include="..\src\Platform\FileInfo.cpp">
+      <Filter>FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\FileSystem.cpp">
+      <Filter>FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Plane.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Quaternion.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Mutex.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Thread.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\ClockCycle.cpp">
+      <Filter>Profiling</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\ConsoleColor.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vector2f.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vector3f.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vector4f.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Matrix4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\MessageBox.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Keybind.cpp">
+      <Filter>Key Binding</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\PlatformWindow.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Utilities.cpp" />
+    <ClCompile Include="..\src\Platform\GraphicsPipeline.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Camera.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Mesh.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Shader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Graphics.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\MeshLoader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Texture.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\WICFunctions.cpp">
+      <Filter>Graphics\Detail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\RenderTarget.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\GPUOBuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\MultiRenderTarget.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\DepthRenderTarget.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\UAVTexture.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\HDRTexture.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Dependencies\rgbe.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,54 @@
+<Phong>
+    <String Name="Coal"/>
+    <Vector3f>
+        <Float32 x="0.0392157"/>
+        <Float32 y="0.0392157"/>
+        <Float32 z="0.0392157"/>
+    </Vector3f>
+    <Float32 Roughness="50"/>
+    <String Texture="black"/>
+</Phong>
+
+<Phong>
+    <String Name="Plastic"/>
+    <Vector3f>
+        <Float32 x="0.7"/>
+        <Float32 y="0.7"/>
+        <Float32 z="0.7"/>
+    </Vector3f>
+    <Float32 Roughness="128"/>
+    <String Texture="white"/>
+</Phong>
+
+<Phong>
+    <String Name="PolishMetal"/>
+    <Vector3f>
+        <Float32 x="1"/>
+        <Float32 y="1"/>
+        <Float32 z="1"/>
+    </Vector3f>
+    <Float32 Roughness="100000"/>
+    <String Texture="white"/>
+</Phong>
+
+<Phong>
+    <String Name="Ceramic"/>
+    <Vector3f>
+        <Float32 x="0.117647"/>
+        <Float32 y="0.117647"/>
+        <Float32 z="0.117647"/>
+    </Vector3f>
+    <Float32 Roughness="1000"/>
+    <String Texture="black"/>
+</Phong>
+
+<Phong>
+    <String Name="Metal"/>
+    <Vector3f>
+        <Float32 x="1"/>
+        <Float32 y="1"/>
+        <Float32 z="1"/>
+    </Vector3f>
+    <Float32 Roughness="5000"/>
+    <String Texture="white"/>
+</Phong>

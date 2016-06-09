@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\include\Script\ScriptConfig.h" />
+    <ClInclude Include="..\include\Script\Script.h" />
+    <ClInclude Include="..\include\Script\ScriptObject.h" />
+    <ClInclude Include="..\include\Script\Stdafx.h" />
+    <ClInclude Include="..\include\Script\ScriptManager.h" />
+    <ClInclude Include="..\include\Script\ScriptMethod.h" />
+    <ClInclude Include="..\include\Script\ScriptInterOp.h" />
+    <ClInclude Include="..\include\Script\ScriptEventManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Script\Script.cpp" />
+    <ClCompile Include="..\src\Script\Stdafx.cpp" />
+    <ClCompile Include="..\src\Script\ScriptObject.cpp" />
+    <ClCompile Include="..\src\Script\ScriptMethod.cpp" />
+    <ClCompile Include="..\src\Script\ScriptInterOp.cpp" />
+    <ClCompile Include="..\src\Script\ScriptEventManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\Script\ScriptObject.inl" />
+    <None Include="..\include\Script\ScriptInterOp.inl" />
+  </ItemGroup>
+</Project>

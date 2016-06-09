@@ -1,0 +1,419 @@
+<Object>
+    <Hash Type=""/>
+    <Hash Name="ScriptDemo"/>
+    <ObjectComponentVector Size="2">
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="LightManager"/>
+            </ScriptType>
+            <LightManager>
+                <Int32 mLightCount="0"/>
+                <Float32 mPathRadius="1"/>
+            </LightManager>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="DummyManager"/>
+            </ScriptType>
+            <DummyManager>
+                <CharVector Size="0"/>
+            </DummyManager>
+        </ScriptComponent>
+    </ObjectComponentVector>
+</Object>
+
+<Object>
+    <Hash Type=""/>
+    <Hash Name="Floor"/>
+    <ObjectComponentVector Size="3">
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="TransformComponent"/>
+            </ScriptType>
+            <TransformComponent>
+                <BHVector3f>
+                    <Float32 x="0"/>
+                    <Float32 y="-0.25"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="25"/>
+                    <Float32 y="0.5"/>
+                    <Float32 z="25"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="0"/>
+                    <Float32 y="0"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHObject/>
+            </TransformComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="MeshComponent"/>
+            </ScriptType>
+            <MeshComponent>
+                <BHMesh>
+                    <String Mesh="Cube"/>
+                </BHMesh>
+                <BHMaterial>
+                    <String Material="Plastic"/>
+                </BHMaterial>
+                <BHObject/>
+            </MeshComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="StationaryBoxCollider"/>
+            </ScriptType>
+            <StationaryBoxCollider>
+                <Boolean mPassable="false"/>
+                <String mTag="Floor"/>
+                <BHObject/>
+            </StationaryBoxCollider>
+        </ScriptComponent>
+    </ObjectComponentVector>
+</Object>
+
+<Object>
+    <Hash Type="Wall"/>
+    <Hash Name="NewWall"/>
+    <ObjectComponentVector Size="3">
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="TransformComponent"/>
+            </ScriptType>
+            <TransformComponent>
+                <BHVector3f>
+                    <Float32 x="-12"/>
+                    <Float32 y="1"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="1"/>
+                    <Float32 y="2"/>
+                    <Float32 z="25"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="0"/>
+                    <Float32 y="0"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHObject/>
+            </TransformComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="MeshComponent"/>
+            </ScriptType>
+            <MeshComponent>
+                <BHMesh>
+                    <String Mesh="Cube"/>
+                </BHMesh>
+                <BHMaterial>
+                    <String Material="Plastic"/>
+                </BHMaterial>
+                <BHObject/>
+            </MeshComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="StationaryBoxCollider"/>
+            </ScriptType>
+            <StationaryBoxCollider>
+                <Boolean mPassable="false"/>
+                <String mTag="Wall"/>
+                <BHObject/>
+            </StationaryBoxCollider>
+        </ScriptComponent>
+    </ObjectComponentVector>
+</Object>
+
+<Object>
+    <Hash Type="Wall"/>
+    <Hash Name="NewWall0"/>
+    <ObjectComponentVector Size="3">
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="TransformComponent"/>
+            </ScriptType>
+            <TransformComponent>
+                <BHVector3f>
+                    <Float32 x="12"/>
+                    <Float32 y="1"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="1"/>
+                    <Float32 y="2"/>
+                    <Float32 z="25"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="0"/>
+                    <Float32 y="0"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHObject/>
+            </TransformComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="MeshComponent"/>
+            </ScriptType>
+            <MeshComponent>
+                <BHMesh>
+                    <String Mesh="Cube"/>
+                </BHMesh>
+                <BHMaterial>
+                    <String Material="Plastic"/>
+                </BHMaterial>
+                <BHObject/>
+            </MeshComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="StationaryBoxCollider"/>
+            </ScriptType>
+            <StationaryBoxCollider>
+                <Boolean mPassable="false"/>
+                <String mTag="Wall"/>
+                <BHObject/>
+            </StationaryBoxCollider>
+        </ScriptComponent>
+    </ObjectComponentVector>
+</Object>
+
+<Object>
+    <Hash Type="Wall"/>
+    <Hash Name="NewWall1"/>
+    <ObjectComponentVector Size="3">
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="TransformComponent"/>
+            </ScriptType>
+            <TransformComponent>
+                <BHVector3f>
+                    <Float32 x="4.6"/>
+                    <Float32 y="1"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="1"/>
+                    <Float32 y="2"/>
+                    <Float32 z="20"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="0"/>
+                    <Float32 y="0"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHObject/>
+            </TransformComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="MeshComponent"/>
+            </ScriptType>
+            <MeshComponent>
+                <BHMesh>
+                    <String Mesh="Cube"/>
+                </BHMesh>
+                <BHMaterial>
+                    <String Material="Plastic"/>
+                </BHMaterial>
+                <BHObject/>
+            </MeshComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="StationaryBoxCollider"/>
+            </ScriptType>
+            <StationaryBoxCollider>
+                <Boolean mPassable="false"/>
+                <String mTag="Wall"/>
+                <BHObject/>
+            </StationaryBoxCollider>
+        </ScriptComponent>
+    </ObjectComponentVector>
+</Object>
+
+<Object>
+    <Hash Type="Wall"/>
+    <Hash Name="NewWall2"/>
+    <ObjectComponentVector Size="3">
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="TransformComponent"/>
+            </ScriptType>
+            <TransformComponent>
+                <BHVector3f>
+                    <Float32 x="0"/>
+                    <Float32 y="1"/>
+                    <Float32 z="12"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="1"/>
+                    <Float32 y="2"/>
+                    <Float32 z="25"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="0"/>
+                    <Float32 y="90"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHObject/>
+            </TransformComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="MeshComponent"/>
+            </ScriptType>
+            <MeshComponent>
+                <BHMesh>
+                    <String Mesh="Cube"/>
+                </BHMesh>
+                <BHMaterial>
+                    <String Material="Plastic"/>
+                </BHMaterial>
+                <BHObject/>
+            </MeshComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="StationaryBoxCollider"/>
+            </ScriptType>
+            <StationaryBoxCollider>
+                <Boolean mPassable="false"/>
+                <String mTag="Wall"/>
+                <BHObject/>
+            </StationaryBoxCollider>
+        </ScriptComponent>
+    </ObjectComponentVector>
+</Object>
+
+<Object>
+    <Hash Type="Player"/>
+    <Hash Name="UFO"/>
+    <ObjectComponentVector Size="4">
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="TransformComponent"/>
+            </ScriptType>
+            <TransformComponent>
+                <BHVector3f>
+                    <Float32 x="0.2724"/>
+                    <Float32 y="1.8"/>
+                    <Float32 z="-1.63333"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="0.3"/>
+                    <Float32 y="0.3"/>
+                    <Float32 z="0.3"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="0"/>
+                    <Float32 y="0"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHObject/>
+            </TransformComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="MeshComponent"/>
+            </ScriptType>
+            <MeshComponent>
+                <BHMesh>
+                    <String Mesh="UFO"/>
+                </BHMesh>
+                <BHMaterial>
+                    <String Material="Plastic"/>
+                </BHMaterial>
+                <BHObject/>
+            </MeshComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="PlayerControl"/>
+            </ScriptType>
+            <PlayerControl>
+                <Float32 mSpeed="5"/>
+                <BHObject/>
+            </PlayerControl>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="BoxCollider"/>
+            </ScriptType>
+            <BoxCollider>
+                <Boolean mPassable="false"/>
+                <String mTag="Player"/>
+                <BHObject/>
+            </BoxCollider>
+        </ScriptComponent>
+    </ObjectComponentVector>
+</Object>
+
+<Object>
+    <Hash Type="LightSwitch"/>
+    <Hash Name="NewLightSwitch"/>
+    <ObjectComponentVector Size="4">
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="TransformComponent"/>
+            </ScriptType>
+            <TransformComponent>
+                <BHVector3f>
+                    <Float32 x="7.6"/>
+                    <Float32 y="1"/>
+                    <Float32 z="9"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="1"/>
+                    <Float32 y="1"/>
+                    <Float32 z="1"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="0"/>
+                    <Float32 y="0"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHObject/>
+            </TransformComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="MeshComponent"/>
+            </ScriptType>
+            <MeshComponent>
+                <BHMesh>
+                    <String Mesh="Up"/>
+                </BHMesh>
+                <BHMaterial>
+                    <String Material="PolishMetal"/>
+                </BHMaterial>
+                <BHObject/>
+            </MeshComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="StationaryBoxCollider"/>
+            </ScriptType>
+            <StationaryBoxCollider>
+                <Boolean mPassable="false"/>
+                <String mTag="LightSwitch"/>
+                <BHObject/>
+            </StationaryBoxCollider>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="LightSwitch"/>
+            </ScriptType>
+            <LightSwitch>
+                <Float32 mRoateSpeed="180"/>
+                <BHObject/>
+            </LightSwitch>
+        </ScriptComponent>
+    </ObjectComponentVector>
+</Object>

@@ -1,0 +1,43 @@
+<Object>
+    <Hash Type="Object"/>
+    <Hash Name="NewObject"/>
+    <ObjectComponentVector Size="2">
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="TransformComponent"/>
+            </ScriptType>
+            <TransformComponent>
+                <BHVector3f>
+                    <Float32 x="1"/>
+                    <Float32 y="1"/>
+                    <Float32 z="1"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="1"/>
+                    <Float32 y="1"/>
+                    <Float32 z="1"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="0"/>
+                    <Float32 y="0"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHObject/>
+            </TransformComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="MeshComponent"/>
+            </ScriptType>
+            <MeshComponent>
+                <BHMesh>
+                    <String Mesh="Up"/>
+                </BHMesh>
+                <BHMaterial>
+                    <String Material="Plastic"/>
+                </BHMaterial>
+                <BHObject/>
+            </MeshComponent>
+        </ScriptComponent>
+    </ObjectComponentVector>
+</Object>

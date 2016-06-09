@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\Editor\EditorApplication.cpp">
+      <Filter>Editor\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\main.cpp" />
+    <ClCompile Include="..\src\Editor\EditorInputMapping.cpp">
+      <Filter>Editor\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\EditorUIManager.cpp">
+      <Filter>Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\EditorWindow.cpp">
+      <Filter>Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\EditorEditBox.cpp">
+      <Filter>Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\EditorCheckBox.cpp">
+      <Filter>Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\EditorComboBox.cpp">
+      <Filter>Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\EditorColourPicker.cpp">
+      <Filter>Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\EditorReflection.cpp">
+      <Filter>Editor\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\EditorButton.cpp">
+      <Filter>Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\EditorDivider.cpp">
+      <Filter>Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\DebugCamera.cpp">
+      <Filter>Game Component\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\ScriptLoader.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\EditorListBox.cpp">
+      <Filter>Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\EditorGizmo.cpp">
+      <Filter>Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\SelectedInfo.cpp">
+      <Filter>Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\MaterialEditor.cpp">
+      <Filter>Editor\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\Prefab.cpp">
+      <Filter>Editor\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Editor\MaterialEditorCamera.cpp">
+      <Filter>Editor\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\CollisionSolver.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Editor">
+      <UniqueIdentifier>{c3ef378f-b932-425e-9907-cb81bd616305}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor\Reflection">
+      <UniqueIdentifier>{41d66d10-5e76-4d18-90aa-f475cad82b53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor\System">
+      <UniqueIdentifier>{16e01feb-4a11-4903-9936-2bfe5a4535a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor\UI">
+      <UniqueIdentifier>{98a2ea5f-d0eb-43b0-838f-e446dfa98f44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Component">
+      <UniqueIdentifier>{77cb4d19-2223-42c1-bc31-8795751ae078}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Component\Camera">
+      <UniqueIdentifier>{d0b6aa4d-faf2-42bf-960d-7d6c116bf181}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Editor\EditorApplication.h">
+      <Filter>Editor\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorInputMapping.h">
+      <Filter>Editor\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorUIManager.h">
+      <Filter>Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorWindow.h">
+      <Filter>Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorEditBox.h">
+      <Filter>Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorVariableBox.h">
+      <Filter>Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorCheckBox.h">
+      <Filter>Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorComboBox.h">
+      <Filter>Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorColourPicker.h">
+      <Filter>Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorReflection.h">
+      <Filter>Editor\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorButton.h">
+      <Filter>Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorDivider.h">
+      <Filter>Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorConfig.h">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Game\GameConfig.h" />
+    <ClInclude Include="..\include\Game\DebugCamera.h">
+      <Filter>Game Component\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Game\ScriptLoader.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorListBox.h">
+      <Filter>Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\Prefab.h">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\EditorGizmo.h">
+      <Filter>Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\SelectedInfo.h">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\MaterialEditor.h">
+      <Filter>Editor\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Editor\MaterialEditorCamera.h">
+      <Filter>Editor\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Game\CollisionSolver.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\Editor\EditorVariableBox.inl">
+      <Filter>Editor\UI</Filter>
+    </None>
+    <None Include="..\include\Editor\EditorWindow.inl">
+      <Filter>Editor\UI</Filter>
+    </None>
+    <None Include="..\include\Editor\EditorReflection.inl">
+      <Filter>Editor\Reflection</Filter>
+    </None>
+  </ItemGroup>
+</Project>

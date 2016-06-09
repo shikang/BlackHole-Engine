@@ -1,0 +1,74 @@
+<Object>
+    <Hash Type=""/>
+    <Hash Name="TestScripts"/>
+    <ObjectComponentVector Size="2">
+        <ScriptComponent>
+            <String ScriptType="TestClass"/>
+            <TestClass>
+                <Int32Vector Size="7">
+                    <Int32 mTestList="35"/>
+                    <Int32 mTestList="36"/>
+                    <Int32 mTestList="37"/>
+                    <Int32 mTestList="38"/>
+                    <Int32 mTestList="39"/>
+                    <Int32 mTestList="40"/>
+                    <Int32 mTestList="50"/>
+                </Int32Vector>
+                <String mTestString="C# Integrated!"/>
+                <Int32 mTestInt="10"/>
+                <Float32 mTestFloat="20"/>
+                <Uint32 mTestUInt="30"/>
+                <Boolean mTestBoolean="false"/>
+            </TestClass>
+        </ScriptComponent>
+        <ScriptComponent>
+            <String ScriptType="TestDependencies"/>
+            <TestDependencies>
+                <TestClass>
+                    <Int32Vector Size="5">
+                        <Int32 mTestList="35"/>
+                        <Int32 mTestList="36"/>
+                        <Int32 mTestList="37"/>
+                        <Int32 mTestList="38"/>
+                        <Int32 mTestList="39"/>
+                    </Int32Vector>
+                    <String mTestString="I love games!"/>
+                    <Int32 mTestInt="1"/>
+                    <Float32 mTestFloat="2"/>
+                    <Uint32 mTestUInt="3"/>
+                    <Boolean mTestBoolean="true"/>
+                </TestClass>
+                <CharVector Size="2">
+                    <TestClass>
+                        <Int32Vector Size="5">
+                            <Int32 mTestList="35"/>
+                            <Int32 mTestList="36"/>
+                            <Int32 mTestList="37"/>
+                            <Int32 mTestList="38"/>
+                            <Int32 mTestList="39"/>
+                        </Int32Vector>
+                        <String mTestString="I love games!"/>
+                        <Int32 mTestInt="1"/>
+                        <Float32 mTestFloat="2"/>
+                        <Uint32 mTestUInt="3"/>
+                        <Boolean mTestBoolean="true"/>
+                    </TestClass>
+                    <TestClass>
+                        <Int32Vector Size="5">
+                            <Int32 mTestList="35"/>
+                            <Int32 mTestList="36"/>
+                            <Int32 mTestList="37"/>
+                            <Int32 mTestList="38"/>
+                            <Int32 mTestList="39"/>
+                        </Int32Vector>
+                        <String mTestString="I love games!"/>
+                        <Int32 mTestInt="1"/>
+                        <Float32 mTestFloat="2"/>
+                        <Uint32 mTestUInt="3"/>
+                        <Boolean mTestBoolean="true"/>
+                    </TestClass>
+                </CharVector>
+            </TestDependencies>
+        </ScriptComponent>
+    </ObjectComponentVector>
+</Object>

@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Assertions">
+      <UniqueIdentifier>{900678d1-c1cd-4298-b0c2-261eb0e5a52c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{5618e2ef-9eb7-4cc8-a509-ec8634014213}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{3c63c0ef-fce0-4eb3-b689-89ca145f392d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="String">
+      <UniqueIdentifier>{9fd6b9e1-3b5f-4f01-9494-07bd43515cfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Log">
+      <UniqueIdentifier>{4a2a5c1a-0911-40c0-a071-011da0311aeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Parsers">
+      <UniqueIdentifier>{a2d2e8dd-3aa0-4487-951b-1fa13da31a3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Type">
+      <UniqueIdentifier>{93818a2a-6b12-45e7-9238-dc7ad63c36f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Profiler">
+      <UniqueIdentifier>{d72f4519-76fd-4630-bbb8-1ababe583168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{19a42dac-f2f1-42f4-9cdf-0f8571217f36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rand">
+      <UniqueIdentifier>{4567cd02-6831-4861-a75b-6d1e6c870418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Curves &amp; Surfaces">
+      <UniqueIdentifier>{0328411d-7125-4b39-a85f-987ec9432b85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection">
+      <UniqueIdentifier>{740187f3-ca54-4321-a690-bf6cdedcc870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Serialization">
+      <UniqueIdentifier>{c593bbf4-f943-4534-b24c-eea86cf9e25a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handles">
+      <UniqueIdentifier>{9b888ff4-1292-4ac1-8655-c198e57f0eea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{7c13a7ac-35b8-49fb-828d-678407d7581d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflection\Detail">
+      <UniqueIdentifier>{fbda0df6-ac14-4d04-9f0b-f9d16f5d2083}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{91e17d01-930a-4d59-9b34-35b3863e8ecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{26cb7d30-ab7a-4c8f-bff9-76cc87250580}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\Detail">
+      <UniqueIdentifier>{f25d057b-524e-4269-84c0-ffbb33fc1e7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Component">
+      <UniqueIdentifier>{147e9dcc-c899-452c-adf2-5f738d14dc34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{905644d9-3e12-468b-8a16-3067b93908bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{6352b747-5ee2-4ea3-a4a6-49cde2df7e46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Picking">
+      <UniqueIdentifier>{38e27a92-8a0f-4cb4-bbaf-0d8924c68271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision">
+      <UniqueIdentifier>{a380702e-05a5-4297-b762-b56d2c477259}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Core\Stdafx.h" />
+    <ClInclude Include="..\include\Core\Delegate.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Assert.h">
+      <Filter>Assertions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Event.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Hash.h">
+      <Filter>String</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Typing.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\FieldContainer.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\ArrayFieldContainer.h">
+      <Filter>Reflection\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\MapFieldContainer.h">
+      <Filter>Reflection\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\SetFieldContainer.h">
+      <Filter>Reflection\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\VectorFieldContainer.h">
+      <Filter>Reflection\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\EnumConst.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Field.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Type.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\TypeDB.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\TypeRegistrar.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\EntityManager.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Entity.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\CName.h">
+      <Filter>String</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Serialiser.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Deserialiser.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\XMLDeserialiser.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\XMLSerialiser.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\XMLSerialiseType.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Singleton.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Uncopyable.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\FunctionsFramework.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\CoreConfig.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\CoreEssential.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\ProfileManager.h">
+      <Filter>Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Profiler.h">
+      <Filter>Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Profiling.h">
+      <Filter>Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\IUpdatable.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\IDrawable.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\EventManager.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Handle.h">
+      <Filter>Handles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\HandleManager.h">
+      <Filter>Handles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\ObjectAllocator.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\LogManager.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Color.h">
+      <Filter>Data Type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Time.h">
+      <Filter>Data Type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Math.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Duration.h">
+      <Filter>Data Type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\TimePoint.h">
+      <Filter>Data Type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\JobQueue.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Message.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\SystemMessaging.h">
+      <Filter>Service\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\System.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\SystemManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Object.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\ObjectComponent.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\ObjectManager.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\GameComponent.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Game.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\TypeCreator.h">
+      <Filter>Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Stopwatch.h">
+      <Filter>Data Type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Renderer.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\InputManager.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\MeshManager.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\TypeStringifier.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\TextureManager.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\GameState.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\GameStateManager.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\LevelState.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Materials.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\MaterialManager.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Light.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\LevelManager.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Picking.h">
+      <Filter>Picking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\HDRTextureManager.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\CollisionFunctions.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Contact.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\OBB.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\CollisionManager.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Core\Stdafx.cpp" />
+    <ClCompile Include="..\src\Core\Assert.cpp">
+      <Filter>Assertions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Hash.cpp">
+      <Filter>String</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\EntityManager.cpp">
+      <Filter>Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Type.cpp">
+      <Filter>Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\TypeDB.cpp">
+      <Filter>Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\TypeRegistrar.cpp">
+      <Filter>Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Serialiser.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Deserialiser.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\XMLDeserialiser.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\XMLSerialiser.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\ProfileManager.cpp">
+      <Filter>Profiler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Profiler.cpp">
+      <Filter>Profiler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\IUpdatable.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\IDrawable.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\EventManager.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Handle.cpp">
+      <Filter>Handles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\HandleManager.cpp">
+      <Filter>Handles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\LogManager.cpp">
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Color.cpp">
+      <Filter>Data Type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Time.cpp">
+      <Filter>Data Type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Math.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Duration.cpp">
+      <Filter>Data Type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\TimePoint.cpp">
+      <Filter>Data Type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\JobQueue.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\System.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\SystemManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Object.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\ObjectComponent.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\ObjectManager.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\GameComponent.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Game.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Stopwatch.cpp">
+      <Filter>Data Type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Renderer.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\InputManager.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\TypeStringifier.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\TextureManager.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\GameState.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\MeshManager.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\GameStateManager.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\LevelState.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\LevelManager.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Materials.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\MaterialManager.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Picking.cpp">
+      <Filter>Picking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\HDRTextureManager.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\CollisionFunctions.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\CollisionManager.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\Core\Hash.inl">
+      <Filter>String</Filter>
+    </None>
+    <None Include="..\include\Core\Field.inl">
+      <Filter>Reflection</Filter>
+    </None>
+    <None Include="..\include\Core\Type.inl">
+      <Filter>Reflection</Filter>
+    </None>
+    <None Include="..\include\Core\TypeDB.inl">
+      <Filter>Reflection</Filter>
+    </None>
+    <None Include="..\include\Core\EntityManager.inl">
+      <Filter>Reflection</Filter>
+    </None>
+    <None Include="..\include\Core\CName.inl">
+      <Filter>String</Filter>
+    </None>
+    <None Include="..\include\Core\XMLDeserialiser.inl">
+      <Filter>Serialization</Filter>
+    </None>
+    <None Include="..\include\Core\XMLSerialiser.inl">
+      <Filter>Serialization</Filter>
+    </None>
+    <None Include="..\include\Core\EventManager.inl">
+      <Filter>Event</Filter>
+    </None>
+    <None Include="..\include\Core\Handle.inl">
+      <Filter>Handles</Filter>
+    </None>
+    <None Include="..\include\Core\HandleManager.inl">
+      <Filter>Handles</Filter>
+    </None>
+    <None Include="..\include\Core\ObjectAllocator.inl">
+      <Filter>Memory</Filter>
+    </None>
+    <None Include="..\include\Core\Math.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="..\include\Core\Time.inl">
+      <Filter>Data Type</Filter>
+    </None>
+    <None Include="..\include\Core\JobQueue.inl">
+      <Filter>Event</Filter>
+    </None>
+    <None Include="..\include\Core\Message.inl">
+      <Filter>Event</Filter>
+    </None>
+    <None Include="..\include\Core\LogManager.inl">
+      <Filter>Log</Filter>
+    </None>
+    <None Include="..\include\Core\System.inl">
+      <Filter>System</Filter>
+    </None>
+    <None Include="..\include\Core\SystemManager.inl">
+      <Filter>System</Filter>
+    </None>
+    <None Include="..\include\Core\Object.inl">
+      <Filter>Object</Filter>
+    </None>
+    <None Include="..\include\Core\ObjectManager.inl">
+      <Filter>Object</Filter>
+    </None>
+    <None Include="..\include\Core\TypeRegistrar.inl">
+      <Filter>Reflection</Filter>
+    </None>
+    <None Include="..\include\Core\Stopwatch.inl">
+      <Filter>Data Type</Filter>
+    </None>
+    <None Include="..\include\Core\TypeStringifier.inl">
+      <Filter>Serialization</Filter>
+    </None>
+    <None Include="..\include\Core\GameStateManager.inl">
+      <Filter>Game Component</Filter>
+    </None>
+  </ItemGroup>
+</Project>

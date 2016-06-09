@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\include\Test\TestDelegate.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestEvent.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestHash.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestMutex.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestThread.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestVector2f.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestReflection.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestXMLSerialiser.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestProfile.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestEventManager.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestHandleManager.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestSystem.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Test\TestScript.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Test\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Test">
+      <UniqueIdentifier>{0d1809a8-d118-4fc0-8c69-eff2ae589458}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
