@@ -1,0 +1,11 @@
+*.idb
+BHCoreSystem/Debug/BHCoreSystem.tlog/BHCoreSystem.lastbuildstate
+*.tlog
+BHScript/Debug/.NETFramework,Version=v4.0.AssemblyAttributes.asm
+BHScriptCompiler/obj/Debug/BHScriptCompiler.csproj.FileListAbsolute.txt
+BlackHole.VC.db
+BlackHole.VC.VC.opendb
+Debug/BHGame.exp
+Lib/BHScriptBridge.exp
+*.exp
+Lib/BHScript_d.dll.metagen
