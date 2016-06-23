@@ -9,3 +9,4 @@ Debug/BHGame.exp
 Lib/BHScriptBridge.exp
 *.exp
 Lib/BHScript_d.dll.metagen
+*.ipch

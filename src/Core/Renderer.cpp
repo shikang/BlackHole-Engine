@@ -54,8 +54,8 @@ namespace BH
 	void Renderer::InitialiseShaders()
 	{
 		// ----------------------- Geometry pass -----------------------
-		mShaders["Geo"].Initialise( "../shaders/geometry.vs",
-									"../shaders/geometry.ps",
+		mShaders["Geo"].Initialise( "../shaders/geometry_vs.hlsl",
+									"../shaders/geometry_ps.hlsl",
 									"GeometryVertexShader",
 									"GeometryPixelShader" );
 
@@ -66,8 +66,8 @@ namespace BH
 		mShaders["Geo"].CreateSampler( PixelShader, 0 );
 
 		// ----------------------- Drawing quad -----------------------
-		mShaders["Quad"].Initialise( "../shaders/quad.vs",
-									 "../shaders/quad.ps",
+		mShaders["Quad"].Initialise( "../shaders/quad_vs.hlsl",
+									 "../shaders/quad_ps.hlsl",
 									 "QuadVertexShader",
 									 "QuadPixelShader" );
 
@@ -82,8 +82,8 @@ namespace BH
 		ambientShaderMacros[2].Name = NULL;
 		ambientShaderMacros[2].Definition = NULL;
 
-		mShaders["Ambient"].Initialise( "../shaders/ambient.vs",
-										"../shaders/ambient.ps",
+		mShaders["Ambient"].Initialise( "../shaders/ambient_vs.hlsl",
+										"../shaders/ambient_ps.hlsl",
 										"AmbientVertexShader",
 										"AmbientPixelShader",
 										nullptr,
@@ -106,8 +106,8 @@ namespace BH
 		AOShaderMacros[2].Name = NULL;
 		AOShaderMacros[2].Definition = NULL;
 
-		mShaders["AmbientOcclusion"].Initialise( "../shaders/ambientOcclusion.vs",
-												 "../shaders/ambientOcclusion.ps",
+		mShaders["AmbientOcclusion"].Initialise( "../shaders/ambientOcclusion_vs.hlsl",
+												 "../shaders/ambientOcclusion_ps.hlsl",
 												 "AOVertexShader",
 												 "AOPixelShader",
 												 nullptr,
@@ -126,8 +126,8 @@ namespace BH
 		lightShaderMacros[1].Name = NULL;
 		lightShaderMacros[1].Definition = NULL;
 
-		mShaders["Lighting"].Initialise( "../shaders/light.vs",
-										 "../shaders/light.ps",
+		mShaders["Lighting"].Initialise( "../shaders/light_vs.hlsl",
+										 "../shaders/light_ps.hlsl",
 										 "LightVertexShader",
 										 "LightPixelShader",
 										 nullptr,
@@ -145,8 +145,8 @@ namespace BH
 		mShaders["Lighting"].CreateSampler( PixelShader, 0 );
 
 		// ----------------------- Directional Lighting pass -----------------------
-		mShaders["DirLighting"].Initialise( "../shaders/light.vs",
-											"../shaders/directionalLight.ps",
+		mShaders["DirLighting"].Initialise( "../shaders/light_vs.hlsl",
+											"../shaders/directionalLight_ps.hlsl",
 											"LightVertexShader",
 											"LightPixelShader",
 											nullptr,
@@ -166,8 +166,8 @@ namespace BH
 		mShaders["DirLighting"].CreateSampler( PixelShader, 0 );
 
 		// ----------------------- Trace sample pass -----------------------
-		mShaders["Trace"].Initialise( "../shaders/trace.vs",
-									  "../shaders/trace.ps",
+		mShaders["Trace"].Initialise( "../shaders/trace_vs.hlsl",
+									  "../shaders/trace_ps.hlsl",
 									  "TraceVertexShader",
 									  "TracePixelShader" );
 
@@ -186,15 +186,15 @@ namespace BH
 		mShaders["Trace"].CreateSampler( PixelShader, 0 );
 
 		// Exit Trace pass
-		mShaders["ExitTrace"].Initialise( "../shaders/trace.vs",
-										  "../shaders/exitTrace.ps",
+		mShaders["ExitTrace"].Initialise( "../shaders/trace_vs.hlsl",
+										  "../shaders/exitTrace_ps.hlsl",
 										  "TraceVertexShader",
 										  "TracePixelShader" );
 
 		// ----------------------- Edge blur pass -----------------------
 		// Edge Detection
-		mShaders["EdgeDetection"].Initialise( "../shaders/quad.vs",
-											  "../shaders/edgeDetection.ps",
+		mShaders["EdgeDetection"].Initialise( "../shaders/quad_vs.hlsl",
+											  "../shaders/edgeDetection_ps.hlsl",
 											  "QuadVertexShader",
 											  "EdgePixelShader" );
 
@@ -204,8 +204,8 @@ namespace BH
 		mShaders["EdgeDetection"].CreateSampler( PixelShader, 0 );
 
 		// Edge Blur
-		mShaders["EdgeBlur"].Initialise( "../shaders/quad.vs",
-										 "../shaders/edgeBlur.ps",
+		mShaders["EdgeBlur"].Initialise( "../shaders/quad_vs.hlsl",
+										 "../shaders/edgeBlur_ps.hlsl",
 										 "QuadVertexShader",
 										 "EdgePixelShader" );
 
@@ -215,8 +215,8 @@ namespace BH
 		mShaders["EdgeBlur"].CreateSampler( PixelShader, 0 );
 
 		// ----------------------- Blend light pass -----------------------
-		mShaders["BlendLight"].Initialise( "../shaders/blendlight.vs",
-										   "../shaders/blendlight.ps",
+		mShaders["BlendLight"].Initialise( "../shaders/blendlight_vs.hlsl",
+										   "../shaders/blendlight_ps.hlsl",
 										   "BlendLightVertexShader",
 										   "BlendLightPixelShader" );
 
@@ -227,8 +227,8 @@ namespace BH
 		mShaders["BlendLight"].CreateSampler( PixelShader, 0 );
 
 		// ----------------------- Flat shader -----------------------
-		mShaders["Flat"].Initialise( "../shaders/flat.vs",
-									 "../shaders/flat.ps",
+		mShaders["Flat"].Initialise( "../shaders/flat_vs.hlsl",
+									 "../shaders/flat_ps.hlsl",
 									 "FlatVertexShader",
 									 "FlatPixelShader" );
 
@@ -238,13 +238,13 @@ namespace BH
 		mShaders["Flat"].CreateSampler( PixelShader, 0 );
 
 		// ----------------------- Depth shader for shadow map -----------------------
-		mShaders["Depth"].Initialise( "../shaders/depth.vs",
-									  "../shaders/depth.ps",
+		mShaders["Depth"].Initialise( "../shaders/depth_vs.hlsl",
+									  "../shaders/depth_ps.hlsl",
 									  "DepthVertexShader",
 									  "DepthPixelShader" );
 
-		mShaders["ExponentialDepth"].Initialise( "../shaders/depth.vs",
-												 "../shaders/exponentialDepth.ps",
+		mShaders["ExponentialDepth"].Initialise( "../shaders/depth_vs.hlsl",
+												 "../shaders/exponentialDepth_ps.hlsl",
 												 "DepthVertexShader",
 												 "DepthPixelShader" );
 
@@ -265,14 +265,14 @@ namespace BH
 		blurShaderMacros[3].Name = NULL;
 		blurShaderMacros[3].Definition = NULL;
 
-		mShaders["HBlur"].Initialise( "../shaders/horizontalBlur.hlsl",
+		mShaders["HBlur"].Initialise( "../shaders/horizontalBlur_cs.hlsl",
 									  "HorizontalBlurMain",
 									  blurShaderMacros );
 		
 		mShaders["HBlur"].CreaterBuffer( ComputeShader, 1, sizeof( Vector4f ) * ( 2 * MAX_KERNEL_RADIUS + 1 ) );
 
 		// ----------------------- Vertical Blur compute shader -----------------------
-		mShaders["VBlur"].Initialise( "../shaders/verticalBlur.hlsl",
+		mShaders["VBlur"].Initialise( "../shaders/verticalBlur_cs.hlsl",
 								 "VerticalBlurMain",
 								 blurShaderMacros );
 		
@@ -291,22 +291,22 @@ namespace BH
 		bblurShaderMacros[4].Name = NULL;
 		bblurShaderMacros[4].Definition = NULL;
 
-		mShaders["HBilateralBlur"].Initialise( "../shaders/horizontalBilateralBlur.hlsl",
+		mShaders["HBilateralBlur"].Initialise( "../shaders/horizontalBilateralBlur_cs.hlsl",
 											   "HorizontalBlurMain",
 											   bblurShaderMacros );
 		
 		mShaders["HBilateralBlur"].CreaterBuffer( ComputeShader, 1, sizeof( Vector4f ) * ( 2 * MAX_KERNEL_RADIUS + 1 ) );
 
 		// ----------------------- Vertical Bilateral Blur compute shader -----------------------
-		mShaders["VBilateralBlur"].Initialise( "../shaders/verticalBilateralBlur.hlsl",
+		mShaders["VBilateralBlur"].Initialise( "../shaders/verticalBilateralBlur_cs.hlsl",
 											   "VerticalBlurMain",
 											   bblurShaderMacros );
 		
 		mShaders["VBilateralBlur"].CreaterBuffer( ComputeShader, 1, sizeof( Vector4f ) * ( 2 * MAX_KERNEL_RADIUS + 1 ) );
 
 		// ----------------------- Sky dome shader -----------------------
-		mShaders["Sky"].Initialise( "../shaders/skydome.vs",
-									"../shaders/skydome.ps",
+		mShaders["Sky"].Initialise( "../shaders/skydome_vs.hlsl",
+									"../shaders/skydome_ps.hlsl",
 									"SkyVertexShader",
 									"SkyPixelShader" );
 
