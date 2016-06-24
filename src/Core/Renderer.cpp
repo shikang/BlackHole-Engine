@@ -72,22 +72,19 @@ namespace BH
 									 "QuadPixelShader" );
 
 		// ----------------------- Ambient pass -----------------------
-		D3D_SHADER_MACRO ambientShaderMacros[3];
-		String piDef = std::to_string( Math::Pi );
+		D3D_SHADER_MACRO ambientShaderMacros[2];
 		String iblNDef = std::to_string( IBL_N );
-		ambientShaderMacros[0].Name = "PI";
-		ambientShaderMacros[0].Definition = piDef.c_str();
-		ambientShaderMacros[1].Name = "IBL_N";
-		ambientShaderMacros[1].Definition = iblNDef.c_str();
-		ambientShaderMacros[2].Name = NULL;
-		ambientShaderMacros[2].Definition = NULL;
+		ambientShaderMacros[0].Name = "IBL_N";
+		ambientShaderMacros[0].Definition = iblNDef.c_str();
+		ambientShaderMacros[1].Name = NULL;
+		ambientShaderMacros[1].Definition = NULL;
 
-		mShaders["Ambient"].Initialise( "../shaders/ambient_vs.hlsl",
-										"../shaders/ambient_ps.hlsl",
-										"AmbientVertexShader",
-										"AmbientPixelShader",
-										nullptr,
-										ambientShaderMacros );
+		bool initialise = mShaders["Ambient"].Initialise( "../shaders/ambient_vs.hlsl",
+														  "../shaders/ambient_ps.hlsl",
+														  "AmbientVertexShader",
+														  "AmbientPixelShader",
+														  nullptr,
+														  ambientShaderMacros );
 
 		// Ambient pass - Ambient buffer
 		mShaders["Ambient"].CreaterBuffer( PixelShader, 0, sizeof( Vector4f ) + sizeof( Vector4f ) );
@@ -97,21 +94,10 @@ namespace BH
 		mShaders["Ambient"].CreateSampler( PixelShader, 0 );
 
 		// ----------------------- Ambient Occlusion Factor pass -----------------------
-		String ao_nDef = std::to_string( AO_N );
-		D3D_SHADER_MACRO AOShaderMacros[3];
-		AOShaderMacros[0].Name = "PI";
-		AOShaderMacros[0].Definition = piDef.c_str();
-		AOShaderMacros[1].Name = "AO_N";
-		AOShaderMacros[1].Definition = ao_nDef.c_str();
-		AOShaderMacros[2].Name = NULL;
-		AOShaderMacros[2].Definition = NULL;
-
 		mShaders["AmbientOcclusion"].Initialise( "../shaders/ambientOcclusion_vs.hlsl",
 												 "../shaders/ambientOcclusion_ps.hlsl",
 												 "AOVertexShader",
-												 "AOPixelShader",
-												 nullptr,
-												 AOShaderMacros );
+												 "AOPixelShader" );
 
 		// Lighting pass - Light buffer
 		mShaders["AmbientOcclusion"].CreaterBuffer( PixelShader, 0, sizeof( f32 ) + sizeof( f32 ) + sizeof( f32 ) + sizeof( f32 ) );
@@ -120,18 +106,10 @@ namespace BH
 		mShaders["AmbientOcclusion"].CreateSampler( PixelShader, 0 );
 
 		// ----------------------- Lighting pass -----------------------
-		D3D_SHADER_MACRO lightShaderMacros[2];
-		lightShaderMacros[0].Name = "PI";
-		lightShaderMacros[0].Definition = piDef.c_str();
-		lightShaderMacros[1].Name = NULL;
-		lightShaderMacros[1].Definition = NULL;
-
 		mShaders["Lighting"].Initialise( "../shaders/light_vs.hlsl",
 										 "../shaders/light_ps.hlsl",
 										 "LightVertexShader",
-										 "LightPixelShader",
-										 nullptr,
-										 lightShaderMacros );
+										 "LightPixelShader" );
 
 		// Lighting pass - Light buffer
 		mShaders["Lighting"].CreaterBuffer( PixelShader, 0, sizeof( Vector4f ) + 
@@ -148,9 +126,7 @@ namespace BH
 		mShaders["DirLighting"].Initialise( "../shaders/light_vs.hlsl",
 											"../shaders/directionalLight_ps.hlsl",
 											"LightVertexShader",
-											"LightPixelShader",
-											nullptr,
-											lightShaderMacros );
+											"LightPixelShader" );
 
 		// Lighting pass - Light buffer
 		mShaders["DirLighting"].CreaterBuffer( PixelShader, 0, sizeof( Vector4f ) + 
@@ -279,17 +255,15 @@ namespace BH
 		mShaders["VBlur"].CreaterBuffer( ComputeShader, 1, sizeof( Vector4f ) * ( 2 * MAX_KERNEL_RADIUS + 1 ) );
 
 		// ----------------------- Horizontal Bilateral Blur compute shader -----------------------
-		D3D_SHADER_MACRO bblurShaderMacros[5];
+		D3D_SHADER_MACRO bblurShaderMacros[4];
 		bblurShaderMacros[0].Name = "MAX_KERNEL_RADIUS";
 		bblurShaderMacros[0].Definition = kernalRadiusDef.c_str();
 		bblurShaderMacros[1].Name = "BATCH_X_NUM";
 		bblurShaderMacros[1].Definition = batchXDef.c_str();
 		bblurShaderMacros[2].Name = "BATCH_Y_NUM";
 		bblurShaderMacros[2].Definition = batchYDef.c_str();
-		bblurShaderMacros[3].Name = "PI";
-		bblurShaderMacros[3].Definition = piDef.c_str();
-		bblurShaderMacros[4].Name = NULL;
-		bblurShaderMacros[4].Definition = NULL;
+		bblurShaderMacros[3].Name = NULL;
+		bblurShaderMacros[3].Definition = NULL;
 
 		mShaders["HBilateralBlur"].Initialise( "../shaders/horizontalBilateralBlur_cs.hlsl",
 											   "HorizontalBlurMain",

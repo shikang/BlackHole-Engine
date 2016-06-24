@@ -1,6 +1,8 @@
 Texture2D inTexture : register(t0);
 Texture2D ndTexture : register(t1);
 
+#include "constants.hlsl"
+
 SamplerState ClampSampler
 {
 	Filter = MIN_MAG_MIP_LINEAR;

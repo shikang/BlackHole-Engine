@@ -2,6 +2,8 @@
 // Filename: phong.ps
 ////////////////////////////////////////////////////////////////////////////////
 
+#include "lightingFunctions.hlsl"
+
 Texture2D shaderTexture;
 SamplerState sampleType;
 
@@ -33,16 +35,18 @@ struct PixelInputType
 float4 PhongPixelShader( PixelInputType input ) : SV_TARGET
 {
     // Calculate half vector
-    float3 H = normalize( input.L + input.V );
+    //float3 H = normalize( input.L + input.V );
     
     // Calculate diffuse term
-    float4 diffuse = max( dot( input.N, input.L ), 0.0f ) * diffuseColor;
+    //float4 diffuse = max( dot( input.N, input.L ), 0.0f ) * diffuseColor;
     
     // Calculate specular term (Replace R.V with N.H)
-    float4 specular = pow( max( dot( input.N, H ), 0.0f ), specularPower ) * specularColor;
+    //float4 specular = pow( max( dot( input.N, H ), 0.0f ), specularPower ) * specularColor;
     
     //float4 color = input.color;
     float4 color = shaderTexture.Sample( sampleType, input.tex );
 
-    return ambientColor + diffuse * color + specular;
+    //return ambientColor + diffuse * color + specular;
+    return ambientColor + Phong( input.L, input.N, input.V, float4( 1.0f, 1.0f, 1.0f, 1.0f ), specularPower, specularColor, color );
+
 }
