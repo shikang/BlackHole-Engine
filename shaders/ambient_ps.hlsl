@@ -1,7 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: ambient.ps
 ////////////////////////////////////////////////////////////////////////////////
-#include "lightingFunctions.hlsl"
 
 Texture2D positionTexture : register(t0);
 Texture2D normalTexture : register(t1);
@@ -82,23 +81,19 @@ float4 AmbientPixelShader( PixelInputType input ) : SV_TARGET
 
 		float3 l = normalize( rl.x * A + rl.z * B + rl.y * R );
 
-		float3 h = HalfWayVector( l, v );
+		float3 h = normalize( l + v );
 		
 		// BRDF
-		//float distribution = ( ( roughness + 2.0f ) / ( twoPi ) ) * pow( max( dot( h, normal ), 0.0f ), roughness );
-        float distribution = BRDFDistribution( h, normal, roughness );
-		//float3 fresnel = s + ( float3( 1.0f, 1.0f, 1.0f ) - s ) * pow( 1 - max( dot( l, h ), 0.0f ), 5.0f );
-        float3 fresnel = BRDFFresnel( l, h, s );
+		float distribution = ( ( roughness + 2.0f ) / ( twoPi ) ) * pow( max( dot( h, normal ), 0.0f ), roughness );
+		float3 fresnel = s + ( float3( 1.0f, 1.0f, 1.0f ) - s ) * pow( 1 - max( dot( l, h ), 0.0f ), 5.0f );
 		//float geometry = 1.0f / pow( max( dot( l, h ), 0.01f ), 2.0f );
-		//float geometry = 1.0f;
-        float geometry = BRDFGeometry( l, h );
+		float geometry = 1.0f;
 
 		float level = 0.5f * log2( skyDimension / N ) - 0.5f * log2( distribution );
 
 		float2 luv = float2( 0.5f - ( atan2( l.z, l.x ) / ( twoPi ) ), acos( l.y ) / PI );
 		//float2 luv = float2( 0.5f + ( atan2( l.z, l.x ) / ( twoPi ) ), 0.5f - ( asin( l.y ) / PI ) );
 
-        // Distribution term is gotten from sky texture
 		specular += pow( ambient.xyz, 2.2f ) * ( geometry * fresnel * 0.25f ) * max( dot( normal, l ), 0.0f ) * skyTexture.SampleLevel( sampleType, luv, level ).xyz;
 	}
 	specular /= N;

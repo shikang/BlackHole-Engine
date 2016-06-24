@@ -1,7 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: light.ps
 ////////////////////////////////////////////////////////////////////////////////
-#include "lightingFunctions.hlsl"
 
 Texture2D positionTexture : register(t0);
 Texture2D normalTexture : register(t1);
@@ -45,13 +44,11 @@ struct PixelInputType
 ////////////////////////////////////////////////////////////////////////////////
 // Helper function
 ////////////////////////////////////////////////////////////////////////////////
-/*
 float3 Diffuse( float3 l, float3 n, float3 diffuse, float3 color )
 {
 	// @todo: Check if position is within light frustrum
 	return ( diffuse / PI ) * max( dot( n, l ), 0.0f ) * color;
 }
-*/
 
 float Shadow( float3 p, float3 n, float3 l )
 {
@@ -102,7 +99,7 @@ float4 LightPixelShader( PixelInputType input ) : SV_TARGET
 	float lightDistance = length( light - p );
 	float shadow = ( pTexel.w != 0.0f ) ? Shadow( p, n, l ) : 1.0f;
 
-	float3 lighting = BRDFDiffuse( l, n, ( float3 )diffuse, ( float3 )color, 0.0f, float3( 0.0f, 0.0f, 0.0f ), 0.0f );
+	float3 lighting = Diffuse( l, n, diffuse, color );
 
 	float within = WithinLight( p );
 

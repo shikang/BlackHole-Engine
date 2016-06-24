@@ -47,8 +47,8 @@ namespace BH
 								  ps_main_function_name,
 								  vs_macros,
 								  ps_macros,
-								  vs_includes ? vs_includes : D3D_COMPILE_STANDARD_FILE_INCLUDE,
-								  ps_includes ? ps_includes : D3D_COMPILE_STANDARD_FILE_INCLUDE );
+								  vs_includes,
+								  ps_includes );
 	}
 
 	bool Shader::Initialise( const Char * cs_filename,
@@ -62,7 +62,7 @@ namespace BH
 		return InitialiseShader( wFileName.c_str(), 
 								 cs_main_function_name,
 								 cs_macros,
-								 cs_includes ? cs_includes : D3D_COMPILE_STANDARD_FILE_INCLUDE );
+								 cs_includes );
 	}
 
 	void Shader::Shutdown()

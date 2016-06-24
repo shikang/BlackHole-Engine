@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BHWin32Layer", "BHWin32Layer\BHWin32Layer.vcxproj", "{C840963F-3853-4285-895B-10A9D2CAE7DB}"
 EndProject
@@ -32,41 +32,39 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BHGame", "BHEditor\BHEditor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shaders", "Shaders", "{43192736-15E3-467C-9068-13DD783958B9}"
 	ProjectSection(SolutionItems) = preProject
-		shaders\ambient_ps.hlsl = shaders\ambient_ps.hlsl
-		shaders\ambient_vs.hlsl = shaders\ambient_vs.hlsl
-		shaders\ambientOcclusion_ps.hlsl = shaders\ambientOcclusion_ps.hlsl
-		shaders\ambientOcclusion_vs.hlsl = shaders\ambientOcclusion_vs.hlsl
-		shaders\blendlight_ps.hlsl = shaders\blendlight_ps.hlsl
-		shaders\blendlight_vs.hlsl = shaders\blendlight_vs.hlsl
-		shaders\constants.hlsl = shaders\constants.hlsl
-		shaders\depth_ps.hlsl = shaders\depth_ps.hlsl
-		shaders\depth_vs.hlsl = shaders\depth_vs.hlsl
-		shaders\directionalLight_ps.hlsl = shaders\directionalLight_ps.hlsl
-		shaders\edgeBlur_ps.hlsl = shaders\edgeBlur_ps.hlsl
-		shaders\edgeDetection_ps.hlsl = shaders\edgeDetection_ps.hlsl
-		shaders\environment_ps.hlsl = shaders\environment_ps.hlsl
-		shaders\environment_vs.hlsl = shaders\environment_vs.hlsl
-		shaders\exitTrace_ps.hlsl = shaders\exitTrace_ps.hlsl
-		shaders\exponentialDepth_ps.hlsl = shaders\exponentialDepth_ps.hlsl
-		shaders\flat_ps.hlsl = shaders\flat_ps.hlsl
-		shaders\flat_vs.hlsl = shaders\flat_vs.hlsl
-		shaders\geometry_ps.hlsl = shaders\geometry_ps.hlsl
-		shaders\geometry_vs.hlsl = shaders\geometry_vs.hlsl
-		shaders\horizontalBilateralBlur_cs.hlsl = shaders\horizontalBilateralBlur_cs.hlsl
-		shaders\horizontalBlur_cs.hlsl = shaders\horizontalBlur_cs.hlsl
-		shaders\light_ps.hlsl = shaders\light_ps.hlsl
-		shaders\light_vs.hlsl = shaders\light_vs.hlsl
-		shaders\lightingFunctions.hlsl = shaders\lightingFunctions.hlsl
-		shaders\phong_ps.hlsl = shaders\phong_ps.hlsl
-		shaders\phong_vs.hlsl = shaders\phong_vs.hlsl
-		shaders\quad_ps.hlsl = shaders\quad_ps.hlsl
-		shaders\quad_vs.hlsl = shaders\quad_vs.hlsl
-		shaders\skydome_ps.hlsl = shaders\skydome_ps.hlsl
-		shaders\skydome_vs.hlsl = shaders\skydome_vs.hlsl
-		shaders\trace_ps.hlsl = shaders\trace_ps.hlsl
-		shaders\trace_vs.hlsl = shaders\trace_vs.hlsl
-		shaders\verticalBilateralBlur_cs.hlsl = shaders\verticalBilateralBlur_cs.hlsl
-		shaders\verticalBlur_cs.hlsl = shaders\verticalBlur_cs.hlsl
+		shaders\ambient.ps = shaders\ambient.ps
+		shaders\ambient.vs = shaders\ambient.vs
+		shaders\ambientOcclusion.ps = shaders\ambientOcclusion.ps
+		shaders\ambientOcclusion.vs = shaders\ambientOcclusion.vs
+		shaders\blendlight.ps = shaders\blendlight.ps
+		shaders\blendlight.vs = shaders\blendlight.vs
+		shaders\depth.ps = shaders\depth.ps
+		shaders\depth.vs = shaders\depth.vs
+		shaders\directionalLight.ps = shaders\directionalLight.ps
+		shaders\edgeBlur.ps = shaders\edgeBlur.ps
+		shaders\edgeDetection.ps = shaders\edgeDetection.ps
+		shaders\environment.ps = shaders\environment.ps
+		shaders\environment.vs = shaders\environment.vs
+		shaders\exitTrace.ps = shaders\exitTrace.ps
+		shaders\exponentialDepth.ps = shaders\exponentialDepth.ps
+		shaders\flat.ps = shaders\flat.ps
+		shaders\flat.vs = shaders\flat.vs
+		shaders\geometry.ps = shaders\geometry.ps
+		shaders\geometry.vs = shaders\geometry.vs
+		shaders\horizontalBilateralBlur.hlsl = shaders\horizontalBilateralBlur.hlsl
+		shaders\horizontalBlur.hlsl = shaders\horizontalBlur.hlsl
+		shaders\light.ps = shaders\light.ps
+		shaders\light.vs = shaders\light.vs
+		shaders\phong.ps = shaders\phong.ps
+		shaders\phong.vs = shaders\phong.vs
+		shaders\quad.ps = shaders\quad.ps
+		shaders\quad.vs = shaders\quad.vs
+		shaders\skydome.ps = shaders\skydome.ps
+		shaders\skydome.vs = shaders\skydome.vs
+		shaders\trace.ps = shaders\trace.ps
+		shaders\trace.vs = shaders\trace.vs
+		shaders\verticalBilateralBlur.hlsl = shaders\verticalBilateralBlur.hlsl
+		shaders\verticalBlur.hlsl = shaders\verticalBlur.hlsl
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BHScriptBridge", "BHScriptBridge\BHScriptBridge.vcxproj", "{10214EDA-D27A-4457-A473-655E794D13C2}"

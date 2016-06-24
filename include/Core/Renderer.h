@@ -24,6 +24,7 @@
 #define BATCH_X_NUM 128
 #define BATCH_Y_NUM 72
 #define IBL_N 40
+#define AO_N 20
 
 namespace BH
 {
