@@ -1,6 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: light.ps
 ////////////////////////////////////////////////////////////////////////////////
+//#include "lightingFunctions.hlsl"
+#include "constants.hlsl"
 
 Texture2D positionTexture : register(t0);
 Texture2D normalTexture : register(t1);
@@ -42,6 +44,7 @@ struct PixelInputType
 ////////////////////////////////////////////////////////////////////////////////
 // Helper function
 ////////////////////////////////////////////////////////////////////////////////
+
 float3 BRDF( float3 l, float3 v, float3 h, float3 n, float3 diffuse, float3 specular, float roughness, float3 color )
 {
 	float distribution = ( ( roughness + 2.0f ) / ( 2.0f * PI ) ) * pow( max( dot( h, n ), 0.0f ), roughness );
@@ -51,6 +54,7 @@ float3 BRDF( float3 l, float3 v, float3 h, float3 n, float3 diffuse, float3 spec
 	float geometry = 1.0f;
 	return ( diffuse / PI + ( ( distribution * fresnel * geometry ) * 0.25f ) ) * max( dot( n, l ), 0.0f ) * color;
 }
+
 
 float ExponentialShadow( float3 p )
 {
@@ -104,7 +108,7 @@ float4 LightPixelShader( PixelInputType input ) : SV_TARGET
 	float lightIntensity = ( lightRange <= 0.0f ) ? 1.0f : pow( 1.0f - saturate( lightDistance / lightRange ), 2.0f );
 	
 	//float4 lighting = max( dot( n, l ), 0.0f ) * diffuse * color + pow( max( dot( h, n ), 0.0f ), roughness ) * specular;
-	float3 lighting = BRDF( l, v, h, n, diffuse.xyz, specular.xyz, roughness, color );
+	float3 lighting = BRDF( l, v, h, n, diffuse.xyz, specular.xyz, roughness, ( float3 )color );
 
 	return lightIntensity * shadow * float4( lighting.xyz, 1.0f );
 }
