@@ -88,8 +88,11 @@ int main()
 	GAME.Window.GetSettings().w = 1280;
 	GAME.Window.GetSettings().h = 720;
 	GAME.Initialise();
+
+	// Settings
 	GAME.ObjectManager.LoadArcheTypes<BH::XMLDeserialiser>( "../resources/Prefabs.xml" );
 	SYSTEM_MANAGER.GetGameComponentFromSystem<BH::LevelManager>()->SetLevel( "SandBox" );
+
 	GAME.Run();
 	GAME.Shutdown();
 

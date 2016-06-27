@@ -16,7 +16,7 @@ cbuffer AmbientBuffer
 	float rangeOfInfluence;
 	float scaleFactor;
 	float contrast;
-	float padding;
+	int ambientOn;
 };
 
 //////////////
@@ -43,47 +43,54 @@ float HeavisideStep( float v )
 ////////////////////////////////////////////////////////////////////////////////
 float4 AOPixelShader( PixelInputType input ) : SV_TARGET
 {
-	// Get information from g-buffer
-	if( positionTexture.Sample( sampleType, input.tex ).w == 0.0f )
-		return float4( 1.0f, 1.0f, 1.0f, 1.0f );
+    if ( ambientOn )
+    {
+	    // Get information from g-buffer
+	    if( positionTexture.Sample( sampleType, input.tex ).w == 0.0f )
+		    return float4( 1.0f, 1.0f, 1.0f, 1.0f );
 
-	float3 P = positionTexture.Sample( sampleType, input.tex ).xyz;
-	float3 N = normalTexture.Sample( sampleType, input.tex ).xyz;
-	float d = normalTexture.Sample( sampleType, input.tex ).w;
+	    float3 P = positionTexture.Sample( sampleType, input.tex ).xyz;
+	    float3 N = normalTexture.Sample( sampleType, input.tex ).xyz;
+	    float d = normalTexture.Sample( sampleType, input.tex ).w;
 
-	// Random select points for sampling
-	int2 frag = int2( ( int )input.position.x, ( int )input.position.y );
-	int phi = ( 30 * ( frag.x ^ frag.y ) ) + ( 10 * frag.x * frag.y );
+	    // Random select points for sampling
+	    int2 frag = int2( ( int )input.position.x, ( int )input.position.y );
+	    int phi = ( 30 * ( frag.x ^ frag.y ) ) + ( 10 * frag.x * frag.y );
 
-	float c = 0.1f * rangeOfInfluence;
-	float cSq = c * c;
-	float delta = 0.001f;
-	float n = ( float )AO_N;
+	    float c = 0.1f * rangeOfInfluence;
+	    float cSq = c * c;
+	    float delta = 0.001f;
+	    float n = ( float )AO_N;
 
-	float S = 0.0f;
+	    float S = 0.0f;
 
-	for( int i = 0; i < AO_N; ++i )
-	{
-		float alpha = ( ( float )i + 0.5f ) / n;	// Range [0, 1]
-		float h = alpha * rangeOfInfluence / d;
-		float theta = 2.0f * PI * alpha * ( 7.0f * n / 9.0f ) + ( float )phi;
+	    for( int i = 0; i < AO_N; ++i )
+	    {
+		    float alpha = ( ( float )i + 0.5f ) / n;	// Range [0, 1]
+		    float h = alpha * rangeOfInfluence / d;
+		    float theta = 2.0f * PI * alpha * ( 7.0f * n / 9.0f ) + ( float )phi;
 
-		float2 samplePoint = input.tex + h * float2( cos( theta ), sin( theta ) );
+		    float2 samplePoint = input.tex + h * float2( cos( theta ), sin( theta ) );
 
-		// If no position, assume HeavisideStep = 0.0f
-		if( positionTexture.Sample( sampleType, samplePoint ).w == 0.0f )
-			continue;
+		    // If no position, assume HeavisideStep = 0.0f
+		    if( positionTexture.Sample( sampleType, samplePoint ).w == 0.0f )
+			    continue;
 
-		float3 Pi = positionTexture.Sample( sampleType, samplePoint ).xyz;
-		float di = normalTexture.Sample( sampleType, samplePoint ).w;
+		    float3 Pi = positionTexture.Sample( sampleType, samplePoint ).xyz;
+		    float di = normalTexture.Sample( sampleType, samplePoint ).w;
 
-		float3 omegai = Pi - P;
-		S += ( max( dot( N, omegai ) - delta * di, 0.0f ) * HeavisideStep( rangeOfInfluence - length( omegai ) ) ) / ( max( cSq, dot( omegai, omegai ) ) );
-	}
+		    float3 omegai = Pi - P;
+		    S += ( max( dot( N, omegai ) - delta * di, 0.0f ) * HeavisideStep( rangeOfInfluence - length( omegai ) ) ) / ( max( cSq, dot( omegai, omegai ) ) );
+	    }
 
-	S *= ( 2.0f * PI * c / n );
-	float A = max( 1.0f - scaleFactor * S, 0.0f );
-	A = pow( A, contrast );
+	    S *= ( 2.0f * PI * c / n );
+	    float A = max( 1.0f - scaleFactor * S, 0.0f );
+	    A = pow( A, contrast );
 
-	return float4( A, A, A, 1.0f );
+	    return float4( A, A, A, 1.0f );
+    }
+    else
+    {
+        return float4( 1.0f, 1.0f, 1.0f, 1.0f );
+    }
 }

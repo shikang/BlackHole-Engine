@@ -26,6 +26,7 @@ namespace BH
 	f32 Renderer::AmbientRangeOfInfluence = 2.0f;
 	f32 Renderer::AmbientScaleFactor = 2.0f;
 	f32 Renderer::AmbientContrast = 2.0f;
+	bool Renderer::EnableAmbientOcculsion = true;
 	String Renderer::SkyName = "Newport";
 
 	static const u32 TRACE_RADIUS = 30;
@@ -552,7 +553,8 @@ namespace BH
 														  0,
 														  AmbientRangeOfInfluence,
 														  AmbientScaleFactor,
-														  AmbientContrast );
+														  AmbientContrast,
+														  EnableAmbientOcculsion ? 1 : 0 );
 
 		mShaders["AmbientOcclusion"].SetTexture( PixelShader, 0, &mGBuffers, 0 );
 		mShaders["AmbientOcclusion"].SetTexture( PixelShader, 1, &mGBuffers, 1 );

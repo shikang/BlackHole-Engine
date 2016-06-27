@@ -42,6 +42,7 @@ namespace BH
 		static f32 AmbientRangeOfInfluence;	//!< Ambient Occlusion Range
 		static f32 AmbientScaleFactor;		//!< Ambient Scale Factor
 		static f32 AmbientContrast;			//!< Ambient Constrast
+		static bool EnableAmbientOcculsion;	//!< Enable Ambient Occulsion
 		static String SkyName;				//!< Texture name for sky dome
 
 		GETSET_AUTO( Vector4f, Ambient );
