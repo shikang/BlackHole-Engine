@@ -46,10 +46,10 @@ namespace BH
 			JobEntry( u32 priority, const Job & job, Message & msg );
 
 			// Move Constructor ( For priority move to move object about )
-			JobEntry( JobEntry && job ) BH_USE_NOEXCEPT;
+			JobEntry( JobEntry && job ) BH_NOEXCEPT;
 
 			// Move Assignment
-			JobEntry & operator = ( JobEntry && job ) BH_USE_NOEXCEPT;
+			JobEntry & operator = ( JobEntry && job ) BH_NOEXCEPT;
 
 			// Greater comparison operator
 			bool operator > ( const JobEntry & rhs ) const;

@@ -22,7 +22,7 @@ namespace BH
 
 	bool Mutex::TryLock(u32 milliseconds)
 	{
-		const DWORD interval = 5;
+		BH_CONSTEXPR DWORD interval = 5;
 		s64 compare = s64(milliseconds);
 
 		std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();

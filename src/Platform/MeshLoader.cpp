@@ -67,8 +67,7 @@ namespace BH
 		return conversionMatrix;
 	}
 
-	void MeshLoader::ExtractGeometry( FbxNode * node, FbxPose * pose, MeshData & meshdata, 
-									  const FbxMatrix & conversionMatrix )
+	void MeshLoader::ExtractGeometry( FbxNode * node, FbxPose * pose, MeshData & meshdata, const FbxMatrix & conversionMatrix )
 	{
 		FbxString nodeName = node->GetName();
 
@@ -212,12 +211,12 @@ namespace BH
 		// Create vertex and index buffer
 		s32 indicesNum = meshdata.mPointsIndexBuffer.size();
 		std::vector< std::vector<s32> > controlMap( indicesNum );
-		std::vector<s32> sourcePosIndices;
-		std::vector<s32> sourceNormIndices;
-		std::vector<s32> sourceUVIndices;
+		//std::vector<s32> sourcePosIndices;
+		//std::vector<s32> sourceNormIndices;
+		//std::vector<s32> sourceUVIndices;
 		for ( s32 i = 0; i < indicesNum; ++ i )
 		{
-			s32 index = FindMatchingVertex( meshdata, controlMap, i, sourcePosIndices, sourceNormIndices, sourceUVIndices );
+			s32 index = FindMatchingVertex( meshdata, controlMap, i );
 			meshdata.mIndexBuffer.push_back( index );
 		}
 
@@ -225,17 +224,15 @@ namespace BH
 		ConvertTriWinding( meshdata );
 	}
 
-	s32 MeshLoader::FindMatchingVertex( MeshData & meshdata, std::vector< std::vector<s32> > & controlMap, s32 num,
-										std::vector<s32> & sourcePosIndices, std::vector<s32> & sourceNormIndices, 
-										std::vector<s32> & sourceUVIndices )
+	s32 MeshLoader::FindMatchingVertex( MeshData & meshdata, std::vector< std::vector<s32> > & controlMap, s32 num )
 	{
 		// Find matching vertices
 		std::vector<s32> & mappedVertices = controlMap[ meshdata.mPointsIndexBuffer[num] ];
 		s32 mapSize = mappedVertices.size();
 		for ( s32 i = 0; i < mapSize; ++i )
 		{
-			if ( meshdata.mNormalIndexBuffer[num] == sourceNormIndices[mappedVertices[i]] &&
-				 meshdata.mUVIndexBuffer[num] == sourceUVIndices[mappedVertices[i]] )
+			if ( meshdata.mNormalIndexBuffer[num] == meshdata.mSourceNormIndices[mappedVertices[i]] &&
+				 meshdata.mUVIndexBuffer[num] == meshdata.mSourceUVIndices[mappedVertices[i]] )
 				return mappedVertices[i];
 		}
 
@@ -256,9 +253,9 @@ namespace BH
 		meshdata.mVertexBuffer.push_back( v );
 
 		// Update info
-		sourcePosIndices.push_back( meshdata.mPointsIndexBuffer[num] );
-		sourceNormIndices.push_back( meshdata.mNormalIndexBuffer[num] );
-		sourceUVIndices.push_back( meshdata.mUVIndexBuffer[num] );
+		meshdata.mSourcePosIndices.push_back( meshdata.mPointsIndexBuffer[num] );
+		meshdata.mSourceNormIndices.push_back( meshdata.mNormalIndexBuffer[num] );
+		meshdata.mSourceUVIndices.push_back( meshdata.mUVIndexBuffer[num] );
 		s32 newIndex = meshdata.mVertexBuffer.size() - 1;
 		mappedVertices.push_back( newIndex );
 		return newIndex;
@@ -442,13 +439,12 @@ namespace BH
 				}
 			}
 
-			const u32 MAX_WEIGHTS = 4;
 			u32 pointWeightsSize = skinData.mPointWeights.size();
 			// Normalise the skin weights for 4 weights for vertex that sum to one
 			for ( u32 i = 0; i < pointWeightsSize; ++i )
 			{
 				// Make sure there is max weights by inserting dummies
-				while ( skinData.mPointWeights[i].size() < MAX_WEIGHTS )
+				while ( skinData.mPointWeights[i].size() < BH_VERTEX_WEIGHTS_NUM )
 				{
 					JointWeight j = { 0, 0 };
 					skinData.mPointWeights[i].push_back( j );
@@ -456,10 +452,10 @@ namespace BH
 
 				// Normalise the weights
 				f32 sum = 0.0f;
-				for ( s32 w = 0; w < MAX_WEIGHTS; ++w )
+				for ( s32 w = 0; w < BH_VERTEX_WEIGHTS_NUM; ++w )
 					sum += skinData.mPointWeights[i][w].mWeight;
 
-				for ( s32 w = 0; w < MAX_WEIGHTS; ++w )
+				for ( s32 w = 0; w < BH_VERTEX_WEIGHTS_NUM; ++w )
 					skinData.mPointWeights[i][w].mWeight /= sum;
 			}
 
@@ -706,10 +702,6 @@ namespace BH
 			}
 		}
 
-		// @todo Send skin data, bone data, animation data to mesh
-		// @todo May want to handle multiple meshes case
-		// Initialise Mesh
-
 #if 0
 		u32 count = 0;
 		for ( const auto & i : meshdatas[0].mVertexBuffer )
@@ -721,9 +713,91 @@ namespace BH
 
 		std::cout << "---------------------------" << std::endl;
 #endif
+		
+		// Combine multiple meshes
+		std::vector<Vertex> combinedVertexBuffer = std::move( meshdatas[0].mVertexBuffer );
+		std::vector<s32> combinedIndexBuffer = std::move( meshdatas[0].mIndexBuffer );
+		SkinData combinedSkinData( std::move( meshdatas[0].mSkin ) );
+		std::vector<s32> combinedSourcePosIndices = std::move( meshdatas[0].mSourcePosIndices );
+		std::vector<s32> combinedSourceNormIndices = std::move( meshdatas[0].mSourceNormIndices );
+		std::vector<s32> combinedSourceUVIndices = std::move( meshdatas[0].mSourceUVIndices );
 
-		mesh.InitialiseBuffers( meshdatas[0].mVertexBuffer, meshdatas[0].mIndexBuffer );
-		GetBoundingVolume( meshdatas[0], aabb );
+		for ( s32 i = 1; i < meshNum; ++i )
+		{
+			s32 offset = combinedVertexBuffer.size();
+			s32 wOffset = combinedSkinData.mPointWeights.size();
+
+			// Vertices
+			std::copy( meshdatas[i].mVertexBuffer.begin(), meshdatas[i].mVertexBuffer.end(),
+					   std::back_inserter( combinedVertexBuffer ) );
+
+			// Indices
+			std::transform( meshdatas[i].mIndexBuffer.begin(), meshdatas[i].mIndexBuffer.end(),
+							std::back_inserter( combinedIndexBuffer ),
+							[offset]( s32 index )
+							{
+								return offset + index;
+							} );
+
+			// Skin
+			std::copy( meshdatas[i].mSkin.mPointWeights.begin(), meshdatas[i].mSkin.mPointWeights.end(),
+					   std::back_inserter( combinedSkinData.mPointWeights ) );
+			combinedSkinData.mSkin = combinedSkinData.mSkin ? true : meshdatas[i].mSkin.mSkin;
+
+			/*
+				Copy over the indices incrementing the position index so the the weights
+				are still correct (Note the other values in th source buffer are not adjusted)
+			*/
+			std::transform( meshdatas[i].mSourcePosIndices.begin(), meshdatas[i].mSourcePosIndices.end(),
+							std::back_inserter( combinedSourcePosIndices ),
+							[wOffset]( s32 index )
+							{
+								return wOffset + index;
+							} );
+			std::copy( meshdatas[i].mSourceNormIndices.begin(), meshdatas[i].mSourceNormIndices.end(),
+					   std::back_inserter( combinedSourceNormIndices ) );
+			std::copy( meshdatas[i].mSourceUVIndices.begin(), meshdatas[i].mSourceUVIndices.end(),
+					   std::back_inserter( combinedSourceUVIndices ) );
+
+		}
+
+		// Send skin data, bone data, animation data to mesh
+		std::vector<SkinVertex> combinedSkinVertexBuffer;
+		if ( combinedSkinData.mSkin )
+		{
+			s32 size = combinedVertexBuffer.size();
+			for ( s32 i = 0; i < size; ++i )
+			{
+				combinedSkinVertexBuffer.push_back( SkinVertex
+													{
+														combinedVertexBuffer[i].position,
+														combinedVertexBuffer[i].color,
+														combinedVertexBuffer[i].tex,
+														combinedVertexBuffer[i].normal,
+													} );
+
+				s32 originalPosIndex = combinedSourcePosIndices[i];
+				SkinVertex & currSkinVertex = combinedSkinVertexBuffer.back();
+				currSkinVertex.weights[0] = combinedSkinData.mPointWeights[originalPosIndex][0].mWeight;
+				currSkinVertex.weights[1] = combinedSkinData.mPointWeights[originalPosIndex][1].mWeight;
+				currSkinVertex.weights[2] = combinedSkinData.mPointWeights[originalPosIndex][2].mWeight;
+				currSkinVertex.weights[3] = combinedSkinData.mPointWeights[originalPosIndex][3].mWeight;
+				currSkinVertex.weightIndices[0] = combinedSkinData.mPointWeights[originalPosIndex][0].mIndex;
+				currSkinVertex.weightIndices[1] = combinedSkinData.mPointWeights[originalPosIndex][1].mIndex;
+				currSkinVertex.weightIndices[2] = combinedSkinData.mPointWeights[originalPosIndex][2].mIndex;
+				currSkinVertex.weightIndices[3] = combinedSkinData.mPointWeights[originalPosIndex][3].mIndex;
+			}
+
+			// Initialise Skinned Mesh
+			mesh.InitialiseBuffers( combinedSkinVertexBuffer, combinedIndexBuffer );
+		}
+		else
+		{
+			// Initialise Mesh
+			mesh.InitialiseBuffers( combinedVertexBuffer, combinedIndexBuffer );
+		}
+
+		GetBoundingVolume( combinedVertexBuffer, aabb );
 
 	}
 	
@@ -790,25 +864,25 @@ namespace BH
 		scene->Destroy();
 	}
 
-	void MeshLoader::GetBoundingVolume( const MeshData & meshdata, AABB & aabb )
+	void MeshLoader::GetBoundingVolume( const std::vector<Vertex> & vertices, AABB & aabb )
 	{
-		if( meshdata.mVertexBuffer.empty() )
+		if( vertices.empty() )
 			return;
 
-		Vector3f min( meshdata.mVertexBuffer[0].position.x, meshdata.mVertexBuffer[0].position.y, meshdata.mVertexBuffer[0].position.z ),
-				 max( meshdata.mVertexBuffer[0].position.x, meshdata.mVertexBuffer[0].position.y, meshdata.mVertexBuffer[0].position.z );
+		Vector3f min( vertices[0].position.x, vertices[0].position.y, vertices[0].position.z ),
+				 max( vertices[0].position.x, vertices[0].position.y, vertices[0].position.z );
 
-		u32 size = meshdata.mVertexBuffer.size();
+		u32 size = vertices.size();
 
 		for ( u32 i = 1; i < size; ++i )
 		{
-			min.x = std::min( min.x, meshdata.mVertexBuffer[i].position.x );
-			min.y = std::min( min.y, meshdata.mVertexBuffer[i].position.y );
-			min.z = std::min( min.z, meshdata.mVertexBuffer[i].position.z );
+			min.x = std::min( min.x, vertices[i].position.x );
+			min.y = std::min( min.y, vertices[i].position.y );
+			min.z = std::min( min.z, vertices[i].position.z );
 															
-			max.x = std::max( max.x, meshdata.mVertexBuffer[i].position.x );
-			max.y = std::max( max.y, meshdata.mVertexBuffer[i].position.y );
-			max.z = std::max( max.z, meshdata.mVertexBuffer[i].position.z );
+			max.x = std::max( max.x, vertices[i].position.x );
+			max.y = std::max( max.y, vertices[i].position.y );
+			max.z = std::max( max.z, vertices[i].position.z );
 		}
 
 		aabb.mMin = min;
@@ -868,9 +942,9 @@ namespace BH
 		std::vector< Vertex > vertexBuffer;
 		std::vector< s32 > indexBuffer;
 
-		const s32 SEG_NUM = 24;
-		const f32 ANGLE_STEP = 6.28318531f / static_cast<f32>( SEG_NUM );
-		const f32 RADIUS = 1.0f;
+		BH_CONSTEXPR s32 SEG_NUM = 24;
+		BH_CONSTEXPR f32 ANGLE_STEP = 6.28318531f / static_cast<f32>( SEG_NUM );
+		BH_CONSTEXPR f32 RADIUS = 1.0f;
 
 		Vector3f p;
 		f32 angle = 0.0f;

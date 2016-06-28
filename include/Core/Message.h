@@ -19,13 +19,13 @@ namespace BH
 		Message();
 
 		// Move Constructor
-		Message( Message && msg ) BH_USE_NOEXCEPT;
+		Message( Message && msg ) BH_NOEXCEPT;
 
 		// Destructor
 		~Message();
 
 		// Move assignment
-		Message & operator = ( Message && msg ) BH_USE_NOEXCEPT;
+		Message & operator = ( Message && msg ) BH_NOEXCEPT;
 
 		// Add Message in sequence. (1st message is in index 0)
 		template < typename T, typename... Arguments >

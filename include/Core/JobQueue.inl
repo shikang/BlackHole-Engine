@@ -5,14 +5,14 @@ namespace BH
 	{
 	}
 
-	inline JobQueue::JobEntry::JobEntry( JobEntry && job ) BH_USE_NOEXCEPT
+	inline JobQueue::JobEntry::JobEntry( JobEntry && job ) BH_NOEXCEPT
 	: mJob( job.mJob )
 	, mPriority( job.mPriority )
 	, mMessage( std::move( job.mMessage ) )
 	{
 	}
 
-	inline JobQueue::JobEntry & JobQueue::JobEntry::operator = ( JobEntry && job ) BH_USE_NOEXCEPT
+	inline JobQueue::JobEntry & JobQueue::JobEntry::operator = ( JobEntry && job ) BH_NOEXCEPT
 	{
 		mPriority = job.mPriority;
 		std::swap(mMessage, job.mMessage);

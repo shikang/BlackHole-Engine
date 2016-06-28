@@ -2,7 +2,7 @@ namespace BH
 {
 	inline Message::Message() {}
 
-	inline Message::Message( Message && msg ) BH_USE_NOEXCEPT
+	inline Message::Message( Message && msg ) BH_NOEXCEPT
 	: mMessages( std::move( msg.mMessages ) )
 	{
 	}
@@ -13,7 +13,7 @@ namespace BH
 			delete i;
 	}
 
-	inline Message & Message::operator = ( Message && msg ) BH_USE_NOEXCEPT
+	inline Message & Message::operator = ( Message && msg ) BH_NOEXCEPT
 	{
 		mMessages = std::move( msg.mMessages );
 		return *this;

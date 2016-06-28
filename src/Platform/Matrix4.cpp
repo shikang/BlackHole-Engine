@@ -112,7 +112,7 @@ namespace BH
 	Matrix4 Matrix4::CreateConstrainedBillboard( const Vector3f & object, const Vector3f & cameraPosition, const Vector3f & rotateAxis,
 												 const Vector3f & cameraView, const Vector3f & objectForward )
 	{
-		static const DirectX::XMVECTORF32 s_minAngle = { 0.99825467075f, 0.99825467075f, 0.99825467075f, 0.99825467075f }; // 1.0 - XMConvertToRadians( 0.1f );
+		static BH_CONSTEXPR DirectX::XMVECTORF32 s_minAngle = { 0.99825467075f, 0.99825467075f, 0.99825467075f, 0.99825467075f }; // 1.0 - XMConvertToRadians( 0.1f );
 
 		DirectX::XMVECTOR O = DirectX::XMLoadFloat3( &object );
 		DirectX::XMVECTOR C = DirectX::XMLoadFloat3( &cameraPosition );

@@ -93,6 +93,9 @@ int main()
 	GAME.ObjectManager.LoadArcheTypes<BH::XMLDeserialiser>( "../resources/Prefabs.xml" );
 	SYSTEM_MANAGER.GetGameComponentFromSystem<BH::LevelManager>()->SetLevel( "SandBox" );
 
+	// @debug
+	SYSTEM_MANAGER.GetGameComponentFromSystem<BH::Renderer>()->EnableAmbientOcculsion = false;
+
 	GAME.Run();
 	GAME.Shutdown();
 

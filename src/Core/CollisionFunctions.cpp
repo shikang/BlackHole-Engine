@@ -540,7 +540,7 @@ namespace BH
 
 		Matrix4 absC = Matrix4::IDENTITY;
 		bool parallel = false;
-		static const f32 kCosTol = 1.0e-6f;
+		static BH_CONSTEXPR f32 kCosTol = 1.0e-6f;
 		for ( s32 i = 0; i < 3; ++i )
 		{
 			for ( s32 j = 0; j < 3; ++j )
@@ -671,8 +671,8 @@ namespace BH
 		if ( !passable )
 		{
 			// Artificial axis bias to improve frame coherence
-			static const f32 kRelTol = 0.95f;
-			static const f32 kAbsTol = 0.01f;
+			static BH_CONSTEXPR f32 kRelTol = 0.95f;
+			static BH_CONSTEXPR f32 kAbsTol = 0.01f;
 			s32 axis;
 			f32 sMax;
 			Vector3f n;

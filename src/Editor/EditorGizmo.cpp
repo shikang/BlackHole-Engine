@@ -21,8 +21,8 @@
 namespace BH
 {
 	const f32 EditorGizmo::GIZMO_DEFAULT_SCALE = 8.0f;
-	const f32 GIZMO_MAX_SCALE = 15.0f;
-	const f32 GIZMO_MIN_SCALE = 1.0f;
+	BH_CONSTEXPR f32 GIZMO_MAX_SCALE = 15.0f;
+	BH_CONSTEXPR f32 GIZMO_MIN_SCALE = 1.0f;
 
 	EditorGizmo::EditorGizmo()
 	: mParent( nullptr )
@@ -446,7 +446,7 @@ namespace BH
 
 		// in world frame
 		Vector3f scale = mGizScale;
-		f32 radius = max( scale.x, max( scale.y, scale.z ) );
+		f32 radius = std::max( scale.x, std::max( scale.y, scale.z ) );
 
 		Vector3f pos = GetPosition();
 

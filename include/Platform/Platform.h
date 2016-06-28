@@ -11,9 +11,11 @@
 #endif
 
 #if _MSC_VER > 1800
-#define BH_USE_NOEXCEPT noexcept
+#define BH_NOEXCEPT noexcept
+#define BH_CONSTEXPR constexpr
 #else
-#define BH_USE_NOEXCEPT
+#define BH_NOEXCEPT
+#define BH_CONSTEXPR const
 #endif
 
 // Using window fast call
