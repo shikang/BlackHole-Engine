@@ -34,6 +34,15 @@ namespace BH
 		FbxQuaternion mBoneSpaceRot;
 	};
 
+	// Skinning Data
+	struct JointWeight
+	{
+		f32 mWeight;
+		u32 mIndex;
+	};
+
+	typedef std::vector< JointWeight > WeightVector;
+
 	struct SkinData
 	{
 		/*
@@ -44,6 +53,10 @@ namespace BH
 		bool mSkin;
 
 		SkinData() : mSkin( false ) {}
+
+		SkinData( SkinData && skinData ) BH_NOEXCEPT
+		: mPointWeights( std::move( skinData.mPointWeights ) )
+		, mSkin( skinData.mSkin ) {}
 	};
 
 	typedef std::vector<BoneData> SkeletonData;
@@ -60,6 +73,10 @@ namespace BH
 		std::vector<s32> mNormalIndexBuffer;
 		std::vector<FbxVector2> mUVs;
 		std::vector<s32> mUVIndexBuffer;
+
+		std::vector<s32> mSourcePosIndices;
+		std::vector<s32> mSourceNormIndices;
+		std::vector<s32> mSourceUVIndices;
 
 		SkinData mSkin;
 	};
@@ -126,9 +143,7 @@ namespace BH
 		void GenerateVertices( MeshData & meshdata );
 
 		// Find matching vertex
-		s32 FindMatchingVertex( MeshData & meshdata, std::vector< std::vector<s32> > & controlMap, s32 num,
-								std::vector<s32> & sourcePosIndices, std::vector<s32> & sourceNormIndices, 
-								std::vector<s32> & sourceUVIndices );
+		s32 FindMatchingVertex( MeshData & meshdata, std::vector< std::vector<s32> > & controlMap, s32 num );
 
 		// Triangulate
 		void Triangulate( MeshData & meshdata );
@@ -140,7 +155,7 @@ namespace BH
 		s32 GetBoneIndex( FbxNode * node, SkeletonData & skeleton );
 
 		// Get bounding volume
-		void GetBoundingVolume( const MeshData & meshdata, AABB & aabb );
+		void GetBoundingVolume( const std::vector<Vertex> & vertices, AABB & aabb );
 
 	private:
 		FbxManager * mFBXManager;
