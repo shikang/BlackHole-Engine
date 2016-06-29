@@ -761,7 +761,7 @@ namespace BH
 
 		}
 
-		// Send skin data, bone data, animation data to mesh
+		// Skin data
 		std::vector<SkinVertex> combinedSkinVertexBuffer;
 		if ( combinedSkinData.mSkin )
 		{
@@ -796,6 +796,68 @@ namespace BH
 			// Initialise Mesh
 			mesh.InitialiseBuffers( combinedVertexBuffer, combinedIndexBuffer );
 		}
+
+		// Bone data
+		std::vector<Bone> combinedBones;
+		for ( BoneData & b : skeleton )
+		{
+			Bone bone;
+
+			bone.name = b.mName;
+			bone.parentIndex = b.mParentIndex;
+
+			bone.bindTranslation.x = b.mBindPos[0];
+			bone.bindTranslation.y = b.mBindPos[1];
+			bone.bindTranslation.z = b.mBindPos[2];
+
+			bone.bindRotation.x = b.mBindRot[0];
+			bone.bindRotation.y = b.mBindRot[1];
+			bone.bindRotation.z = b.mBindRot[2];
+			bone.bindRotation.w = b.mBindRot[3];
+
+			bone.modelToBoneTranslation.x = b.mBoneSpacePos[0];
+			bone.modelToBoneTranslation.y = b.mBoneSpacePos[1];
+			bone.modelToBoneTranslation.z = b.mBoneSpacePos[2];
+
+			bone.modelToBoneRotation.x = b.mBoneSpaceRot[0];
+			bone.modelToBoneRotation.y = b.mBoneSpaceRot[1];
+			bone.modelToBoneRotation.z = b.mBoneSpaceRot[2];
+			bone.modelToBoneRotation.w = b.mBoneSpaceRot[3];
+
+			combinedBones.push_back( bone );
+		}
+		/*
+		std::transform( skeleton.begin(), skeleton.end(),
+						std::back_inserter( combinedBones ),
+						[]( const BoneData & b )
+						{
+							Bone bone;
+							bone.name = b.mName;
+							bone.parentIndex = b.mParentIndex;
+
+							bone.bindTranslation.x = b.mBindPos[0];
+							bone.bindTranslation.y = b.mBindPos[1];
+							bone.bindTranslation.z = b.mBindPos[2];
+
+							bone.bindRotation.x = b.mBindRot[0];
+							bone.bindRotation.y = b.mBindRot[1];
+							bone.bindRotation.z = b.mBindRot[2];
+							bone.bindRotation.w = b.mBindRot[3];
+
+							bone.modelToBoneTranslation.x = b.mBoneSpacePos[0];
+							bone.modelToBoneTranslation.y = b.mBoneSpacePos[1];
+							bone.modelToBoneTranslation.z = b.mBoneSpacePos[2];
+
+							bone.modelToBoneRotation.x = b.mBoneSpaceRot[0];
+							bone.modelToBoneRotation.y = b.mBoneSpaceRot[1];
+							bone.modelToBoneRotation.z = b.mBoneSpaceRot[2];
+							bone.modelToBoneRotation.w = b.mBoneSpaceRot[3];
+
+							return bone;
+						} );
+		*/
+
+		// Animation data
 
 		GetBoundingVolume( combinedVertexBuffer, aabb );
 

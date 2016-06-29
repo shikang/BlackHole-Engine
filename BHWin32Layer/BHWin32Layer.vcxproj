@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="..\include\Platform\AABB.h" />
     <ClInclude Include="..\include\Platform\Animation.h" />
+    <ClInclude Include="..\include\Platform\Bone.h" />
     <ClInclude Include="..\include\Platform\Camera.h" />
     <ClInclude Include="..\include\Platform\ClockCycle.h" />
     <ClInclude Include="..\include\Platform\ConsoleColor.h" />
@@ -35,6 +36,7 @@
     <ClInclude Include="..\include\Platform\Quaternion.h" />
     <ClInclude Include="..\include\Platform\RenderTarget.h" />
     <ClInclude Include="..\include\Platform\Shader.h" />
+    <ClInclude Include="..\include\Platform\Skeleton.h" />
     <ClInclude Include="..\include\Platform\Stdafx.h" />
     <ClInclude Include="..\include\Platform\Texture.h" />
     <ClInclude Include="..\include\Platform\Thread.h" />
@@ -84,6 +86,7 @@
     <ClCompile Include="..\src\Platform\Quaternion.cpp" />
     <ClCompile Include="..\src\Platform\RenderTarget.cpp" />
     <ClCompile Include="..\src\Platform\Shader.cpp" />
+    <ClCompile Include="..\src\Platform\Skeleton.cpp" />
     <ClCompile Include="..\src\Platform\Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

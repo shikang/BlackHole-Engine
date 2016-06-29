@@ -35,6 +35,7 @@
 // Graphics
 #include "Platform/Animation.h"
 #include "Platform/Vertex.h"
+#include "Platform/Bone.h"
 #include "Platform/Shader.h"
 #include "Platform/Mesh.h"
 #include "Platform/Texture.h"
