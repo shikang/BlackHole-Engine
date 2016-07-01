@@ -70,7 +70,7 @@
 // Game Components
 #include "Core/InputManager.h"
 #include "Core/Renderer.h"
-#include "Core/MeshManager.h"
+#include "Core/ModelManager.h"
 #include "Core/TextureManager.h"
 #include "Core/HDRTextureManager.h"
 

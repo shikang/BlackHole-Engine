@@ -50,7 +50,8 @@
     <ClInclude Include="..\include\Core\MapFieldContainer.h" />
     <ClInclude Include="..\include\Core\MaterialManager.h" />
     <ClInclude Include="..\include\Core\Math.h" />
-    <ClInclude Include="..\include\Core\MeshManager.h" />
+    <ClInclude Include="..\include\Core\Model.h" />
+    <ClInclude Include="..\include\Core\ModelManager.h" />
     <ClInclude Include="..\include\Core\Message.h" />
     <ClInclude Include="..\include\Core\OBB.h" />
     <ClInclude Include="..\include\Core\Object.h" />
@@ -113,7 +114,8 @@
     <ClCompile Include="..\src\Core\MaterialManager.cpp" />
     <ClCompile Include="..\src\Core\Materials.cpp" />
     <ClCompile Include="..\src\Core\Math.cpp" />
-    <ClCompile Include="..\src\Core\MeshManager.cpp" />
+    <ClCompile Include="..\src\Core\Model.cpp" />
+    <ClCompile Include="..\src\Core\ModelManager.cpp" />
     <ClCompile Include="..\src\Core\Object.cpp" />
     <ClCompile Include="..\src\Core\ObjectComponent.cpp" />
     <ClCompile Include="..\src\Core\ObjectManager.cpp" />

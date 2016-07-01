@@ -208,7 +208,7 @@ namespace BHScriptCompiler
                                        "BHVector4f",
                                        "BHQuaternion",
                                        "BHMaterial",
-                                       "BHMesh",
+                                       "BHModel",
                                        "BHTexture",
                                        "BHEventManager",
                                        "KeyDelegate",

@@ -247,9 +247,6 @@
     <ClInclude Include="..\include\Core\InputManager.h">
       <Filter>Game Component</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Core\MeshManager.h">
-      <Filter>Game Component</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Core\TypeStringifier.h">
       <Filter>Serialization</Filter>
     </ClInclude>
@@ -294,6 +291,12 @@
     </ClInclude>
     <ClInclude Include="..\include\Core\CollisionManager.h">
       <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\ModelManager.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Core\Model.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -409,9 +412,6 @@
     <ClCompile Include="..\src\Core\GameState.cpp">
       <Filter>Service</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Core\MeshManager.cpp">
-      <Filter>Game Component</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Core\GameStateManager.cpp">
       <Filter>Game Component</Filter>
     </ClCompile>
@@ -438,6 +438,12 @@
     </ClCompile>
     <ClCompile Include="..\src\Core\CollisionManager.cpp">
       <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\ModelManager.cpp">
+      <Filter>Game Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Model.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

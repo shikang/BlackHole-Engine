@@ -8,7 +8,7 @@
 #include "Core/System.h"
 #include "Core/InputManager.h"
 #include "Core/MaterialManager.h"
-#include "Core/MeshManager.h"
+#include "Core/ModelManager.h"
 
 #include "Editor/MaterialEditor.h"
 #include "Editor/MaterialEditorCamera.h"
@@ -68,7 +68,7 @@ namespace BH
 		if ( mCurrentMaterial )
 		{
 			SYSTEM_MANAGER.GetGameComponentFromSystem<Renderer>()->DrawInstance( Matrix4::IDENTITY,
-																				 SYSTEM_MANAGER.GetGameComponentFromSystem<MeshManager>()->GetMesh( "Sphere" ),
+																				 SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetModel( "Sphere" ),
 																				 mCurrentMaterial );
 		}
 	}

@@ -48,13 +48,14 @@ namespace BH
 	class Light;
 	class DirectionalLight;
 	class LocalLight;
+	class Model;
 
 	// Game Components
 	class InputManager;
 	class GameStateManager;
 	class Renderer;
 	class TextureManager;
-	class MeshManager;
+	class ModelManager;
 	class MaterialManager;
 
 	// Collision

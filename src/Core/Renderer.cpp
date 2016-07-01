@@ -11,6 +11,7 @@
 #include "Core/Game.h"
 #include "Core/Math.h"
 #include "Core/MaterialManager.h"
+#include "Core/Model.h"
 
 namespace BH
 {
@@ -406,22 +407,22 @@ namespace BH
 	}
 
 	void Renderer::DrawInstance( const Matrix4 & transform,
-							     const Mesh * mesh,				
+							     const Model * model,				
 							     const Material * material )
 	{
 		mInstanceList.push_back( InstanceInfo{ transform,
-											   mesh,
+											   model,
 											   material } );
 	}
 
 	void Renderer::DrawInstance( const Vector3f & position,			
 								 const Vector3f & scale,
 								 const Vector3f & rotation,
-								 const Mesh * mesh,
+								 const Model * model,
 								 const Material * material )
 	{
 		Matrix4 transform = Matrix4::CreateTranslation( position ) * Matrix4::CreateFromYawPitchRoll( rotation.y, rotation.x, rotation.z ) * Matrix4::CreateScale( scale );
-		DrawInstance( transform, mesh, material );
+		DrawInstance( transform, model, material );
 	}
 
 	void Renderer::DrawGlobalLight( const Light & light )
@@ -528,9 +529,9 @@ namespace BH
 			i.mMaterial->SendMaterial( mShaders["Geo"], PixelShader, 0 );
 
 			// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-			i.mMesh->BindBuffers();
+			i.mModel->mMesh.BindBuffers();
 
-			mShaders["Geo"].Render( i.mMesh->GetIndexCount() );
+			mShaders["Geo"].Render( i.mModel->mMesh.GetIndexCount() );
 		}
 
 		//mGraphics.GetPipeline()->SetBackBufferRenderTarget();
@@ -719,9 +720,9 @@ namespace BH
 															  world.Inverse().Transpose() );
 
 			// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-			i.mMesh->BindBuffers();
+			i.mModel->mMesh.BindBuffers();
 
-			mShaders["ExponentialDepth"].Render( i.mMesh->GetIndexCount() );
+			mShaders["ExponentialDepth"].Render( i.mModel->mMesh.GetIndexCount() );
 		}		
 
 		// ----------------------------------------- Blur ------------------------------------------
@@ -770,9 +771,9 @@ namespace BH
 												   world.Inverse().Transpose() );
 
 			// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-			i.mMesh->BindBuffers();
+			i.mModel->mMesh.BindBuffers();
 
-			mShaders["Depth"].Render( i.mMesh->GetIndexCount() );
+			mShaders["Depth"].Render( i.mModel->mMesh.GetIndexCount() );
 		}		
 
 		//mGraphics.GetPipeline()->SetBackBufferRenderTarget();
@@ -822,7 +823,7 @@ namespace BH
 									const Matrix4 & invPV, f32 lightNear, f32 lightFar )
 	{
 		// Cube
-		Mesh * beam = SYSTEM_MANAGER.GetGameComponentFromSystem<MeshManager>()->GetMesh( "Cube" );
+		const Mesh & beam = SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetModel( "Cube" )->mMesh;
 
 		Vector3f lightDimension = light.GetDimension();
 
@@ -852,9 +853,9 @@ namespace BH
 											   mGraphics.GetPipeline()->GetProjection().Transpose() );
 
 		// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-		beam->BindBuffers();
+		beam.BindBuffers();
 
-		mShaders["ExitTrace"].Render( beam->GetIndexCount() );
+		mShaders["ExitTrace"].Render( beam.GetIndexCount() );
 
 		// ---------------------------------------------- Trace Sample ---------------------------------------------------
 		if ( !TraceDownSample )
@@ -903,9 +904,9 @@ namespace BH
 												   invPV.Transpose() );
 
 			// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-			beam->BindBuffers();
+			beam.BindBuffers();
 
-			mShaders["Trace"].Render( beam->GetIndexCount() );
+			mShaders["Trace"].Render( beam.GetIndexCount() );
 
 			mShaders["Trace"].UnBindTexture( PixelShader, 4 );
 		}
@@ -955,9 +956,9 @@ namespace BH
 												   invPV.Transpose() );
 
 			// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-			beam->BindBuffers();
+			beam.BindBuffers();
 
-			mShaders["Trace"].Render( beam->GetIndexCount() );
+			mShaders["Trace"].Render( beam.GetIndexCount() );
 
 			mShaders["Trace"].UnBindTexture( PixelShader, 4 );
 
@@ -1014,9 +1015,9 @@ namespace BH
 													 shadow.Transpose() );
 
 		// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-		beam->BindBuffers();
+		beam.BindBuffers();
 
-		mShaders["DirLighting"].Render( beam->GetIndexCount() );
+		mShaders["DirLighting"].Render( beam.GetIndexCount() );
 
 		mShaders["DirLighting"].UnBindTexture( PixelShader, 4 );
 	}
@@ -1213,7 +1214,7 @@ namespace BH
 		mGraphics.GetPipeline()->SetZBuffer( false );
 		mGraphics.GetPipeline()->SetBackFaceCull( true );
 
-		Mesh * sphere = SYSTEM_MANAGER.GetGameComponentFromSystem<MeshManager>()->GetMesh( "Sphere" );
+		const Mesh & sphere = SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetModel( "Sphere" )->mMesh;
 
 		for ( auto & i : mLocalLights )
 		{
@@ -1250,9 +1251,9 @@ namespace BH
 													  0 );
 
 			// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-			sphere->BindBuffers();
+			sphere.BindBuffers();
 
-			mShaders["Lighting"].Render( sphere->GetIndexCount() );
+			mShaders["Lighting"].Render( sphere.GetIndexCount() );
 		}
 
 		//mGraphics.GetPipeline()->SetBackBufferRenderTarget();
@@ -1469,7 +1470,7 @@ namespace BH
 		mShaders["Flat"].SetTexture( PixelShader, 0, 
 									 SYSTEM_MANAGER.GetGameComponentFromSystem<TextureManager>()->GetTexture( "white" ) );
 
-		Mesh * light = SYSTEM_MANAGER.GetGameComponentFromSystem<MeshManager>()->GetMesh( "Cube" );
+		const Mesh & light = SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetModel( "Cube" )->mMesh;
 
 		for ( auto & i : lights )
 		{
@@ -1495,9 +1496,9 @@ namespace BH
 												  i.GetColor() );
 
 			// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-			light->BindBuffers();
+			light.BindBuffers();
 
-			mShaders["Flat"].Render( light->GetIndexCount() );
+			mShaders["Flat"].Render( light.GetIndexCount() );
 		}
 	}
 
@@ -1538,7 +1539,7 @@ namespace BH
 		mGraphics.GetPipeline()->SetFrontFaceCull( true );
 		mGraphics.GetPipeline()->SetAlphaBlend();
 
-		Mesh * sphere = SYSTEM_MANAGER.GetGameComponentFromSystem<MeshManager>()->GetMesh( "Sphere" );
+		const Mesh & sphere = SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetModel( "Sphere" )->mMesh;
 		// Set Transform for this instance
 		mShaders["Sky"].SetShaderParameters( VertexShader,
 											 0,
@@ -1560,9 +1561,9 @@ namespace BH
 											 Vector2f( f32( mSceneBuffer.GetWidth() ), f32( mSceneBuffer.GetHeight() ) ) );
 
 		// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-		sphere->BindBuffers();
+		sphere.BindBuffers();
 
-		mShaders["Sky"].Render( sphere->GetIndexCount() );
+		mShaders["Sky"].Render( sphere.GetIndexCount() );
 
 		mGraphics.GetPipeline()->SetNoBlend();
 		mGraphics.GetPipeline()->SetBackFaceCull( true );

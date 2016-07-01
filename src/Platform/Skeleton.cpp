@@ -27,7 +27,7 @@ namespace BH
 		InitialiseBones();
 	}
 
-	void Skeleton::ShutDown()
+	void Skeleton::Shutdown()
 	{
 		mBones.clear();
 		mRoots.clear();
@@ -49,6 +49,37 @@ namespace BH
 
 			b.modelToBoneSpace = Matrix4::CreateTranslation( b.modelToBoneTranslation ) * Matrix4::CreateFromQuaternion( b.modelToBoneRotation );
 			b.bindTransform = Matrix4::CreateTranslation( b.bindTranslation ) * Matrix4::CreateFromQuaternion( b.bindRotation );
+		}
+	}
+
+	void Skeleton::ProcessAnimationGraph( f32 time, MatrixBuffer & buffer,
+										  const Animation & anim, TrackBuffer & trackData ) const
+	{
+		Matrix4 transform = Matrix4::IDENTITY;
+
+		u32 size = mRoots.size();
+		for ( u32 i = 0; i < size; ++i )
+			RecursiveProcess( time, *mRoots[i], anim, buffer, trackData, transform );
+	}
+
+	void Skeleton::RecursiveProcess( f32 time, Bone & bone, const Animation & anim, MatrixBuffer & buffer,
+									 TrackBuffer & trackData, Matrix4 parentTransform ) const
+	{
+		Vector3f t;
+		Quaternion r;
+
+		anim.CalculateTransform( time, bone.boneIndex, t, r, trackData[bone.boneIndex] );
+
+		Matrix4 localTransform = Matrix4::CreateTranslation( t ) *  Matrix4::CreateFromQuaternion( r );
+		//Matrix4 modelTransform = localTransform  * parentTransform;
+		Matrix4 modelTransform = parentTransform * localTransform;
+
+		buffer[bone.boneIndex] = modelTransform;
+
+		u32 size = bone.children.size();
+		for ( u32 i = 0; i < size; ++ i)
+		{
+			RecursiveProcess( time, *bone.children[i], anim, buffer, trackData, modelTransform );
 		}
 	}
 }

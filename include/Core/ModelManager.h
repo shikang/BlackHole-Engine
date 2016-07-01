@@ -1,5 +1,5 @@
-#ifndef BH_MESH_MANAGER_H
-#define BH_MESH_MANAGER_H
+#ifndef BH_MODEL_MANAGER_H
+#define BH_MODEL_MANAGER_H
 
 #include "Core/CoreEssential.h"
 #include "Core/FunctionsFramework.h"
@@ -12,13 +12,13 @@
 
 namespace BH
 {
-	class MeshManager : public GameComponent
+	class ModelManager : public GameComponent
 	{
 	public:
-		typedef std::unordered_map< String, Mesh * > MeshList;
+		typedef std::unordered_map< String, Model * > ModelList;
 		typedef std::unordered_map< String, AABB > AABBList;
 
-		GETTER_AUTO_CREF( MeshList, MeshList );
+		GETTER_AUTO_CREF( ModelList, ModelList );
 
 	public:
 		// Load directories
@@ -26,10 +26,10 @@ namespace BH
 
 	public:
 		// Constructor
-		MeshManager();
+		ModelManager();
 
 		// Destructor
-		~MeshManager();
+		~ModelManager();
 
 		// Initialise
 		void Initialise() override;
@@ -37,25 +37,25 @@ namespace BH
 		// Shutdown
 		void Shutdown() override;
 
-		// Get mesh
-		Mesh * GetMesh( const String & name ) const;
+		// Get model
+		Model * GetModel( const String & name ) const;
 
 		// Get AABB
 		AABB GetAABB( const String & name ) const;
 
 	private:
-		// Load all meshes in the directory
-		void LoadAllMeshes();
+		// Load all models in the directory
+		void LoadAllModels();
 
 	private:
 		MeshLoader mMeshLoader;
-		MeshList mMeshList;
+		ModelList mModelList;
 		AABBList mAABBList;
 
 	};
 }
 
 #include "Core/Typing.h"
-DECLARE_TYPE(::BH::MeshManager, MeshManager);
+DECLARE_TYPE(::BH::ModelManager, ModelManager);
 
 #endif

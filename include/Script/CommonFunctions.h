@@ -19,7 +19,7 @@ extern "C"
 	__declspec( dllexport ) void SetRenderer( BH::Renderer * renderer );
 
 	// Set mesh manager
-	__declspec( dllexport ) void SetMeshManager( BH::MeshManager * meshManager );
+	__declspec( dllexport ) void SetModelManager( BH::ModelManager * modelManager );
 
 	// Set texture manager
 	__declspec( dllexport ) void SetTextureManager( BH::TextureManager * textureManager );
@@ -40,7 +40,7 @@ extern "C"
 											   BH::f32 rotX,
 											   BH::f32 rotY,
 											   BH::f32 rotZ,
-											   const BH::Char * mesh,		
+											   const BH::Char * model,		
 											   const BH::Char * material );
 
 	// Draw global light
@@ -88,7 +88,7 @@ extern "C"
 											   BH::f32 rotX,
 											   BH::f32 rotY,
 											   BH::f32 rotZ,
-											   const BH::Char * mesh,
+											   const BH::Char * model,
 											   bool passable,
 											   const BH::Char * tag );
 
@@ -103,7 +103,7 @@ extern "C"
 												  BH::f32 rotX,
 												  BH::f32 rotY,
 												  BH::f32 rotZ,
-												  const BH::Char * mesh,
+												  const BH::Char * model,
 												  bool passable,
 												  const BH::Char * tag );
 
@@ -121,7 +121,7 @@ extern "C"
 											   BH::f32 rotX,
 											   BH::f32 rotY,
 											   BH::f32 rotZ,
-											   const BH::Char * mesh,
+											   const BH::Char * model,
 											   bool passable,
 											   const BH::Char * tag );
 
@@ -136,7 +136,7 @@ extern "C"
 												  BH::f32 rotX,
 												  BH::f32 rotY,
 												  BH::f32 rotZ,
-												  const BH::Char * mesh,
+												  const BH::Char * model,
 												  bool passable,
 												  const BH::Char * tag );
 

@@ -219,13 +219,13 @@ namespace BH
 		static void ScriptResetCallback( EditorWindow * window, const Type * type, void * obj, 
 										 ScriptComponent * component );
 
-		// Script mesh UI
-		static void AddAllScriptMeshOption( EditorComboBox * combobox );
-		static void AddScriptMeshImpl( EditorWindow * window, const String & name, const String & tab_name, 
+		// Script model UI
+		static void AddAllScriptModelOption( EditorComboBox * combobox );
+		static void AddScriptModelImpl( EditorWindow * window, const String & name, const String & tab_name, 
 									   const String & label, void * var, bool read_only );
-		static void AddScriptMeshToGroupImpl( EditorWindow * window, const String & name, const String & group_name, 
+		static void AddScriptModelToGroupImpl( EditorWindow * window, const String & name, const String & group_name, 
 											  const String & label, void * var, bool read_only );
-		static void RemoveScriptMesh( EditorWindow * window, const String & name );
+		static void RemoveScriptModel( EditorWindow * window, const String & name );
 
 		// Script texture UI
 		static void AddAllScriptTextureOption( EditorComboBox * combobox );

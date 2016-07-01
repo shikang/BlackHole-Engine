@@ -13,7 +13,7 @@
 #include "Core/XMLDeserialiser.h"
 #include "Core/LevelManager.h"
 #include "Core/Math.h"
-#include "Core/MeshManager.h"
+#include "Core/ModelManager.h"
 
 #include "Script/ScriptComponent.h"
 
@@ -871,7 +871,7 @@ namespace BH
 		auto scripts = obj->GetAllComponent<ScriptComponent>();
 
 		bool transform = false;
-		bool mesh = false;
+		bool modal = false;
 
 		for ( const auto & j : scripts )
 		{
@@ -928,23 +928,23 @@ namespace BH
 				j->FreeScriptValue( data );
 				transform = true;
 			}
-			else if ( j->GetScript().mType == "MeshComponent" )
+			else if ( j->GetScript().mType == "ModelComponent" )
 			{
 				// get aabb
 				void * data = j->GetScriptValue();
 
-				std::list< const Char * > l{ "mMesh" };
+				std::list< const Char * > l{ "mModel" };
 				void * val = j->GetValueFromScriptValue( l, data );
 				BH_ASSERT( val, "EditorSystem::InitPickables - Failed to get position x from ScriptComponent" );
-				String meshName = *reinterpret_cast< String * >( val );
+				String modelName = *reinterpret_cast< String * >( val );
 
-				info.mAABB = SYSTEM_MANAGER.GetGameComponentFromSystem<MeshManager>()->GetAABB( meshName );
+				info.mAABB = SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetAABB( modelName );
 
 				j->FreeScriptValue( data );
-				mesh = true;
+				modal = true;
 			}
 
-			if ( mesh && transform )
+			if ( modal && transform )
 				return true;
 		}
 
@@ -956,7 +956,7 @@ namespace BH
 		auto scripts = obj->GetAllComponent<ScriptComponent>();
 
 		bool transform = false;
-		bool mesh = false;
+		bool model = false;
 
 		for ( const auto & j : scripts )
 		{
@@ -1013,23 +1013,23 @@ namespace BH
 				j->FreeScriptValue( data );
 				transform = true;
 			}
-			else if ( j->GetScript().mType == "MeshComponent" )
+			else if ( j->GetScript().mType == "ModelComponent" )
 			{
 				// get aabb
 				void * data = j->GetScriptValue();
 
-				std::list< const Char * > l{ "mMesh" };
+				std::list< const Char * > l{ "mModel" };
 				void * val = j->GetValueFromScriptValue( l, data );
 				BH_ASSERT( val, "EditorSystem::InitPickables - Failed to get position x from ScriptComponent" );
-				info.mMeshName = reinterpret_cast< String * >( val );
+				info.mModelName = reinterpret_cast< String * >( val );
 
-				//info.mAABB = SYSTEM_MANAGER.GetGameComponentFromSystem<MeshManager>()->GetAABB( meshName );
+				//info.mAABB = SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetAABB( modelName );
 
 				j->FreeScriptValue( data );
-				mesh = true;
+				model = true;
 			}
 
-			if ( mesh && transform )
+			if ( model && transform )
 				return true;
 		}
 
@@ -1134,7 +1134,7 @@ namespace BH
 		// Draw selected object BB
 		if ( mCurrentObject &&
 			 mCurrentObjectInfo.mPositionX  &&
-			 mCurrentObjectInfo.mMeshName )
+			 mCurrentObjectInfo.mModelName )
 		{
 			Vector3f pos( *mCurrentObjectInfo.mPositionX, *mCurrentObjectInfo.mPositionY, *mCurrentObjectInfo.mPositionZ );
 			Matrix4 rotation = Matrix4::CreateFromYawPitchRoll( Math::DegToRad( *mCurrentObjectInfo.mRotationY ), 
@@ -1143,7 +1143,7 @@ namespace BH
 			Matrix4 trans = Matrix4::CreateTranslation( pos );
 			Matrix4 scale = Matrix4::CreateScale( *mCurrentObjectInfo.mScaleX, *mCurrentObjectInfo.mScaleY, *mCurrentObjectInfo.mScaleZ );
 
-			AABB aabb = SYSTEM_MANAGER.GetGameComponentFromSystem<MeshManager>()->GetAABB( *mCurrentObjectInfo.mMeshName );
+			AABB aabb = SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetAABB( *mCurrentObjectInfo.mModelName );
 			trans = trans * scale;// *gModelMatrix;
 
 			Vector3f n_min = trans * aabb.mMin;
@@ -1395,7 +1395,7 @@ namespace BH
 
 	void EditorSystem::FocusObjectCallback()
 	{
-		if ( mCurrentObject && mCurrentObjectInfo.mPositionX && mCurrentObjectInfo.mMeshName )
+		if ( mCurrentObject && mCurrentObjectInfo.mPositionX && mCurrentObjectInfo.mModelName )
 		{
 			Vector3f pos( *mCurrentObjectInfo.mPositionX, *mCurrentObjectInfo.mPositionY, *mCurrentObjectInfo.mPositionZ );
 			Matrix4 rotation = Matrix4::CreateFromYawPitchRoll( Math::DegToRad( *mCurrentObjectInfo.mRotationY ), 
@@ -1404,7 +1404,7 @@ namespace BH
 			Matrix4 trans = Matrix4::CreateTranslation( pos );
 			Matrix4 scale = Matrix4::CreateScale( *mCurrentObjectInfo.mScaleX, *mCurrentObjectInfo.mScaleY, *mCurrentObjectInfo.mScaleZ );
 
-			AABB aabb = SYSTEM_MANAGER.GetGameComponentFromSystem<MeshManager>()->GetAABB( *mCurrentObjectInfo.mMeshName );
+			AABB aabb = SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetAABB( *mCurrentObjectInfo.mModelName );
 			SYSTEM_MANAGER.GetGameComponentFromSystem<DebugCamera>()->FocusOn( trans * rotation * scale,
 																			   aabb );
 		}

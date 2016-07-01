@@ -31,7 +31,7 @@ namespace BH
 		f32 * mRotationY;
 		f32 * mRotationZ;
 
-		String * mMeshName;
+		String * mModelName;
 	};
 }
 

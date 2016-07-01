@@ -14,7 +14,7 @@
 #include "Core/System.h"
 #include "Core/Renderer.h"
 #include "Core/InputManager.h"
-#include "Core/MeshManager.h"
+#include "Core/ModelManager.h"
 #include "Core/TextureManager.h"
 #include "Core/MaterialManager.h"
 #include "Core/GameStateManager.h"
@@ -25,7 +25,7 @@
 #include "Core/OBB.h"
 
 static BH::Renderer *			sRenderer			= nullptr;
-static BH::MeshManager *		sMeshManager		= nullptr;
+static BH::ModelManager *		sModelManager		= nullptr;
 static BH::TextureManager *		sTextureManager		= nullptr;
 static BH::MaterialManager *	sMaterialManager	= nullptr;
 static BH::CollisionManager *	sCollisionManager	= nullptr;
@@ -81,9 +81,9 @@ extern "C"
 		sRenderer = renderer;
 	}
 
-	__declspec( dllexport ) void SetMeshManager( BH::MeshManager * meshManager )
+	__declspec( dllexport ) void SetModelManager( BH::ModelManager * modelManager )
 	{
-		sMeshManager = meshManager;
+		sModelManager = modelManager;
 	}
 	
 	__declspec( dllexport ) void SetTextureManager( BH::TextureManager * textureManager )
@@ -110,19 +110,19 @@ extern "C"
 											   BH::f32 rotX,
 											   BH::f32 rotY,
 											   BH::f32 rotZ,
-											   const BH::Char * mesh,			
+											   const BH::Char * model,			
 											   const BH::Char * material )
 	{
-		if ( !sRenderer || !sMeshManager || !sTextureManager || !sMaterialManager )
+		if ( !sRenderer || !sModelManager || !sTextureManager || !sMaterialManager )
 			return;
 
-		BH::Mesh * pMesh = sMeshManager->GetMesh( mesh );
+		BH::Model * pModel = sModelManager->GetModel( model );
 		BH::Material * pMaterial = sMaterialManager->GetMaterial( material );
 
 		sRenderer->DrawInstance( BH::Vector3f( posX, posY, posZ ),
 								 BH::Vector3f( scaleX, scaleY, scaleZ ), 
 								 BH::Vector3f( BH::Math::DegToRad( rotX ), BH::Math::DegToRad( rotY ), BH::Math::DegToRad( rotZ ) ), 
-								 pMesh, pMaterial );
+								 pModel, pMaterial );
 	}
 
 	__declspec( dllexport ) void DrawGlobalLight( BH::f32 posX,	
@@ -190,14 +190,14 @@ extern "C"
 											   BH::f32 rotX,
 											   BH::f32 rotY,
 											   BH::f32 rotZ,
-											   const BH::Char * mesh,
+											   const BH::Char * model,
 											   bool passable,
 											   const BH::Char * tag )
 	{
-		if ( !sCollisionManager || !sMeshManager )
+		if ( !sCollisionManager || !sModelManager )
 			return;
 
-		BH::AABB aabb = sMeshManager->GetAABB( mesh );
+		BH::AABB aabb = sModelManager->GetAABB( model );
 		BH::OBB obb = GetOBBFromAABB( aabb,
 									  BH::Vector3f( posX, posY, posZ ),
 									  BH::Vector3f( scaleX, scaleY, scaleZ ),
@@ -216,14 +216,14 @@ extern "C"
 												  BH::f32 rotX,
 												  BH::f32 rotY,
 												  BH::f32 rotZ,
-												  const BH::Char * mesh,
+												  const BH::Char * model,
 												  bool passable,
 												  const BH::Char * tag )
 	{
-		if ( !sCollisionManager || !sMeshManager )
+		if ( !sCollisionManager || !sModelManager )
 			return;
 
-		BH::AABB aabb = sMeshManager->GetAABB( mesh );
+		BH::AABB aabb = sModelManager->GetAABB( model );
 		BH::OBB obb = GetOBBFromAABB( aabb,
 									  BH::Vector3f( posX, posY, posZ ),
 									  BH::Vector3f( scaleX, scaleY, scaleZ ),
@@ -251,14 +251,14 @@ extern "C"
 											   BH::f32 rotX,
 											   BH::f32 rotY,
 											   BH::f32 rotZ,
-											   const BH::Char * mesh,
+											   const BH::Char * model,
 											   bool passable,
 											   const BH::Char * tag )
 	{
-		if ( !sCollisionManager || !sMeshManager )
+		if ( !sCollisionManager || !sModelManager )
 			return;
 
-		BH::AABB aabb = sMeshManager->GetAABB( mesh );
+		BH::AABB aabb = sModelManager->GetAABB( model );
 		BH::OBB obb = GetOBBFromAABB( aabb,
 									  BH::Vector3f( posX, posY, posZ ),
 									  BH::Vector3f( scaleX, scaleY, scaleZ ),
@@ -277,14 +277,14 @@ extern "C"
 												  BH::f32 rotX,
 												  BH::f32 rotY,
 												  BH::f32 rotZ,
-												  const BH::Char * mesh,
+												  const BH::Char * model,
 												  bool passable,
 												  const BH::Char * tag )
 	{
-		if ( !sCollisionManager || !sMeshManager )
+		if ( !sCollisionManager || !sModelManager )
 			return;
 
-		BH::AABB aabb = sMeshManager->GetAABB( mesh );
+		BH::AABB aabb = sModelManager->GetAABB( model );
 		BH::OBB obb = GetOBBFromAABB( aabb,
 									  BH::Vector3f( posX, posY, posZ ),
 									  BH::Vector3f( scaleX, scaleY, scaleZ ),

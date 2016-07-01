@@ -51,17 +51,17 @@
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
-                <String Type="MeshComponent"/>
+                <String Type="ModelComponent"/>
             </ScriptType>
-            <MeshComponent>
-                <BHMesh>
-                    <String Mesh="Cube"/>
-                </BHMesh>
+            <ModelComponent>
+                <BHModel>
+                    <String Model="Cube"/>
+                </BHModel>
                 <BHMaterial>
                     <String Material="Plastic"/>
                 </BHMaterial>
                 <BHObject/>
-            </MeshComponent>
+            </ModelComponent>
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
@@ -105,17 +105,17 @@
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
-                <String Type="MeshComponent"/>
+                <String Type="ModelComponent"/>
             </ScriptType>
-            <MeshComponent>
-                <BHMesh>
-                    <String Mesh="Cube"/>
-                </BHMesh>
+            <ModelComponent>
+                <BHModel>
+                    <String Model="Cube"/>
+                </BHModel>
                 <BHMaterial>
                     <String Material="Plastic"/>
                 </BHMaterial>
                 <BHObject/>
-            </MeshComponent>
+            </ModelComponent>
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
@@ -159,17 +159,17 @@
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
-                <String Type="MeshComponent"/>
+                <String Type="ModelComponent"/>
             </ScriptType>
-            <MeshComponent>
-                <BHMesh>
-                    <String Mesh="Cube"/>
-                </BHMesh>
+            <ModelComponent>
+                <BHModel>
+                    <String Model="Cube"/>
+                </BHModel>
                 <BHMaterial>
                     <String Material="Plastic"/>
                 </BHMaterial>
                 <BHObject/>
-            </MeshComponent>
+            </ModelComponent>
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
@@ -213,17 +213,17 @@
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
-                <String Type="MeshComponent"/>
+                <String Type="ModelComponent"/>
             </ScriptType>
-            <MeshComponent>
-                <BHMesh>
-                    <String Mesh="Cube"/>
-                </BHMesh>
+            <ModelComponent>
+                <BHModel>
+                    <String Model="Cube"/>
+                </BHModel>
                 <BHMaterial>
                     <String Material="Plastic"/>
                 </BHMaterial>
                 <BHObject/>
-            </MeshComponent>
+            </ModelComponent>
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
@@ -267,17 +267,17 @@
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
-                <String Type="MeshComponent"/>
+                <String Type="ModelComponent"/>
             </ScriptType>
-            <MeshComponent>
-                <BHMesh>
-                    <String Mesh="Cube"/>
-                </BHMesh>
+            <ModelComponent>
+                <BHModel>
+                    <String Model="Cube"/>
+                </BHModel>
                 <BHMaterial>
                     <String Material="Plastic"/>
                 </BHMaterial>
                 <BHObject/>
-            </MeshComponent>
+            </ModelComponent>
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
@@ -321,17 +321,17 @@
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
-                <String Type="MeshComponent"/>
+                <String Type="ModelComponent"/>
             </ScriptType>
-            <MeshComponent>
-                <BHMesh>
-                    <String Mesh="UFO"/>
-                </BHMesh>
+            <ModelComponent>
+                <BHModel>
+                    <String Model="UFO"/>
+                </BHModel>
                 <BHMaterial>
                     <String Material="Plastic"/>
                 </BHMaterial>
                 <BHObject/>
-            </MeshComponent>
+            </ModelComponent>
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
@@ -384,17 +384,17 @@
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>
-                <String Type="MeshComponent"/>
+                <String Type="ModelComponent"/>
             </ScriptType>
-            <MeshComponent>
-                <BHMesh>
-                    <String Mesh="Up"/>
-                </BHMesh>
+            <ModelComponent>
+                <BHModel>
+                    <String Model="Up"/>
+                </BHModel>
                 <BHMaterial>
                     <String Material="PolishMetal"/>
                 </BHMaterial>
                 <BHObject/>
-            </MeshComponent>
+            </ModelComponent>
         </ScriptComponent>
         <ScriptComponent>
             <ScriptType>

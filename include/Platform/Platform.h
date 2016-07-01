@@ -11,6 +11,10 @@
 #endif
 
 #if _MSC_VER > 1800
+#define BH_CPLUSPLUS11
+#endif
+
+#ifdef BH_CPLUSPLUS11
 #define BH_NOEXCEPT noexcept
 #define BH_CONSTEXPR constexpr
 #else

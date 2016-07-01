@@ -10,6 +10,7 @@
 #include "Platform/PlatformEssential.h"
 #include "Platform/Vertex.h"
 #include "Platform/Mesh.h"
+#include "Platform/Bone.h"
 #include "Platform/Animation.h"
 #include "Platform/AABB.h"
 
@@ -91,7 +92,8 @@ namespace BH
 		~MeshLoader();
 
 		// Load mesh
-		void LoadMeshFromFile( const FileInfo & fileinfo, Mesh & mesh, AABB & aabb );
+		void LoadMeshFromFile( const FileInfo & fileinfo, Mesh & mesh, AABB & aabb, 
+							   std::vector<Bone> & bones, std::vector<Animation> & animations );
 
 		// Create quad
 		static void CreateQuad( Mesh & mesh );
@@ -110,7 +112,8 @@ namespace BH
 		FbxMatrix GetConversionMatrix( FbxScene * scene );
 
 		// Extract Scene Data
-		void ExtractSceneData( FbxScene * scene, Mesh & mesh, AABB & aabb );
+		void ExtractSceneData( FbxScene * scene, Mesh & mesh, AABB & aabb, 
+							   std::vector<Bone> & bones, std::vector<Animation> & animations );
 
 		// Collect Meshes
 		void CollectMeshes( FbxNode * root, std::vector<FbxNode *> & fbxMeshes, bool skin );

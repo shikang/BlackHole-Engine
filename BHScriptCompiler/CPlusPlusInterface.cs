@@ -25,7 +25,7 @@ namespace BH
                                                  float rotX,
                                                  float rotY,
                                                  float rotZ,
-                                                 string mesh,
+                                                 string model,
                                                  string material );
 
         // Draw global light
@@ -77,7 +77,7 @@ namespace BH
 	    										 float rotX,
 	    										 float rotY,
 	    										 float rotZ,
-	    										 string mesh,
+	    										 string model,
                                                  bool passable,
                                                  string tag );
 
@@ -93,7 +93,7 @@ namespace BH
 	    											float rotX,
 	    											float rotY,
 	    											float rotZ,
-	    											string mesh,
+	    											string model,
                                                     bool passable,
                                                     string tag );
 
@@ -113,7 +113,7 @@ namespace BH
 	    										 float rotX,
 	    										 float rotY,
 	    										 float rotZ,
-	    										 string mesh,
+	    										 string model,
                                                  bool passable,
                                                  string tag );
 
@@ -129,7 +129,7 @@ namespace BH
 	    											float rotX,
 	    											float rotY,
 	    											float rotZ,
-	    											string mesh,
+	    											string model,
                                                     bool passable,
                                                     string tag );
 
@@ -141,7 +141,7 @@ namespace BH
         public static void DrawObject( BHVector3f position,
                                        BHVector3f scale,
                                        BHVector3f rotation,
-                                       string mesh,
+                                       string model,
                                        string material )
         {
             DrawInstance( position.x,
@@ -153,7 +153,7 @@ namespace BH
                           rotation.x,
                           rotation.y,
                           rotation.z,
-                          mesh,
+                          model,
                           material );
         }
 
@@ -207,7 +207,7 @@ namespace BH
 	    										     BHVector3f position,
 	    										     BHVector3f scale,
 	    										     BHVector3f rotation,
-	    										     string mesh,
+	    										     string model,
                                                      bool passable,
                                                      string tag )
         {
@@ -221,7 +221,7 @@ namespace BH
                           rotation.x,
                           rotation.y,
                           rotation.z,
-                          mesh,
+                          model,
                           passable,
                           tag );
         }
@@ -230,7 +230,7 @@ namespace BH
 	    										        BHVector3f position,
 	    										        BHVector3f scale,
 	    										        BHVector3f rotation,
-	    										        string mesh,
+	    										        string model,
                                                         bool passable,
                                                         string tag )
         {
@@ -244,7 +244,7 @@ namespace BH
                              rotation.x,
                              rotation.y,
                              rotation.z,
-                             mesh,
+                             model,
                              passable,
                              tag );
         }
@@ -258,7 +258,7 @@ namespace BH
 	    										 BHVector3f position,
 	    										 BHVector3f scale,
 	    										 BHVector3f rotation,
-	    										 string mesh, 
+	    										 string model, 
                                                  bool passable,
                                                  string tag )
         {
@@ -272,7 +272,7 @@ namespace BH
                           rotation.x,
                           rotation.y,
                           rotation.z,
-                          mesh,
+                          model,
                           passable,
                           tag );
         }
@@ -281,7 +281,7 @@ namespace BH
 	    										    BHVector3f position,
 	    										    BHVector3f scale,
 	    										    BHVector3f rotation,
-	    										    string mesh,
+	    										    string model,
                                                     bool passable,
                                                     string tag )
         {
@@ -295,7 +295,7 @@ namespace BH
                              rotation.x,
                              rotation.y,
                              rotation.z,
-                             mesh,
+                             model,
                              passable,
                              tag );
         }

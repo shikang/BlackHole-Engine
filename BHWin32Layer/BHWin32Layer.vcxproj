@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="..\include\Platform\AABB.h" />
     <ClInclude Include="..\include\Platform\Animation.h" />
+    <ClInclude Include="..\include\Platform\AnimationController.h" />
     <ClInclude Include="..\include\Platform\Bone.h" />
     <ClInclude Include="..\include\Platform\Camera.h" />
     <ClInclude Include="..\include\Platform\ClockCycle.h" />
@@ -66,6 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Dependencies\rgbe.cpp" />
+    <ClCompile Include="..\src\Platform\Animation.cpp" />
+    <ClCompile Include="..\src\Platform\AnimationController.cpp" />
     <ClCompile Include="..\src\Platform\Camera.cpp" />
     <ClCompile Include="..\src\Platform\ClockCycle.cpp" />
     <ClCompile Include="..\src\Platform\ConsoleColor.cpp" />

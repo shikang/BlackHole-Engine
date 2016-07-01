@@ -13,9 +13,15 @@ namespace BH
 {
 	class Uncopyable
 	{
+#ifdef BH_CPLUSPLUS11
+	public:
+		Uncopyable( const Uncopyable & ) = delete;
+		Uncopyable & operator=( const Uncopyable & ) = delete;
+#else
 	private:
-		Uncopyable(const Uncopyable&);
-		Uncopyable & operator=(const Uncopyable &);
+		Uncopyable( const Uncopyable & );
+		Uncopyable & operator=( const Uncopyable & );
+#endif
     
 	public:
 		Uncopyable() {};

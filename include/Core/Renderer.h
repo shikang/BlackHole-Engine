@@ -53,7 +53,7 @@ namespace BH
 		struct InstanceInfo
 		{
 			Matrix4 mTransform;
-			const Mesh * mMesh;
+			const Model * mModel;
 			const Material * mMaterial;
 		};
 
@@ -102,14 +102,14 @@ namespace BH
 
 		// Draw Instance
 		void DrawInstance( const Matrix4 & transform,			//!< Instance Transformation
-						   const Mesh * mesh,					//!< Instance Mesh
+						   const Model * model,					//!< Instance Model
 						   const Material * material );			//!< Instance Material
 
 		// Draw Instance
 		void DrawInstance( const Vector3f & position,			//!< Instance Transformation
 						   const Vector3f & scale,
 						   const Vector3f & rotation,
-						   const Mesh * mesh,					//!< Instance Mesh
+						   const Model * model,					//!< Instance Model
 						   const Material * material );			//!< Instance Material
 
 		// Draw Light
@@ -285,7 +285,7 @@ namespace BH
 			mShaders["Flat"].SetTexture( PixelShader, 0, 
 									SYSTEM_MANAGER.GetGameComponentFromSystem<TextureManager>()->GetTexture( "white" ) );
 
-			Mesh * light = SYSTEM_MANAGER.GetGameComponentFromSystem<MeshManager>()->GetMesh( "Sphere" );
+			const Mesh & light = SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetModel( "Sphere" )->mMesh;
 
 			for ( auto & i : lights )
 			{
@@ -303,9 +303,9 @@ namespace BH
 													  i.GetColor() );
 
 				// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-				light->BindBuffers();
+				light.BindBuffers();
 
-				mShaders["Flat"].Render( light->GetIndexCount() );
+				mShaders["Flat"].Render( light.GetIndexCount() );
 			}
 		}
 

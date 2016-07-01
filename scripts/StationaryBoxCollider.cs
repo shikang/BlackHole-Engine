@@ -26,12 +26,12 @@ namespace BH
       if( !mAdd )
       {
         TransformComponent tc = mObject.GetComponent<TransformComponent>();
-        MeshComponent mc = mObject.GetComponent<MeshComponent>();
+        ModelComponent mc = mObject.GetComponent<ModelComponent>();
         CPlusPlusInterface.AddStationaryBoxCollider( mObject.GetName(),
                                                      tc.mPosition,
                                                      tc.mScale,
                                                      tc.mRotation,
-                                                     mc.mMesh.Mesh,
+                                                     mc.mModel.Model,
                                                      mPassable,
                                                      mTag );
         mAdd = true;
@@ -39,12 +39,12 @@ namespace BH
       else if( mReset )
       {
         TransformComponent tc = mObject.GetComponent<TransformComponent>();
-        MeshComponent mc = mObject.GetComponent<MeshComponent>();
+        ModelComponent mc = mObject.GetComponent<ModelComponent>();
         CPlusPlusInterface.UpdateStationaryBoxCollider( mObject.GetName(),
                                                         tc.mPosition,
                                                         tc.mScale,
                                                         tc.mRotation,
-                                                        mc.mMesh.Mesh,
+                                                        mc.mModel.Model,
                                                         mPassable,
                                                         mTag );
         mReset = false;

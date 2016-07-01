@@ -7,7 +7,7 @@
 #include "Core/System.h"
 #include "Core/Renderer.h"
 #include "Core/InputManager.h"
-#include "Core/MeshManager.h"
+#include "Core/ModelManager.h"
 #include "Core/TextureManager.h"
 #include "Core/HDRTextureManager.h"
 #include "Core/GameStateManager.h"
@@ -36,7 +36,7 @@
 int main()
 {
 	// @cleanup: Clean up this messy portion
-	BH::MeshManager::LoadDirectory = "../resources/Models/";
+	BH::ModelManager::LoadDirectory = "../resources/Models/";
 	BH::TextureManager::LoadDirectory = "../resources/Textures/";
 	BH::ScriptLoader::LoadDirectory = "../scripts/";
 	BH::LevelManager::LoadDirectory = "../resources/Levels/";
@@ -45,7 +45,7 @@ int main()
 
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::InputManager>();
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::Renderer>();
-	SYSTEM_MANAGER.AddGameComponentToSystem<BH::MeshManager>();
+	SYSTEM_MANAGER.AddGameComponentToSystem<BH::ModelManager>();
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::TextureManager>();
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::HDRTextureManager>();
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::ScriptLoader>();
@@ -54,13 +54,13 @@ int main()
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::MaterialManager>();
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::CollisionManager>();
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::CollisionSolver>();
-	SYSTEM_MANAGER.GameComponentDependency<BH::MeshManager, BH::Renderer>();
+	SYSTEM_MANAGER.GameComponentDependency<BH::ModelManager, BH::Renderer>();
 	SYSTEM_MANAGER.GameComponentDependency<BH::TextureManager, BH::Renderer>();
 	SYSTEM_MANAGER.GameComponentDependency<BH::HDRTextureManager, BH::Renderer>();
 
 	// For interop
 	SetRenderer( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::Renderer>() );
-	SetMeshManager( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::MeshManager>() );
+	SetModelManager( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::ModelManager>() );
 	SetTextureManager( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::TextureManager>() );
 	SetMaterialManager( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::MaterialManager>() );
 	SetCollisionManager( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::CollisionManager>() );

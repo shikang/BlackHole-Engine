@@ -10,7 +10,7 @@
 #include "Core/TypeRegistrar.h"
 #include "Core/EntityManager.h"
 #include "Core/ObjectComponent.h"
-#include "Core/MeshManager.h"
+#include "Core/ModelManager.h"
 #include "Core/TextureManager.h"
 #include "Core/MaterialManager.h"
 
@@ -42,8 +42,8 @@ namespace BH
 		AddEditorReflector<Phong>( AddPhongImpl, AddPhongToGroupImpl, RemovePhong );
 		AddEditorReflector<bool>( AddCheckBoxImpl, AddCheckBoxToGroupImpl, RemoveCheckBox );
 		AddEditorChanged<ScriptType>( AddScriptTypeImpl, AddScriptTypeToGroupImpl, RemoveScriptType );
-		CName meshName( "BHMesh" ); CName textureName( "BHTexture" ); CName materialName( "BHMaterial" );
-		AddEditorReflector( meshName, AddScriptMeshImpl, AddScriptMeshToGroupImpl, RemoveScriptMesh );
+		CName modelName( "BHModel" ); CName textureName( "BHTexture" ); CName materialName( "BHMaterial" );
+		AddEditorReflector( modelName, AddScriptModelImpl, AddScriptModelToGroupImpl, RemoveScriptModel );
 		AddEditorReflector( textureName, AddScriptTextureImpl, AddScriptTextureToGroupImpl, RemoveScriptTexture );
 		AddEditorReflector( materialName, AddScriptMaterialImpl, AddScriptMaterialToGroupImpl, RemoveScriptMaterial );
 
@@ -327,35 +327,35 @@ namespace BH
 		SYSTEM_MANAGER.GetGameComponentFromSystem<EditorSystem>()->RepickGizmo();
 	}
 
-	void EditorReflection::AddAllScriptMeshOption( EditorComboBox * combobox )
+	void EditorReflection::AddAllScriptModelOption( EditorComboBox * combobox )
 	{
-		for ( const auto & i : SYSTEM_MANAGER.GetGameComponentFromSystem<MeshManager>()->GetMeshList() )
+		for ( const auto & i : SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetModelList() )
 		{
 			combobox->AddItem( i.first );
 		}
 	}
 
-	void EditorReflection::AddScriptMeshImpl( EditorWindow * window, const String & name, const String & tab_name, 
+	void EditorReflection::AddScriptModelImpl( EditorWindow * window, const String & name, const String & tab_name, 
 											  const String & label, void * var, bool read_only )
 	{
-		const Type * scriptMeshType = ENTITY_MANAGER.Types.Get( "BHMesh" );
-		String * svar = reinterpret_cast<String *>( scriptMeshType->GetField( "Mesh" )->GetPtr( var ) );
+		const Type * scriptModelType = ENTITY_MANAGER.Types.Get( "BHModel" );
+		String * svar = reinterpret_cast<String *>( scriptModelType->GetField( "Model" )->GetPtr( var ) );
 
 		EditorComboBox * combobox = window->AddComboBox( name, tab_name, label, svar, read_only );
-		AddAllScriptMeshOption( combobox );
+		AddAllScriptModelOption( combobox );
 	}
 
-	void EditorReflection::AddScriptMeshToGroupImpl( EditorWindow * window, const String & name, const String & group_name, 
+	void EditorReflection::AddScriptModelToGroupImpl( EditorWindow * window, const String & name, const String & group_name, 
 													 const String & label, void * var, bool read_only )
 	{
-		const Type * scriptMeshType = ENTITY_MANAGER.Types.Get( "BHMesh" );
-		String * svar = reinterpret_cast<String *>( scriptMeshType->GetField( "Mesh" )->GetPtr( var ) );
+		const Type * scriptModelType = ENTITY_MANAGER.Types.Get( "BHModel" );
+		String * svar = reinterpret_cast<String *>( scriptModelType->GetField( "Model" )->GetPtr( var ) );
 		
 		EditorComboBox * combobox = window->AddComboBoxToGroup( name, group_name, label, svar, read_only );
-		AddAllScriptMeshOption( combobox );
+		AddAllScriptModelOption( combobox );
 	}
 
-	void EditorReflection::RemoveScriptMesh( EditorWindow * window, const String & name )
+	void EditorReflection::RemoveScriptModel( EditorWindow * window, const String & name )
 	{
 		window->RemoveComboBox( name );
 	}

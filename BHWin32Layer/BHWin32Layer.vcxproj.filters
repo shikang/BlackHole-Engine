@@ -113,6 +113,9 @@
     <ClInclude Include="..\include\Platform\Skeleton.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Platform\AnimationController.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="DataType">
@@ -275,6 +278,12 @@
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Platform\Skeleton.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\AnimationController.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Animation.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>

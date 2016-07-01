@@ -22,16 +22,25 @@ namespace BH
 		void Initialise( std::vector<Bone> && bones );
 
 		// Destory skeleton
-		void ShutDown();
+		void Shutdown();
 
 	private:
 		// Initialise roots
 		void InitialiseBones();
 
+		// Process animation graph
+		void ProcessAnimationGraph( f32 time, MatrixBuffer & buffer, 
+									const Animation & anim, TrackBuffer & trackData ) const;
+
+		// Recursive process
+		void RecursiveProcess( f32 time, Bone & bone, const Animation & anim, MatrixBuffer & buffer, 
+							   TrackBuffer & trackData, Matrix4 parentTransform ) const;
+
 	private:
 		std::vector<Bone> mBones;		//!< List of bones
 		std::vector<Bone *> mRoots;		//!< List of root bones
 
+		friend class AnimationController;
 	};
 }
 

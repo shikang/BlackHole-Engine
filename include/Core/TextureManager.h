@@ -34,11 +34,11 @@ namespace BH
 		// Shutdown
 		void Shutdown() override;
 
-		// Get mesh
+		// Get texture
 		Texture * GetTexture( const String & name );
 
 	private:
-		// Load all meshes in the directory
+		// Load all textures in the directory
 		void LoadAllTextures();
 
 	private:

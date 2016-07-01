@@ -14,7 +14,7 @@ namespace BH
 		, mRotationX(nullptr)
 		, mRotationY(nullptr)
 		, mRotationZ(nullptr)
-		, mMeshName(nullptr) {}
+		, mModelName(nullptr) {}
 
 	void SelectedInfo::Invalidize()
 	{
@@ -27,7 +27,7 @@ namespace BH
 		mRotationX = nullptr;
 		mRotationY = nullptr;
 		mRotationZ = nullptr;
-		mMeshName = nullptr;
+		mModelName = nullptr;
 	}
 }
 

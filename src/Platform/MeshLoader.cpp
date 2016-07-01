@@ -623,7 +623,8 @@ namespace BH
 		}
 	}
 
-	void MeshLoader::ExtractSceneData( FbxScene * scene, Mesh & mesh, AABB & aabb )
+	void MeshLoader::ExtractSceneData( FbxScene * scene, Mesh & mesh, AABB & aabb, 
+									   std::vector<Bone> & bones, std::vector<Animation> & animations )
 	{
 		// Get scene conversion matrix
 		FbxMatrix conversionMatrix = GetConversionMatrix( scene );
@@ -687,7 +688,6 @@ namespace BH
 		}
 
 		// Extract Animation
-		std::vector< Animation > animations;
 		if ( extractAnimation )
 		{
 			animations.reserve( takeCount );
@@ -798,7 +798,6 @@ namespace BH
 		}
 
 		// Bone data
-		std::vector<Bone> combinedBones;
 		for ( BoneData & b : skeleton )
 		{
 			Bone bone;
@@ -824,40 +823,8 @@ namespace BH
 			bone.modelToBoneRotation.z = b.mBoneSpaceRot[2];
 			bone.modelToBoneRotation.w = b.mBoneSpaceRot[3];
 
-			combinedBones.push_back( bone );
+			bones.push_back( bone );
 		}
-		/*
-		std::transform( skeleton.begin(), skeleton.end(),
-						std::back_inserter( combinedBones ),
-						[]( const BoneData & b )
-						{
-							Bone bone;
-							bone.name = b.mName;
-							bone.parentIndex = b.mParentIndex;
-
-							bone.bindTranslation.x = b.mBindPos[0];
-							bone.bindTranslation.y = b.mBindPos[1];
-							bone.bindTranslation.z = b.mBindPos[2];
-
-							bone.bindRotation.x = b.mBindRot[0];
-							bone.bindRotation.y = b.mBindRot[1];
-							bone.bindRotation.z = b.mBindRot[2];
-							bone.bindRotation.w = b.mBindRot[3];
-
-							bone.modelToBoneTranslation.x = b.mBoneSpacePos[0];
-							bone.modelToBoneTranslation.y = b.mBoneSpacePos[1];
-							bone.modelToBoneTranslation.z = b.mBoneSpacePos[2];
-
-							bone.modelToBoneRotation.x = b.mBoneSpaceRot[0];
-							bone.modelToBoneRotation.y = b.mBoneSpaceRot[1];
-							bone.modelToBoneRotation.z = b.mBoneSpaceRot[2];
-							bone.modelToBoneRotation.w = b.mBoneSpaceRot[3];
-
-							return bone;
-						} );
-		*/
-
-		// Animation data
 
 		GetBoundingVolume( combinedVertexBuffer, aabb );
 
@@ -898,7 +865,8 @@ namespace BH
 		}
 	}
 
-	void MeshLoader::LoadMeshFromFile( const FileInfo & fileinfo, Mesh & mesh, AABB & aabb )
+	void MeshLoader::LoadMeshFromFile( const FileInfo & fileinfo, Mesh & mesh, AABB & aabb, 
+									   std::vector<Bone> & bones, std::vector<Animation> & animations )
 	{
 		// Create an importer using our sdk manager.
 		FbxImporter * importer = FbxImporter::Create( mFBXManager, "" );
@@ -920,7 +888,7 @@ namespace BH
 		importer->Destroy();
 
 		// Extract scene data
-		ExtractSceneData( scene, mesh, aabb );
+		ExtractSceneData( scene, mesh, aabb, bones, animations );
 
 		// Finish business with scene
 		scene->Destroy();

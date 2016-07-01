@@ -11,6 +11,18 @@
 namespace BH
 {
 	/*
+		Track data is used to help process the animation in this
+		case it is the last keyframe the track was on
+	*/
+	struct TrackData
+	{
+		u32 mLastKey;
+	};
+
+	typedef std::vector<Matrix4>				MatrixBuffer;
+	typedef std::vector<TrackData>				TrackBuffer;
+
+	/*
 		A Keyframe is a snapshot of the node at a point in time.
 		When rendering the game will interpolate between
 		keyframes to create smooth motion.
@@ -38,6 +50,8 @@ namespace BH
 		std::vector< Track > mTracks;
 		String mName;
 		f32 mDuration;					//!< Duration of the Animation in Seconds
+
+		void CalculateTransform( f32 animTime, u32 trackIndex, Vector3f & animT, Quaternion & animR, TrackData & data ) const;
 	};
 }
 

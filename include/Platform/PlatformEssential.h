@@ -19,6 +19,8 @@ namespace BH
 	// Graphics
 	class Graphics;
 	class Mesh;
+	class Skeleton;
+	struct Animation;
 	class Camera;
 	class Shader;
 	class Texture;
