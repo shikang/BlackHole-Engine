@@ -4,6 +4,7 @@
 #include "Platform/Graphics.h"
 #include "Platform/Mesh.h"
 #include "Platform/Shader.h"
+#include "Platform/AnimationController.h"
 
 #include "Core/Renderer.h"
 #include "Core/TextureManager.h"
@@ -66,6 +67,28 @@ namespace BH
 
 		// Geometry pass - Texture Sampler
 		mShaders["Geo"].CreateSampler( PixelShader, 0 );
+
+		D3D_SHADER_MACRO animGeoShaderMacros[2];
+		String maxBoneMatricesDef = std::to_string( MAX_BONE_MATRICES );
+		animGeoShaderMacros[0].Name = "MAX_BONE_MATRICES";
+		animGeoShaderMacros[0].Definition = maxBoneMatricesDef.c_str();
+		animGeoShaderMacros[1].Name = NULL;
+		animGeoShaderMacros[1].Definition = NULL;
+
+		mShaders["AnimGeo"].Initialise( "../shaders/geometryAnim_vs.hlsl",
+										"../shaders/geometry_ps.hlsl",
+										"GeometryVertexShader",
+										"GeometryPixelShader",
+										animGeoShaderMacros );
+
+		// Geometry pass - Animation buffer
+		mShaders["AnimGeo"].CreaterBuffer( VertexShader, 0, sizeof( Matrix4 ) * MAX_BONE_MATRICES );
+
+		// Geometry pass - Material buffer
+		mShaders["AnimGeo"].CreaterBuffer( PixelShader, 0, sizeof( Vector3f ) + sizeof( f32 ) );
+
+		// Geometry pass - Texture Sampler
+		mShaders["AnimGeo"].CreateSampler( PixelShader, 0 );
 
 		// ----------------------- Drawing quad -----------------------
 		mShaders["Quad"].Initialise( "../shaders/quad_vs.hlsl",
@@ -408,11 +431,13 @@ namespace BH
 
 	void Renderer::DrawInstance( const Matrix4 & transform,
 							     const Model * model,				
-							     const Material * material )
+							     const Material * material,
+								 const AnimationController * anim )
 	{
 		mInstanceList.push_back( InstanceInfo{ transform,
 											   model,
-											   material } );
+											   material,
+											   anim } );
 	}
 
 	void Renderer::DrawInstance( const Vector3f & position,			
@@ -518,20 +543,30 @@ namespace BH
 			//mShaders["Geo"].SetTexture( PixelShader, 0, i.mTexture );
 
 			Matrix4 world = i.mTransform * mGraphics.GetPipeline()->GetWorld();
+
+			String shaderName = ( i.mAnimationController ) ? "AnimGeo" : "Geo";
+
 			// Set Transform for this instance
-			mShaders["Geo"].SetShaderParameters( VertexShader,
-												 0, 
-												 world.Transpose(),
-												 mCamera->GetView().Transpose(),
-												 mGraphics.GetPipeline()->GetProjection().Transpose(),
-												 world.Inverse().Transpose() );
+			mShaders[shaderName].SetShaderParameters( VertexShader,
+													  0, 
+													  world.Transpose(),
+													  mCamera->GetView().Transpose(),
+													  mGraphics.GetPipeline()->GetProjection().Transpose(),
+													  world.Inverse().Transpose() );
+
+			if ( i.mAnimationController )
+			{
+				mShaders[shaderName].SetShaderVectorParameters( VertexShader,
+																1,
+																i.mAnimationController->GetBoneMatrixBuffer() );
+			}
 			
-			i.mMaterial->SendMaterial( mShaders["Geo"], PixelShader, 0 );
+			i.mMaterial->SendMaterial( mShaders[shaderName], PixelShader, 0 );
 
 			// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
 			i.mModel->mMesh.BindBuffers();
 
-			mShaders["Geo"].Render( i.mModel->mMesh.GetIndexCount() );
+			mShaders[shaderName].Render( i.mModel->mMesh.GetIndexCount() );
 		}
 
 		//mGraphics.GetPipeline()->SetBackBufferRenderTarget();

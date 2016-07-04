@@ -24,6 +24,7 @@
 #define BATCH_X_NUM 128
 #define BATCH_Y_NUM 72
 #define IBL_N 40
+#define MAX_BONE_MATRICES 80
 
 namespace BH
 {
@@ -55,6 +56,7 @@ namespace BH
 			Matrix4 mTransform;
 			const Model * mModel;
 			const Material * mMaterial;
+			const AnimationController * mAnimationController;
 		};
 
 		struct LineInfo
@@ -101,16 +103,17 @@ namespace BH
 		void Draw( f32 dt ) override;
 
 		// Draw Instance
-		void DrawInstance( const Matrix4 & transform,			//!< Instance Transformation
-						   const Model * model,					//!< Instance Model
-						   const Material * material );			//!< Instance Material
+		void DrawInstance( const Matrix4 & transform,						//!< Instance Transformation
+						   const Model * model,								//!< Instance Model
+						   const Material * material,						//!< Instance Material
+						   const AnimationController * anim = nullptr );	//!< Instance Animation
 
 		// Draw Instance
-		void DrawInstance( const Vector3f & position,			//!< Instance Transformation
+		void DrawInstance( const Vector3f & position,						//!< Instance Transformation
 						   const Vector3f & scale,
 						   const Vector3f & rotation,
-						   const Model * model,					//!< Instance Model
-						   const Material * material );			//!< Instance Material
+						   const Model * model,								//!< Instance Model
+						   const Material * material );						//!< Instance Material
 
 		// Draw Light
 		void DrawGlobalLight( const Light & light );
@@ -118,10 +121,10 @@ namespace BH
 		void DrawLocalLight( const LocalLight & light );
 
 		// Draw Lines
-		void DrawLines( const Matrix4 & transform,				//!< Lines Transformation
-						const Vector4f & color,					//!< Color
-						const Mesh * mesh,						//!< Line Mesh
-						bool onHUD = false );					//!< Line ignore depth (always on top)
+		void DrawLines( const Matrix4 & transform,							//!< Lines Transformation
+						const Vector4f & color,								//!< Color
+						const Mesh * mesh,									//!< Line Mesh
+						bool onHUD = false );								//!< Line ignore depth (always on top)
 
 		// Set Blur Kernel Radius (max 50)
 		void SetBlurKernelRadius( s32 radius );

@@ -68,6 +68,11 @@ namespace BH
 									   u32 bufferNum,			//!< Position in shader
 									   const T ( & a )[ SIZE ] );
 
+		template< typename T, typename Allocator >
+		bool SetShaderVectorParameters( ShaderType shaderType,
+										u32 bufferNum,			//!< Position in shader
+										const std::vector<T, Allocator> & v );
+
 		// Create Sampler (For texture)
 		bool CreateSampler( ShaderType shaderType, u32 samplerNum );
 

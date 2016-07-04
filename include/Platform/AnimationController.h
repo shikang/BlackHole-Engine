@@ -5,6 +5,8 @@
 #include "Platform/Animation.h"
 #include "Platform/Matrix4.h"
 
+#include "Core/FunctionsFramework.h"
+
 #include <unordered_map>
 
 namespace BH
@@ -38,6 +40,9 @@ namespace BH
 
 		// Clear Track data
 		void ClearTrackData();
+
+		// Get Bone Matrix Buffer
+		GETTER_AUTO_CREF( MatrixBuffer, BoneMatrixBuffer );
 
 	private:
 		f32 mElapsedTime;

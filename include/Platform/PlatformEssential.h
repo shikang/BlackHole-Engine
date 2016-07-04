@@ -21,6 +21,7 @@ namespace BH
 	class Mesh;
 	class Skeleton;
 	struct Animation;
+	class AnimationController;
 	class Camera;
 	class Shader;
 	class Texture;
