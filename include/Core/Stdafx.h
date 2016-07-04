@@ -73,6 +73,7 @@
 #include "Core/ModelManager.h"
 #include "Core/TextureManager.h"
 #include "Core/HDRTextureManager.h"
+#include "Core/AnimationControllerManager.h"
 
 // Game State
 #include "Core/GameState.h"

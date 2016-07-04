@@ -298,6 +298,9 @@
     <ClInclude Include="..\include\Core\Model.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Core\AnimationControllerManager.h">
+      <Filter>Game Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core\Stdafx.cpp" />
@@ -444,6 +447,9 @@
     </ClCompile>
     <ClCompile Include="..\src\Core\Model.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\AnimationControllerManager.cpp">
+      <Filter>Game Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

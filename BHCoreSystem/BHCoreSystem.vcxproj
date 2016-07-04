@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\Core\AnimationControllerManager.h" />
     <ClInclude Include="..\include\Core\ArrayFieldContainer.h" />
     <ClInclude Include="..\include\Core\Assert.h" />
     <ClInclude Include="..\include\Core\CName.h" />
@@ -88,6 +89,7 @@
     <ClInclude Include="..\include\Core\XMLSerialiseType.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Core\AnimationControllerManager.cpp" />
     <ClCompile Include="..\src\Core\Assert.cpp" />
     <ClCompile Include="..\src\Core\CollisionFunctions.cpp" />
     <ClCompile Include="..\src\Core\CollisionManager.cpp" />

@@ -10,6 +10,7 @@
 #include "Core/ModelManager.h"
 #include "Core/TextureManager.h"
 #include "Core/HDRTextureManager.h"
+#include "Core/AnimationControllerManager.h"
 #include "Core/GameStateManager.h"
 #include "Core/LevelManager.h"
 #include "Core/MaterialManager.h"
@@ -48,6 +49,7 @@ int main()
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::ModelManager>();
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::TextureManager>();
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::HDRTextureManager>();
+	SYSTEM_MANAGER.AddGameComponentToSystem<BH::AnimationControllerManager>();
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::ScriptLoader>();
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::GameStateManager>();
 	SYSTEM_MANAGER.AddGameComponentToSystem<BH::LevelManager>();
