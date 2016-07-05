@@ -87,6 +87,11 @@ extern "C"
 	{
 		sModelManager = modelManager;
 	}
+
+	BH_DLL_EXPORT void SetAnimationControllerManager( BH::AnimationControllerManager * animationControllerManager )
+	{
+		sAnimationControllerManager = animationControllerManager;
+	}
 	
 	BH_DLL_EXPORT void SetTextureManager( BH::TextureManager * textureManager )
 	{
@@ -101,6 +106,23 @@ extern "C"
 	BH_DLL_EXPORT void SetCollisionManager( BH::CollisionManager * collisionManager )
 	{
 		sCollisionManager = collisionManager;
+	}
+
+	BH_DLL_EXPORT BH::s32 CreateAnimationController( const BH::Char * model )
+	{
+		if ( !sAnimationControllerManager || !sModelManager )
+			return BH::AnimationControllerManager::INVALID_ID;
+
+		BH::Model * pModel = sModelManager->GetModel( model );
+		return sAnimationControllerManager->CreateController( pModel );
+	}
+
+	BH_DLL_EXPORT void DeleteAnimationController( BH::s32 id )
+	{
+		if ( !sAnimationControllerManager )
+			return;
+
+		sAnimationControllerManager->DeleteController( id );
 	}
 
 	BH_DLL_EXPORT void DrawInstance( BH::f32 posX,	

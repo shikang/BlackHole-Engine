@@ -63,6 +63,7 @@ int main()
 	// For interop
 	SetRenderer( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::Renderer>() );
 	SetModelManager( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::ModelManager>() );
+	SetAnimationControllerManager( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::AnimationControllerManager>() );
 	SetTextureManager( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::TextureManager>() );
 	SetMaterialManager( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::MaterialManager>() );
 	SetCollisionManager( SYSTEM_MANAGER.GetGameComponentFromSystem<BH::CollisionManager>() );

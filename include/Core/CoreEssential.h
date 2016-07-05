@@ -57,6 +57,7 @@ namespace BH
 	class TextureManager;
 	class ModelManager;
 	class MaterialManager;
+	class AnimationControllerManager;
 
 	// Collision
 	struct Contact;

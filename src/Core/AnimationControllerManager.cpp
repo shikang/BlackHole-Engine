@@ -16,7 +16,7 @@ namespace BH
 	const AnimationControllerManager::AnimationControllerID AnimationControllerManager::STARTING_ID = 1;
 
 	AnimationControllerManager::AnimationControllerManager()
-	: mNewID( 1 )
+	: mNewID( STARTING_ID )
 	{
 	}
 
@@ -40,7 +40,7 @@ namespace BH
 
 		mControllerList.clear();
 		mUnusedIDList.clear();
-		mNewID = 1;
+		mNewID = STARTING_ID;
 	}
 
 	void AnimationControllerManager::Update( f32 dt )
@@ -53,7 +53,11 @@ namespace BH
 
 	AnimationControllerManager::AnimationControllerID AnimationControllerManager::CreateController( Model * model )
 	{
+		if ( !model || !model->IsAnimatable() )
+			return INVALID_ID;
+
 		AnimationController * ac = new AnimationController;
+		ac->InitialiseWithModel( model );
 		AnimationControllerID newID = GetID();
 
 		mControllerList.insert( std::make_pair( newID, ac ) );

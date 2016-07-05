@@ -14,6 +14,14 @@ namespace BH
         [DllImport( "BHScriptBridge.dll" )]
         public static extern void StopProfiler( string profiler_name );
 
+        // Create animation controller
+        [DllImport( "BHScriptBridge.dll" )]
+        public static extern int CreateAnimationController( string model );
+
+        // Delete profiling
+        [DllImport("BHScriptBridge.dll")]
+        public static extern void DeleteAnimationController( int animationController );
+
         // Draw instance
         [DllImport( "BHScriptBridge.dll" )]
         private static extern void DrawInstance( float posX,

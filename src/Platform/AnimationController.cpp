@@ -37,6 +37,9 @@ namespace BH
 
 	void AnimationController::InitialiseWithModel( const Model * model )
 	{
+		if ( !model->IsAnimatable() )
+			return;
+
 		SetSkeleton( &( model->mSkeleton ) );
 
 		for ( const Animation & anim : model->mAnimations )

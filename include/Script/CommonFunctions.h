@@ -19,8 +19,12 @@ extern "C"
 	// Set renderer
 	BH_DLL_EXPORT void SetRenderer( BH::Renderer * renderer );
 
-	// Set mesh manager
+	// Set model manager
 	BH_DLL_EXPORT void SetModelManager( BH::ModelManager * modelManager );
+
+	// Set animation controller manager
+	BH_DLL_EXPORT void 
+		SetAnimationControllerManager( BH::AnimationControllerManager * animationControllerManager );
 
 	// Set texture manager
 	BH_DLL_EXPORT void SetTextureManager( BH::TextureManager * textureManager );
@@ -30,6 +34,12 @@ extern "C"
 
 	// Set collision manager
 	BH_DLL_EXPORT void SetCollisionManager( BH::CollisionManager * collisionManager );
+
+	// Create animation controller
+	BH_DLL_EXPORT BH::s32 CreateAnimationController( const BH::Char * model );
+
+	// Delete animation controller
+	BH_DLL_EXPORT void DeleteAnimationController( BH::s32 id );
 
 	// Draw instance
 	BH_DLL_EXPORT void DrawInstance( BH::f32 posX,	

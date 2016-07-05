@@ -12,7 +12,7 @@ namespace BH
 	class AnimationControllerManager : public GameComponent, public IUpdatable
 	{
 	public:
-		typedef u32 AnimationControllerID;
+		typedef s32 AnimationControllerID;
 		typedef std::unordered_map<AnimationControllerID, AnimationController *> AnimationControllerList;
 		typedef std::vector<AnimationControllerID> UnusedIDList;
 
