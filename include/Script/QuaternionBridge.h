@@ -1,6 +1,7 @@
 #ifndef BH_QUATERNION_BRIDGE_H
 #define BH_QUATERNION_BRIDGE_H
 
+#include "Platform/Platform.h"
 #include "Core/CoreEssential.h"
 #include "Platform/Quaternion.h"
 
@@ -10,61 +11,61 @@ extern "C"
 #endif
 
 	// Create quaternion
-	__declspec( dllexport ) BH::Quaternion * CreateQuaternion();
+	BH_DLL_EXPORT BH::Quaternion * CreateQuaternion();
 
 	// Create fill quaternion
-	__declspec( dllexport ) BH::Quaternion * CreateValQuaternion( float x, float y, float z, float w );
+	BH_DLL_EXPORT BH::Quaternion * CreateValQuaternion( float x, float y, float z, float w );
 
 	// Create quaternion from vector
-	__declspec( dllexport ) BH::Quaternion * CreateVectorQuaternion( const BH::Vector3f * v, float scalar );
+	BH_DLL_EXPORT BH::Quaternion * CreateVectorQuaternion( const BH::Vector3f * v, float scalar );
 
 	// Create copy quaternion
-	__declspec( dllexport ) BH::Quaternion * CreateCopyQuaternion( const BH::Quaternion * q );
+	BH_DLL_EXPORT BH::Quaternion * CreateCopyQuaternion( const BH::Quaternion * q );
 
 	// Destroy quaternion
-	__declspec( dllexport ) void DestroyQuaternion( BH::Quaternion * q );
+	BH_DLL_EXPORT void DestroyQuaternion( BH::Quaternion * q );
 
 	// Assignment functions
-	__declspec( dllexport ) void AssignQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
-	__declspec( dllexport ) void PlusAssignQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
-	__declspec( dllexport ) void MinusAssignQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
-	__declspec( dllexport ) void ScaleAssignQuaternion( BH::Quaternion * dest, float s );
-	__declspec( dllexport ) void MulAssignQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
-	__declspec( dllexport ) void DivAssignQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
+	BH_DLL_EXPORT void AssignQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
+	BH_DLL_EXPORT void PlusAssignQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
+	BH_DLL_EXPORT void MinusAssignQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
+	BH_DLL_EXPORT void ScaleAssignQuaternion( BH::Quaternion * dest, float s );
+	BH_DLL_EXPORT void MulAssignQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
+	BH_DLL_EXPORT void DivAssignQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
 
 	// Operator functions
-	__declspec( dllexport ) void UnaryQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
-	__declspec( dllexport ) bool EqualityQuaternion( const BH::Quaternion * lhs, const BH::Quaternion * rhs );
-	__declspec( dllexport ) bool NotEqualityQuaternion( const BH::Quaternion * lhs, const BH::Quaternion * rhs );
-	__declspec( dllexport ) void PlusQuaternion ( BH::Quaternion * dest, const BH::Quaternion * lhs, const BH::Quaternion * rhs );
-	__declspec( dllexport ) void MinusQuaternion ( BH::Quaternion * dest, const BH::Quaternion * lhs, const BH::Quaternion * rhs );
-	__declspec( dllexport ) void MulQuaternion ( BH::Quaternion * dest, const BH::Quaternion * lhs, const BH::Quaternion * rhs );
-	__declspec( dllexport ) void RotVecQuaternion ( BH::Vector3f * dest, const BH::Quaternion * lhs, const BH::Vector3f * rhs );
-	__declspec( dllexport ) void DivQuaternion ( BH::Quaternion * dest, const BH::Quaternion * lhs, const BH::Quaternion * rhs );
+	BH_DLL_EXPORT void UnaryQuaternion( BH::Quaternion * dest, const BH::Quaternion * src );
+	BH_DLL_EXPORT bool EqualityQuaternion( const BH::Quaternion * lhs, const BH::Quaternion * rhs );
+	BH_DLL_EXPORT bool NotEqualityQuaternion( const BH::Quaternion * lhs, const BH::Quaternion * rhs );
+	BH_DLL_EXPORT void PlusQuaternion ( BH::Quaternion * dest, const BH::Quaternion * lhs, const BH::Quaternion * rhs );
+	BH_DLL_EXPORT void MinusQuaternion ( BH::Quaternion * dest, const BH::Quaternion * lhs, const BH::Quaternion * rhs );
+	BH_DLL_EXPORT void MulQuaternion ( BH::Quaternion * dest, const BH::Quaternion * lhs, const BH::Quaternion * rhs );
+	BH_DLL_EXPORT void RotVecQuaternion ( BH::Vector3f * dest, const BH::Quaternion * lhs, const BH::Vector3f * rhs );
+	BH_DLL_EXPORT void DivQuaternion ( BH::Quaternion * dest, const BH::Quaternion * lhs, const BH::Quaternion * rhs );
 
 	// Utility functions
-	__declspec( dllexport ) float LengthQuaternion( const BH::Quaternion * q );
-	__declspec( dllexport ) float LengthSqQuaternion( const BH::Quaternion * q );
-	__declspec( dllexport ) void NormalizeQuaternion( BH::Quaternion * q );
-	__declspec( dllexport ) void ConjugateQuaternion( BH::Quaternion * q );
-	__declspec( dllexport ) void InverseQuaternion( BH::Quaternion * q );
-	__declspec( dllexport ) float DotQuaternion( const BH::Quaternion * lhs, const BH::Quaternion * rhs );
-	__declspec( dllexport ) void CrossQuaternion( BH::Quaternion * dest, const BH::Quaternion * lhs, const BH::Quaternion * rhs );
-	__declspec( dllexport ) void AxisAngleQuaternion( BH::Quaternion * dest, const BH::Vector3f * axis, float angle );
-	__declspec( dllexport ) void YawPitchRollQuaternion( BH::Quaternion * dest, float yaw, float pitch, float roll );
-	__declspec( dllexport ) void LerpQuaternion( BH::Quaternion * dest, const BH::Quaternion * q1, const BH::Quaternion * q2, float t );
-	__declspec( dllexport ) void SlerpQuaternion( BH::Quaternion * dest, const BH::Quaternion * q1, const BH::Quaternion * q2, float t );
-	__declspec( dllexport ) void ConcatenateQuaternion( BH::Quaternion * dest, const BH::Quaternion * q1, const BH::Quaternion * q2 );
+	BH_DLL_EXPORT float LengthQuaternion( const BH::Quaternion * q );
+	BH_DLL_EXPORT float LengthSqQuaternion( const BH::Quaternion * q );
+	BH_DLL_EXPORT void NormalizeQuaternion( BH::Quaternion * q );
+	BH_DLL_EXPORT void ConjugateQuaternion( BH::Quaternion * q );
+	BH_DLL_EXPORT void InverseQuaternion( BH::Quaternion * q );
+	BH_DLL_EXPORT float DotQuaternion( const BH::Quaternion * lhs, const BH::Quaternion * rhs );
+	BH_DLL_EXPORT void CrossQuaternion( BH::Quaternion * dest, const BH::Quaternion * lhs, const BH::Quaternion * rhs );
+	BH_DLL_EXPORT void AxisAngleQuaternion( BH::Quaternion * dest, const BH::Vector3f * axis, float angle );
+	BH_DLL_EXPORT void YawPitchRollQuaternion( BH::Quaternion * dest, float yaw, float pitch, float roll );
+	BH_DLL_EXPORT void LerpQuaternion( BH::Quaternion * dest, const BH::Quaternion * q1, const BH::Quaternion * q2, float t );
+	BH_DLL_EXPORT void SlerpQuaternion( BH::Quaternion * dest, const BH::Quaternion * q1, const BH::Quaternion * q2, float t );
+	BH_DLL_EXPORT void ConcatenateQuaternion( BH::Quaternion * dest, const BH::Quaternion * q1, const BH::Quaternion * q2 );
 
 	// Getter & Setter functions
-	__declspec( dllexport ) float GetXQuaternion( const BH::Quaternion * q );
-	__declspec( dllexport ) float GetYQuaternion( const BH::Quaternion * q );
-	__declspec( dllexport ) float GetZQuaternion( const BH::Quaternion * q );
-	__declspec( dllexport ) float GetWQuaternion( const BH::Quaternion * q );
-	__declspec( dllexport ) void SetXQuaternion( BH::Quaternion * q, float val );
-	__declspec( dllexport ) void SetYQuaternion( BH::Quaternion * q, float val );
-	__declspec( dllexport ) void SetZQuaternion( BH::Quaternion * q, float val );
-	__declspec( dllexport ) void SetWQuaternion( BH::Quaternion * q, float val );
+	BH_DLL_EXPORT float GetXQuaternion( const BH::Quaternion * q );
+	BH_DLL_EXPORT float GetYQuaternion( const BH::Quaternion * q );
+	BH_DLL_EXPORT float GetZQuaternion( const BH::Quaternion * q );
+	BH_DLL_EXPORT float GetWQuaternion( const BH::Quaternion * q );
+	BH_DLL_EXPORT void SetXQuaternion( BH::Quaternion * q, float val );
+	BH_DLL_EXPORT void SetYQuaternion( BH::Quaternion * q, float val );
+	BH_DLL_EXPORT void SetZQuaternion( BH::Quaternion * q, float val );
+	BH_DLL_EXPORT void SetWQuaternion( BH::Quaternion * q, float val );
 
 #ifdef __cplusplus
 }

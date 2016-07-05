@@ -15,14 +15,18 @@
 #endif
 
 #ifdef BH_CPLUSPLUS11
-#define BH_NOEXCEPT noexcept
-#define BH_CONSTEXPR constexpr
+#define BH_NOEXCEPT		noexcept
+#define BH_CONSTEXPR	constexpr
 #else
 #define BH_NOEXCEPT
-#define BH_CONSTEXPR const
+#define BH_CONSTEXPR	const
 #endif
 
 // Using window fast call
 #define BH_FASTCALL		__fastcall
+
+// Using window dllexport
+#define BH_DLL_EXPORT	__declspec( dllexport )
+#define BH_DLL_IMPORT	__declspec( dllimport )
 
 #endif

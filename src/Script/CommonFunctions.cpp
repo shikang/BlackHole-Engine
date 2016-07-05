@@ -15,6 +15,7 @@
 #include "Core/Renderer.h"
 #include "Core/InputManager.h"
 #include "Core/ModelManager.h"
+#include "Core/AnimationControllerManager.h"
 #include "Core/TextureManager.h"
 #include "Core/MaterialManager.h"
 #include "Core/GameStateManager.h"
@@ -24,11 +25,12 @@
 #include "Core/Math.h"
 #include "Core/OBB.h"
 
-static BH::Renderer *			sRenderer			= nullptr;
-static BH::ModelManager *		sModelManager		= nullptr;
-static BH::TextureManager *		sTextureManager		= nullptr;
-static BH::MaterialManager *	sMaterialManager	= nullptr;
-static BH::CollisionManager *	sCollisionManager	= nullptr;
+static BH::Renderer *					sRenderer					= nullptr;
+static BH::ModelManager *				sModelManager				= nullptr;
+static BH::AnimationControllerManager * sAnimationControllerManager = nullptr;
+static BH::TextureManager *				sTextureManager				= nullptr;
+static BH::MaterialManager *			sMaterialManager			= nullptr;
+static BH::CollisionManager *			sCollisionManager			= nullptr;
 
 static BH::OBB GetOBBFromAABB( const BH::AABB & aabb, const BH::Vector3f & pos, const BH::Vector3f & size, const BH::Vector3f & rotation )
 {
@@ -66,42 +68,42 @@ extern "C"
 {
 #endif
 
-	__declspec( dllexport ) void StartProfiler( const BH::Char * profiler_name )
+	BH_DLL_EXPORT void StartProfiler( const BH::Char * profiler_name )
 	{
 		START_PROFILE( profiler_name );
 	}
 
-	__declspec( dllexport ) void StopProfiler( const BH::Char * profiler_name )
+	BH_DLL_EXPORT void StopProfiler( const BH::Char * profiler_name )
 	{
 		END_PROFILE( profiler_name );
 	}
 
-	__declspec( dllexport ) void SetRenderer( BH::Renderer * renderer )
+	BH_DLL_EXPORT void SetRenderer( BH::Renderer * renderer )
 	{
 		sRenderer = renderer;
 	}
 
-	__declspec( dllexport ) void SetModelManager( BH::ModelManager * modelManager )
+	BH_DLL_EXPORT void SetModelManager( BH::ModelManager * modelManager )
 	{
 		sModelManager = modelManager;
 	}
 	
-	__declspec( dllexport ) void SetTextureManager( BH::TextureManager * textureManager )
+	BH_DLL_EXPORT void SetTextureManager( BH::TextureManager * textureManager )
 	{
 		sTextureManager = textureManager;
 	}
 	
-	__declspec( dllexport ) void SetMaterialManager( BH::MaterialManager * materialManager )
+	BH_DLL_EXPORT void SetMaterialManager( BH::MaterialManager * materialManager )
 	{
 		sMaterialManager = materialManager;
 	}
 
-	__declspec( dllexport ) void SetCollisionManager( BH::CollisionManager * collisionManager )
+	BH_DLL_EXPORT void SetCollisionManager( BH::CollisionManager * collisionManager )
 	{
 		sCollisionManager = collisionManager;
 	}
 
-	__declspec( dllexport ) void DrawInstance( BH::f32 posX,	
+	BH_DLL_EXPORT void DrawInstance( BH::f32 posX,	
 											   BH::f32 posY,
 											   BH::f32 posZ,
 											   BH::f32 scaleX,
@@ -125,7 +127,7 @@ extern "C"
 								 pModel, pMaterial );
 	}
 
-	__declspec( dllexport ) void DrawGlobalLight( BH::f32 posX,	
+	BH_DLL_EXPORT void DrawGlobalLight( BH::f32 posX,	
 											      BH::f32 posY,
 											      BH::f32 posZ,
 											      BH::f32 colorR,
@@ -140,7 +142,7 @@ extern "C"
 											   BH::Vector4f( colorR, colorG, colorB, colorA ) ) );
 	}
 
-	__declspec( dllexport ) void DrawDirectionalLight( BH::f32 posX,	
+	BH_DLL_EXPORT void DrawDirectionalLight( BH::f32 posX,	
 													   BH::f32 posY,
 													   BH::f32 posZ,
 													   BH::f32 colorR,
@@ -163,7 +165,7 @@ extern "C"
 															   BH::Vector3f( width, height, depth ) ) );
 	}
 
-	__declspec( dllexport ) void DrawLocalLight( BH::f32 posX,	
+	BH_DLL_EXPORT void DrawLocalLight( BH::f32 posX,	
 											     BH::f32 posY,
 											     BH::f32 posZ,
 											     BH::f32 colorR,
@@ -180,7 +182,7 @@ extern "C"
 												   radius ) );
 	}
 
-	__declspec( dllexport ) void AddStaticOBB( const BH::Char * name,
+	BH_DLL_EXPORT void AddStaticOBB( const BH::Char * name,
 											   BH::f32 posX,	
 											   BH::f32 posY,
 											   BH::f32 posZ,
@@ -206,7 +208,7 @@ extern "C"
 	}
 
 	// Update Static OBB
-	__declspec( dllexport ) void UpdateStaticOBB( const BH::Char * name,
+	BH_DLL_EXPORT void UpdateStaticOBB( const BH::Char * name,
 												  BH::f32 posX,	
 												  BH::f32 posY,
 												  BH::f32 posZ,
@@ -232,7 +234,7 @@ extern "C"
 	}
 
 	// Remove Static OBB
-	__declspec( dllexport ) void RemoveStaticOBB( const BH::Char * name )
+	BH_DLL_EXPORT void RemoveStaticOBB( const BH::Char * name )
 	{
 		if ( !sCollisionManager )
 			return;
@@ -241,7 +243,7 @@ extern "C"
 	}
 
 	// Add Moving OBB
-	__declspec( dllexport ) void AddMovingOBB( const BH::Char * name,
+	BH_DLL_EXPORT void AddMovingOBB( const BH::Char * name,
 											   BH::f32 posX,	
 											   BH::f32 posY,
 											   BH::f32 posZ,
@@ -267,7 +269,7 @@ extern "C"
 	}
 
 	// Update Moving OBB
-	__declspec( dllexport ) void UpdateMovingOBB( const BH::Char * name,
+	BH_DLL_EXPORT void UpdateMovingOBB( const BH::Char * name,
 												  BH::f32 posX,	
 												  BH::f32 posY,
 												  BH::f32 posZ,
@@ -293,7 +295,7 @@ extern "C"
 	}
 
 	// Remove Moving OBB
-	__declspec( dllexport ) void RemoveMovingOBB( const BH::Char * name )
+	BH_DLL_EXPORT void RemoveMovingOBB( const BH::Char * name )
 	{
 		if ( !sCollisionManager )
 			return;

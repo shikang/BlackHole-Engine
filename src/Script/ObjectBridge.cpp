@@ -13,7 +13,7 @@ extern "C"
 {
 #endif
 
-	__declspec( dllexport ) const BH::Char * GetScriptComponent( BH::Object * object, const BH::Char * type )
+	BH_DLL_EXPORT const BH::Char * GetScriptComponent( BH::Object * object, const BH::Char * type )
 	{
 		std::vector<BH::ScriptComponent *> components = object->GetAllComponent<BH::ScriptComponent>();
 
