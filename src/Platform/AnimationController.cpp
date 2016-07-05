@@ -2,7 +2,7 @@
 #include "Platform/Stdafx.h"
 
 #include "Platform/AnimationController.h"
-#include "Platform/Skeleton.h"
+#include "Core/Model.h"
 
 namespace BH
 {
@@ -33,6 +33,16 @@ namespace BH
 		}
 
 		mSkeleton->ProcessAnimationGraph( mElapsedTime, mBoneMatrixBuffer, *mCurrentAnimation, mAnimationTrackBuffer );
+	}
+
+	void AnimationController::InitialiseWithModel( const Model * model )
+	{
+		SetSkeleton( &( model->mSkeleton ) );
+
+		for ( const Animation & anim : model->mAnimations )
+		{
+			AddAnimation( &anim );
+		}
 	}
 
 	void AnimationController::AddAnimation( const Animation * animation )

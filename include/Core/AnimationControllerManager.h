@@ -5,15 +5,23 @@
 #include "Core/FunctionsFramework.h"
 #include "Core/GameComponent.h"
 #include "Core/SystemManager.h"
+#include "Core/IUpdatable.h"
 
 namespace BH
 {
-	class AnimationControllerManager : public GameComponent
+	class AnimationControllerManager : public GameComponent, public IUpdatable
 	{
 	public:
-		typedef std::set< AnimationController * > AnimationControllerList;
+		typedef u32 AnimationControllerID;
+		typedef std::unordered_map<AnimationControllerID, AnimationController *> AnimationControllerList;
+		typedef std::vector<AnimationControllerID> UnusedIDList;
+
+		static const AnimationControllerID INVALID_ID;
 
 		GETTER_AUTO_CREF( AnimationControllerList, ControllerList );
+
+	private:
+		static const AnimationControllerID STARTING_ID;
 
 	public:
 		// Constructor
@@ -25,18 +33,32 @@ namespace BH
 		// Initialise
 		void Initialise() override;
 
+		// Update
+		void Update( f32 dt ) override;
+
 		// Shutdown
 		void Shutdown() override;
 
 	public:
-		// Create Animation Controller
-		AnimationController * CreateController();
+		// Create Animation Controller for model, return id
+		AnimationControllerID CreateController( Model * model );
 
-		// Delete Animation Controller
-		void DeleteController( AnimationController * controller );
+		// Delete Animation Controller by id
+		void DeleteController( AnimationControllerID id );
+
+		// Set animation
+		void SetAnimation( AnimationControllerID id, const String & animation );
+
+		// Set animation speed
+		void SetAnimationSpeed( AnimationControllerID id, f32 speed );
+
+	private:
+		AnimationControllerID GetID();
 
 	private:
 		AnimationControllerList mControllerList;
+		AnimationControllerID mNewID;
+		UnusedIDList mUnusedIDList;
 
 	};
 }

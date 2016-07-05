@@ -21,12 +21,15 @@ namespace BH
 		// Shutdown
 		void Shutdown();
 
+		inline bool IsAnimatable() const { return !mAnimations.empty() && mSkeleton.HasBones(); };
+
 	private:
 		Mesh mMesh;
 		Skeleton mSkeleton;
 		std::vector< Animation > mAnimations;
 
 		friend class ModelManager;
+		friend class AnimationController;
 		friend class Renderer;
 	};
 }

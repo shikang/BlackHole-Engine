@@ -29,6 +29,9 @@ namespace BH
 	public:
 		inline void SetAnimationSpeed( f32 speed ) { mAnimationSpeed = speed; }
 
+		// Initialise with model, feed all animations and skeleton to controller 
+		void InitialiseWithModel( const Model * model );
+
 		// Add animation
 		void AddAnimation( const Animation * animation );
 
