@@ -50,10 +50,20 @@ namespace BHScriptCompiler
 #endif
             // @cleanup: Need a set directory function
             string[] engineScripts = Directory.GetFiles( "../scripts/Engine" );
+            string[] inBuiltScripts = Directory.GetFiles( "../scripts/InBuilt" );
             foreach( string fileName in engineScripts )
             {
 #if ENABLE_CSCOMPILER_LOG
                 Console.WriteLine( "Adding Engine Script: {0}", fileName );
+#endif
+                string code = System.IO.File.ReadAllText( fileName );
+                AddCodeToCompile( code );
+            }
+
+            foreach( string fileName in inBuiltScripts )
+            {
+#if ENABLE_CSCOMPILER_LOG
+                Console.WriteLine( "Adding In Built Script: {0}", fileName );
 #endif
                 string code = System.IO.File.ReadAllText( fileName );
                 AddCodeToCompile( code );
@@ -214,7 +224,11 @@ namespace BHScriptCompiler
                                        "KeyDelegate",
                                        "MouseDelegate",
                                        "OnCollision",
-                                       "StationaryOnCollision"
+                                       "StationaryOnCollision",
+                                       "BoxCollider",
+                                       "ModelComponent",
+                                       "StationaryBoxCollider",
+                                       "TransformComponent"
                                    };
 
             return engineTypes;

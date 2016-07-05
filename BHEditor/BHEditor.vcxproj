@@ -99,7 +99,11 @@ copy "$(SolutionDir)BHScriptCompiler\Model.cs" "../scripts/Engine"
 copy "$(SolutionDir)BHScriptCompiler\Texture.cs" "../scripts/Engine"
 copy "$(SolutionDir)BHScriptCompiler\Material.cs" "../scripts/Engine"
 copy "$(SolutionDir)BHScriptCompiler\EventManager.cs" "../scripts/Engine"
-copy "$(SolutionDir)BHScriptCompiler\KeyBind.cs" "../scripts/Engine"</Command>
+copy "$(SolutionDir)BHScriptCompiler\KeyBind.cs" "../scripts/Engine"
+copy "$(SolutionDir)BHScriptCompiler\BoxCollider.cs" "../scripts/InBuilt"
+copy "$(SolutionDir)BHScriptCompiler\ModelComponent.cs" "../scripts/InBuilt"
+copy "$(SolutionDir)BHScriptCompiler\StationaryBoxCollider.cs" "../scripts/InBuilt"
+copy "$(SolutionDir)BHScriptCompiler\TransformComponent.cs" "../scripts/InBuilt"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -157,7 +161,11 @@ copy "$(SolutionDir)BHScriptCompiler\Model.cs" "../scripts/Engine"
 copy "$(SolutionDir)BHScriptCompiler\Texture.cs" "../scripts/Engine"
 copy "$(SolutionDir)BHScriptCompiler\Material.cs" "../scripts/Engine"
 copy "$(SolutionDir)BHScriptCompiler\EventManager.cs" "../scripts/Engine"
-copy "$(SolutionDir)BHScriptCompiler\KeyBind.cs" "../scripts/Engine"</Command>
+copy "$(SolutionDir)BHScriptCompiler\KeyBind.cs" "../scripts/Engine"
+copy "$(SolutionDir)BHScriptCompiler\BoxCollider.cs" "../scripts/InBuilt"
+copy "$(SolutionDir)BHScriptCompiler\ModelComponent.cs" "../scripts/InBuilt"
+copy "$(SolutionDir)BHScriptCompiler\StationaryBoxCollider.cs" "../scripts/InBuilt"
+copy "$(SolutionDir)BHScriptCompiler\TransformComponent.cs" "../scripts/InBuilt"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
