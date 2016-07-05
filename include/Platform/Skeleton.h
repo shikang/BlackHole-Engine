@@ -24,6 +24,8 @@ namespace BH
 		// Destory skeleton
 		void Shutdown();
 
+		inline bool HasBones() const { return !mBones.empty(); }
+
 	private:
 		// Initialise roots
 		void InitialiseBones();
