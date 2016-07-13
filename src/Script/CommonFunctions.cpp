@@ -126,16 +126,17 @@ extern "C"
 	}
 
 	BH_DLL_EXPORT void DrawInstance( BH::f32 posX,	
-											   BH::f32 posY,
-											   BH::f32 posZ,
-											   BH::f32 scaleX,
-											   BH::f32 scaleY,
-											   BH::f32 scaleZ,
-											   BH::f32 rotX,
-											   BH::f32 rotY,
-											   BH::f32 rotZ,
-											   const BH::Char * model,			
-											   const BH::Char * material )
+									 BH::f32 posY,
+									 BH::f32 posZ,
+									 BH::f32 scaleX,
+									 BH::f32 scaleY,
+									 BH::f32 scaleZ,
+									 BH::f32 rotX,
+									 BH::f32 rotY,
+									 BH::f32 rotZ,
+									 const BH::Char * model,			
+									 const BH::Char * material,
+									 BH::s32 animation )
 	{
 		if ( !sRenderer || !sModelManager || !sTextureManager || !sMaterialManager )
 			return;
@@ -143,19 +144,23 @@ extern "C"
 		BH::Model * pModel = sModelManager->GetModel( model );
 		BH::Material * pMaterial = sMaterialManager->GetMaterial( material );
 
+		BH::AnimationControllerManager::AnimationControllerList animations = sAnimationControllerManager->GetControllerList();
+		BH::AnimationControllerManager::AnimationControllerList::iterator it = animations.find( animation );
+		const BH::AnimationController * ac = it == animations.end() ? nullptr : it->second;
+
 		sRenderer->DrawInstance( BH::Vector3f( posX, posY, posZ ),
 								 BH::Vector3f( scaleX, scaleY, scaleZ ), 
 								 BH::Vector3f( BH::Math::DegToRad( rotX ), BH::Math::DegToRad( rotY ), BH::Math::DegToRad( rotZ ) ), 
-								 pModel, pMaterial );
+								 pModel, pMaterial, ac );
 	}
 
 	BH_DLL_EXPORT void DrawGlobalLight( BH::f32 posX,	
-											      BH::f32 posY,
-											      BH::f32 posZ,
-											      BH::f32 colorR,
-											      BH::f32 colorG,
-											      BH::f32 colorB,
-											      BH::f32 colorA )
+										BH::f32 posY,
+										BH::f32 posZ,
+										BH::f32 colorR,
+										BH::f32 colorG,
+										BH::f32 colorB,
+										BH::f32 colorA )
 	{
 		if ( !sRenderer )
 			return;
@@ -165,18 +170,18 @@ extern "C"
 	}
 
 	BH_DLL_EXPORT void DrawDirectionalLight( BH::f32 posX,	
-													   BH::f32 posY,
-													   BH::f32 posZ,
-													   BH::f32 colorR,
-													   BH::f32 colorG,
-													   BH::f32 colorB,
-													   BH::f32 colorA,
-													   BH::f32 dirX,
-													   BH::f32 dirY,
-													   BH::f32 dirZ,
-													   BH::f32 width,
-													   BH::f32 height,
-													   BH::f32 depth )
+											 BH::f32 posY,
+											 BH::f32 posZ,
+											 BH::f32 colorR,
+											 BH::f32 colorG,
+											 BH::f32 colorB,
+											 BH::f32 colorA,
+											 BH::f32 dirX,
+											 BH::f32 dirY,
+											 BH::f32 dirZ,
+											 BH::f32 width,
+											 BH::f32 height,
+											 BH::f32 depth )
 	{
 		if ( !sRenderer )
 			return;
@@ -188,13 +193,13 @@ extern "C"
 	}
 
 	BH_DLL_EXPORT void DrawLocalLight( BH::f32 posX,	
-											     BH::f32 posY,
-											     BH::f32 posZ,
-											     BH::f32 colorR,
-											     BH::f32 colorG,
-											     BH::f32 colorB,
-											     BH::f32 colorA,
-												 BH::f32 radius )
+									   BH::f32 posY,
+									   BH::f32 posZ,
+									   BH::f32 colorR,
+									   BH::f32 colorG,
+									   BH::f32 colorB,
+									   BH::f32 colorA,
+									   BH::f32 radius )
 	{
 		if ( !sRenderer )
 			return;
@@ -205,18 +210,18 @@ extern "C"
 	}
 
 	BH_DLL_EXPORT void AddStaticOBB( const BH::Char * name,
-											   BH::f32 posX,	
-											   BH::f32 posY,
-											   BH::f32 posZ,
-											   BH::f32 scaleX,
-											   BH::f32 scaleY,
-											   BH::f32 scaleZ,
-											   BH::f32 rotX,
-											   BH::f32 rotY,
-											   BH::f32 rotZ,
-											   const BH::Char * model,
-											   bool passable,
-											   const BH::Char * tag )
+									 BH::f32 posX,	
+									 BH::f32 posY,
+									 BH::f32 posZ,
+									 BH::f32 scaleX,
+									 BH::f32 scaleY,
+									 BH::f32 scaleZ,
+									 BH::f32 rotX,
+									 BH::f32 rotY,
+									 BH::f32 rotZ,
+									 const BH::Char * model,
+									 bool passable,
+									 const BH::Char * tag )
 	{
 		if ( !sCollisionManager || !sModelManager )
 			return;
@@ -231,18 +236,18 @@ extern "C"
 
 	// Update Static OBB
 	BH_DLL_EXPORT void UpdateStaticOBB( const BH::Char * name,
-												  BH::f32 posX,	
-												  BH::f32 posY,
-												  BH::f32 posZ,
-												  BH::f32 scaleX,
-												  BH::f32 scaleY,
-												  BH::f32 scaleZ,
-												  BH::f32 rotX,
-												  BH::f32 rotY,
-												  BH::f32 rotZ,
-												  const BH::Char * model,
-												  bool passable,
-												  const BH::Char * tag )
+										BH::f32 posX,	
+										BH::f32 posY,
+										BH::f32 posZ,
+										BH::f32 scaleX,
+										BH::f32 scaleY,
+										BH::f32 scaleZ,
+										BH::f32 rotX,
+										BH::f32 rotY,
+										BH::f32 rotZ,
+										const BH::Char * model,
+										bool passable,
+										const BH::Char * tag )
 	{
 		if ( !sCollisionManager || !sModelManager )
 			return;
@@ -266,18 +271,18 @@ extern "C"
 
 	// Add Moving OBB
 	BH_DLL_EXPORT void AddMovingOBB( const BH::Char * name,
-											   BH::f32 posX,	
-											   BH::f32 posY,
-											   BH::f32 posZ,
-											   BH::f32 scaleX,
-											   BH::f32 scaleY,
-											   BH::f32 scaleZ,
-											   BH::f32 rotX,
-											   BH::f32 rotY,
-											   BH::f32 rotZ,
-											   const BH::Char * model,
-											   bool passable,
-											   const BH::Char * tag )
+									 BH::f32 posX,	
+									 BH::f32 posY,
+									 BH::f32 posZ,
+									 BH::f32 scaleX,
+									 BH::f32 scaleY,
+									 BH::f32 scaleZ,
+									 BH::f32 rotX,
+									 BH::f32 rotY,
+									 BH::f32 rotZ,
+									 const BH::Char * model,
+									 bool passable,
+									 const BH::Char * tag )
 	{
 		if ( !sCollisionManager || !sModelManager )
 			return;
@@ -292,18 +297,18 @@ extern "C"
 
 	// Update Moving OBB
 	BH_DLL_EXPORT void UpdateMovingOBB( const BH::Char * name,
-												  BH::f32 posX,	
-												  BH::f32 posY,
-												  BH::f32 posZ,
-												  BH::f32 scaleX,
-												  BH::f32 scaleY,
-												  BH::f32 scaleZ,
-												  BH::f32 rotX,
-												  BH::f32 rotY,
-												  BH::f32 rotZ,
-												  const BH::Char * model,
-												  bool passable,
-												  const BH::Char * tag )
+										BH::f32 posX,	
+										BH::f32 posY,
+										BH::f32 posZ,
+										BH::f32 scaleX,
+										BH::f32 scaleY,
+										BH::f32 scaleZ,
+										BH::f32 rotX,
+										BH::f32 rotY,
+										BH::f32 rotZ,
+										const BH::Char * model,
+										bool passable,
+										const BH::Char * tag )
 	{
 		if ( !sCollisionManager || !sModelManager )
 			return;

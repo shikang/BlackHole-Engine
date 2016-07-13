@@ -68,9 +68,13 @@ namespace BH
 		Vector3f t;
 		Quaternion r;
 
+		//time = 0.0f;
+		f32 angle = time / anim.mDuration * 6.28319f;
+
 		anim.CalculateTransform( time, bone.boneIndex, t, r, trackData[bone.boneIndex] );
 
-		Matrix4 localTransform = Matrix4::CreateTranslation( t ) *  Matrix4::CreateFromQuaternion( r );
+		//Matrix4 localTransform = Matrix4::CreateTranslation(t) * Matrix4::CreateFromQuaternion(r);360
+		Matrix4 localTransform = Matrix4::CreateTranslation(t) * Matrix4::CreateFromYawPitchRoll( angle, 0.0f, 0.0f );
 		//Matrix4 modelTransform = localTransform  * parentTransform;
 		Matrix4 modelTransform = parentTransform * localTransform;
 

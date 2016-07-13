@@ -82,7 +82,7 @@ namespace BH
 										animGeoShaderMacros );
 
 		// Geometry pass - Animation buffer
-		mShaders["AnimGeo"].CreaterBuffer( VertexShader, 0, sizeof( Matrix4 ) * MAX_BONE_MATRICES );
+		mShaders["AnimGeo"].CreaterBuffer( VertexShader, 1, sizeof( Matrix4 ) * MAX_BONE_MATRICES );
 
 		// Geometry pass - Material buffer
 		mShaders["AnimGeo"].CreaterBuffer( PixelShader, 0, sizeof( Vector3f ) + sizeof( f32 ) );
@@ -444,10 +444,11 @@ namespace BH
 								 const Vector3f & scale,
 								 const Vector3f & rotation,
 								 const Model * model,
-								 const Material * material )
+								 const Material * material,
+								 const AnimationController * anim )
 	{
 		Matrix4 transform = Matrix4::CreateTranslation( position ) * Matrix4::CreateFromYawPitchRoll( rotation.y, rotation.x, rotation.z ) * Matrix4::CreateScale( scale );
-		DrawInstance( transform, model, material );
+		DrawInstance( transform, model, material, anim );
 	}
 
 	void Renderer::DrawGlobalLight( const Light & light )

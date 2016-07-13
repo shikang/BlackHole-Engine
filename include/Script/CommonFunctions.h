@@ -52,7 +52,8 @@ extern "C"
 									 BH::f32 rotY,
 									 BH::f32 rotZ,
 									 const BH::Char * model,		
-									 const BH::Char * material );
+									 const BH::Char * material,
+									 BH::s32 animation );
 
 	// Draw global light
 	BH_DLL_EXPORT void DrawGlobalLight( BH::f32 posX,	

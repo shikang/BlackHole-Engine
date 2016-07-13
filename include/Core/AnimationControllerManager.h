@@ -59,7 +59,6 @@ namespace BH
 		AnimationControllerList mControllerList;
 		AnimationControllerID mNewID;
 		UnusedIDList mUnusedIDList;
-
 	};
 }
 

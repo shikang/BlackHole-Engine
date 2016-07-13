@@ -307,9 +307,9 @@
                     <Float32 z="-1.63333"/>
                 </BHVector3f>
                 <BHVector3f>
-                    <Float32 x="0.3"/>
-                    <Float32 y="0.3"/>
-                    <Float32 z="0.3"/>
+                    <Float32 x="1"/>
+                    <Float32 y="1"/>
+                    <Float32 z="1"/>
                 </BHVector3f>
                 <BHVector3f>
                     <Float32 x="0"/>
@@ -325,7 +325,7 @@
             </ScriptType>
             <ModelComponent>
                 <BHModel>
-                    <String Model="UFO"/>
+                    <String Model="Bomber"/>
                 </BHModel>
                 <BHMaterial>
                     <String Material="Plastic"/>
@@ -375,8 +375,8 @@
                     <Float32 z="1"/>
                 </BHVector3f>
                 <BHVector3f>
-                    <Float32 x="0"/>
-                    <Float32 y="0"/>
+                    <Float32 x="306.001"/>
+                    <Float32 y="306.001"/>
                     <Float32 z="0"/>
                 </BHVector3f>
                 <BHObject/>

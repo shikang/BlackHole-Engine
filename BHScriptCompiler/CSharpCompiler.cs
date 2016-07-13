@@ -224,7 +224,15 @@ namespace BHScriptCompiler
                                        "KeyDelegate",
                                        "MouseDelegate",
                                        "OnCollision",
-                                       "StationaryOnCollision",
+                                       "StationaryOnCollision"
+                                   };
+
+            return engineTypes;
+        }
+
+        public string[] GetAllInBuiltScriptType()
+        {
+            string[] engineTypes = {
                                        "BoxCollider",
                                        "ModelComponent",
                                        "StationaryBoxCollider",

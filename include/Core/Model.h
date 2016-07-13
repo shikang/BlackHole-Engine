@@ -24,6 +24,7 @@ namespace BH
 		inline bool IsAnimatable() const { return !mAnimations.empty() && mSkeleton.HasBones(); };
 
 	private:
+		String mName;	// Debug purpose
 		Mesh mMesh;
 		Skeleton mSkeleton;
 		std::vector< Animation > mAnimations;

@@ -100,6 +100,16 @@ namespace BHScriptCompiler
             Console.WriteLine( "Calling Class Method: " + mTypeName + "::" + methodName );
 #endif
 
+            /*
+            Console.WriteLine( "Calling Class Method: " + mTypeName + "::" + methodName );
+            Console.Write(methodName + "( ");
+            foreach ( var o in parameters )
+            {
+                Console.Write(o + ",");
+            }
+            Console.WriteLine(")");
+            */
+
             try
             { 
                 mMethods[methodName].Invoke( obj, parameters );
@@ -128,7 +138,9 @@ namespace BHScriptCompiler
         // Set field value
         public void SetValueToField( object obj, string fieldName, object value )
         {
-            foreach( var i in mFields )
+            Console.WriteLine("SetValueToField: " + fieldName + " = " + value);
+
+            foreach ( var i in mFields )
             {
                 if( i.Name == fieldName )
                 {

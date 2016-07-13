@@ -7,12 +7,24 @@ namespace BH
     {
         public void Initialise()
         {
-            mModel.InitialiseModel();
+            
         }
         
         public void Shutdown()
         {
-            mModel.ShutdownModel();
+            if ( mAdd )
+            {
+                mModel.ShutdownModel();
+            }
+        }
+
+        public void Update( float dt )
+        {
+            if ( !mAdd )
+            {
+                mModel.InitialiseModel();
+                mAdd = true;
+            }
         }
         
         public void Draw( float dt )
@@ -21,9 +33,11 @@ namespace BH
           
             CPlusPlusInterface.DrawObject( tc.mPosition, tc.mScale, 
                                            tc.mRotation, mModel.Model, 
-                                           mMaterial.Material );
+                                           mMaterial.Material,
+                                           mModel.GetAnimation() );
         }
-        
+
+        private bool mAdd = false;
         public BHModel mModel = new BHModel( "Up" );
         public BHMaterial mMaterial = new BHMaterial( "Plastic" );
     }

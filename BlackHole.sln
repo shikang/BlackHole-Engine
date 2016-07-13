@@ -103,14 +103,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BHScriptComponent", "BHScri
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CS Scripts", "CS Scripts", "{E1565705-071D-43F2-8791-88E95CA4BE57}"
 	ProjectSection(SolutionItems) = preProject
-		scripts\BoxCollider.cs = scripts\BoxCollider.cs
 		scripts\DummyManager.cs = scripts\DummyManager.cs
 		scripts\LightManager.cs = scripts\LightManager.cs
 		scripts\LightSwitch.cs = scripts\LightSwitch.cs
-		scripts\ModelComponent.cs = scripts\ModelComponent.cs
 		scripts\PlayerControl.cs = scripts\PlayerControl.cs
-		scripts\StationaryBoxCollider.cs = scripts\StationaryBoxCollider.cs
-		scripts\TransformComponent.cs = scripts\TransformComponent.cs
 	EndProjectSection
 EndProject
 Global

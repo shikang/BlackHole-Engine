@@ -19,7 +19,8 @@ namespace BH
                                        mAllScale, 
                                        mAllRot, 
                                        "Sphere",
-                                       dummy.mMaterial.Material );
+                                       dummy.mMaterial.Material,
+                                       (int)BHModel.ANIMATION.INVALID );
       }
     }
     

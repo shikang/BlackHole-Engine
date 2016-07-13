@@ -69,6 +69,7 @@ namespace BH
 			Model * model = new Model();
 			AABB aabb;
 			std::vector<Bone> bones;
+			model->mName = i.GetFileNoExt();
 			mMeshLoader.LoadMeshFromFile( LoadDirectory + i.GetFullFile(), model->mMesh, aabb, bones, model->mAnimations );
 			model->mSkeleton.Initialise( std::move( bones ) );
 			mModelList.insert( std::make_pair( i.GetFileNoExt(), model ) );

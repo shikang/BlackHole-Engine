@@ -641,12 +641,12 @@ namespace BH
 		FbxPose * bindPose = nullptr;
 
 		// If there is a bind pose and default animation
-		if ( poseCount > 0 && scene->GetPose( 0 )->IsBindPose() && takeCount > 1 )
+		if ( poseCount > 0 /*&& scene->GetPose( 0 )->IsBindPose() && takeCount > 1*/ )
 		{
 			extractAnimation = true;
 			extractSkinData = true;
 			extractSkeletonData = true;
-			scene->GetPose( 0 );
+			bindPose = scene->GetPose( 0 );
 		}
 
 		// Extract mesh

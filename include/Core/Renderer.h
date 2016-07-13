@@ -8,6 +8,7 @@
 #include "Core/GameComponent.h"
 #include "Core/SystemManager.h"
 #include "Core/Materials.h"
+#include "Core/AnimationControllerManager.h"
 
 #include "Platform/Camera.h"
 #include "Platform/Shader.h"
@@ -103,17 +104,18 @@ namespace BH
 		void Draw( f32 dt ) override;
 
 		// Draw Instance
-		void DrawInstance( const Matrix4 & transform,						//!< Instance Transformation
-						   const Model * model,								//!< Instance Model
-						   const Material * material,						//!< Instance Material
-						   const AnimationController * anim = nullptr );	//!< Instance Animation
+		void DrawInstance( const Matrix4 & transform,									//!< Instance Transformation
+						   const Model * model,											//!< Instance Model
+						   const Material * material,									//!< Instance Material
+						   const AnimationController * anim = nullptr );				//!< Instance Animation
 
 		// Draw Instance
-		void DrawInstance( const Vector3f & position,						//!< Instance Transformation
+		void DrawInstance( const Vector3f & position,									//!< Instance Transformation
 						   const Vector3f & scale,
 						   const Vector3f & rotation,
-						   const Model * model,								//!< Instance Model
-						   const Material * material );						//!< Instance Material
+						   const Model * model,											//!< Instance Model
+						   const Material * material,									//!< Instance Material
+						   const AnimationController * anim = nullptr );				//!< Instance Animation
 
 		// Draw Light
 		void DrawGlobalLight( const Light & light );
@@ -121,10 +123,10 @@ namespace BH
 		void DrawLocalLight( const LocalLight & light );
 
 		// Draw Lines
-		void DrawLines( const Matrix4 & transform,							//!< Lines Transformation
-						const Vector4f & color,								//!< Color
-						const Mesh * mesh,									//!< Line Mesh
-						bool onHUD = false );								//!< Line ignore depth (always on top)
+		void DrawLines( const Matrix4 & transform,										//!< Lines Transformation
+						const Vector4f & color,											//!< Color
+						const Mesh * mesh,												//!< Line Mesh
+						bool onHUD = false );											//!< Line ignore depth (always on top)
 
 		// Set Blur Kernel Radius (max 50)
 		void SetBlurKernelRadius( s32 radius );

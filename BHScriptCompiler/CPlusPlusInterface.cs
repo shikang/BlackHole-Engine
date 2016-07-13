@@ -34,7 +34,8 @@ namespace BH
                                                  float rotY,
                                                  float rotZ,
                                                  string model,
-                                                 string material );
+                                                 string material,
+                                                 int animation );
 
         // Draw global light
         [DllImport( "BHScriptBridge.dll" )]
@@ -150,7 +151,8 @@ namespace BH
                                        BHVector3f scale,
                                        BHVector3f rotation,
                                        string model,
-                                       string material )
+                                       string material,
+                                       int animation )
         {
             DrawInstance( position.x,
                           position.y,
@@ -162,7 +164,8 @@ namespace BH
                           rotation.y,
                           rotation.z,
                           model,
-                          material );
+                          material,
+                          animation );
         }
 
         public static void DrawLight( BHVector3f position,
