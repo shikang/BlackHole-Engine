@@ -30,6 +30,7 @@ namespace BH
 	struct KeyFrame
 	{
 		Quaternion mRotation;
+		Vector3f mEuler;		// DEBUG
 		Vector3f mTranslate;
 		f32 mTime;	
 	};

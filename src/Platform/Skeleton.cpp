@@ -62,19 +62,24 @@ namespace BH
 			RecursiveProcess( time, *mRoots[i], anim, buffer, trackData, transform );
 	}
 
-	void Skeleton::RecursiveProcess( f32 time, Bone & bone, const Animation & anim, MatrixBuffer & buffer,
+	void Skeleton::RecursiveProcess( f32 time, const Bone & bone, const Animation & anim, MatrixBuffer & buffer,
 									 TrackBuffer & trackData, Matrix4 parentTransform ) const
 	{
 		Vector3f t;
 		Quaternion r;
 
-		//time = 0.0f;
-		f32 angle = time / anim.mDuration * 6.28319f;
+		time = 0.0f;
+		//f32 angle = time / anim.mDuration * 6.28319f;
 
 		anim.CalculateTransform( time, bone.boneIndex, t, r, trackData[bone.boneIndex] );
 
-		//Matrix4 localTransform = Matrix4::CreateTranslation(t) * Matrix4::CreateFromQuaternion(r);360
-		Matrix4 localTransform = Matrix4::CreateTranslation(t) * Matrix4::CreateFromYawPitchRoll( angle, 0.0f, 0.0f );
+		//Matrix4 localTransform = bone.bindTransform;
+		//Matrix4 localTransform = Matrix4::CreateTranslation(bone.bindTranslation) * Matrix4::CreateFromQuaternion(bone.bindRotation);
+		//Matrix4 localTransform = Matrix4::IDENTITY;
+		//Matrix4 localTransform = Matrix4::CreateTranslation(t) * Matrix4::CreateFromQuaternion(Quaternion::IDENTITY);
+		Matrix4 localTransform = Matrix4::CreateTranslation(t) * Matrix4::CreateFromQuaternion(r);
+		//Matrix4 localTransform = Matrix4::CreateTranslation(t) * Matrix4::CreateFromYawPitchRoll( angle, 0.0f, 0.0f );
+		//Matrix4 localTransform = Matrix4::CreateTranslation(t) * Matrix4::CreateFromQuaternion(Quaternion::CreateFromAxisAngle(Vector3f::UNIT_Y, angle));
 		//Matrix4 modelTransform = localTransform  * parentTransform;
 		Matrix4 modelTransform = parentTransform * localTransform;
 

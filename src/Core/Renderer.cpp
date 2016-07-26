@@ -543,9 +543,10 @@ namespace BH
 			// Texture for this instance
 			//mShaders["Geo"].SetTexture( PixelShader, 0, i.mTexture );
 
+			bool isAnimation = i.mAnimationController != nullptr;
 			Matrix4 world = i.mTransform * mGraphics.GetPipeline()->GetWorld();
 
-			String shaderName = ( i.mAnimationController ) ? "AnimGeo" : "Geo";
+			String shaderName = ( isAnimation ) ? "AnimGeo" : "Geo";
 
 			// Set Transform for this instance
 			mShaders[shaderName].SetShaderParameters( VertexShader,
@@ -555,7 +556,7 @@ namespace BH
 													  mGraphics.GetPipeline()->GetProjection().Transpose(),
 													  world.Inverse().Transpose() );
 
-			if ( i.mAnimationController )
+			if ( isAnimation )
 			{
 				mShaders[shaderName].SetShaderVectorParameters( VertexShader,
 																1,

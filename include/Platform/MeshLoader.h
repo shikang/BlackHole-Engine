@@ -30,9 +30,11 @@ namespace BH
 
 		FbxVector4 mBindPos;
 		FbxQuaternion mBindRot;
+		FbxVector4 mBindEuler;		// Debug
 
 		FbxVector4 mBoneSpacePos;
 		FbxQuaternion mBoneSpaceRot;
+		FbxVector4 mBoneSpaceEuler;		// Debug
 	};
 
 	// Skinning Data

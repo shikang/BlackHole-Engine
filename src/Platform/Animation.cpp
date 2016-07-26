@@ -7,6 +7,7 @@ namespace BH
 {
 	void Animation::CalculateTransform( f32 animTime, u32 trackIndex, Vector3f & animT, Quaternion & animR, TrackData & data ) const
 	{
+		const f32 DEG_TO_RAD = ( 3.14159265359f / 180.0f );
 		/*
 			Since keys are not spaced at regular intervals we need to search
 			for the keyframes that will be interpolated between.  The track data is
@@ -32,6 +33,10 @@ namespace BH
 				so the animation is clamped to the last frame
 			*/
 			animR = currentPath.mKeyFrames[currentKey].mRotation;
+			Quaternion b = animR;
+			animR = Quaternion::CreateFromYawPitchRoll( DEG_TO_RAD * currentPath.mKeyFrames[currentKey].mEuler.y,
+														DEG_TO_RAD * currentPath.mKeyFrames[currentKey].mEuler.x,
+														DEG_TO_RAD * currentPath.mKeyFrames[currentKey].mEuler.z );
 			animT = currentPath.mKeyFrames[currentKey].mTranslate;
 		}
 		else
@@ -50,6 +55,17 @@ namespace BH
 
 			// Interpolate between 2 frames
 			animR = Quaternion::Slerp( keyOne.mRotation, keyTwo.mRotation, segNormalizedT );
+			Quaternion b = animR;
+
+			Quaternion q1 = Quaternion::CreateFromYawPitchRoll( DEG_TO_RAD * keyOne.mEuler.y,
+																DEG_TO_RAD * keyOne.mEuler.x,
+																DEG_TO_RAD * keyOne.mEuler.z );
+
+			Quaternion q2 = Quaternion::CreateFromYawPitchRoll( DEG_TO_RAD * keyTwo.mEuler.y,
+																DEG_TO_RAD * keyTwo.mEuler.x,
+																DEG_TO_RAD * keyTwo.mEuler.z );
+
+			animR = Quaternion::Slerp( q1, q2, segNormalizedT );
 
 			// standard linear interpolation
 			animT = ( 1.0f - segNormalizedT ) * keyOne.mTranslate + segNormalizedT *  keyTwo.mTranslate;

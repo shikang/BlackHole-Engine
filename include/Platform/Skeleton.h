@@ -35,7 +35,7 @@ namespace BH
 									const Animation & anim, TrackBuffer & trackData ) const;
 
 		// Recursive process
-		void RecursiveProcess( f32 time, Bone & bone, const Animation & anim, MatrixBuffer & buffer, 
+		void RecursiveProcess( f32 time, const Bone & bone, const Animation & anim, MatrixBuffer & buffer, 
 							   TrackBuffer & trackData, Matrix4 parentTransform ) const;
 
 	private:

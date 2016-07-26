@@ -29,7 +29,8 @@ struct VertexInputType
     float2 tex : TEXCOORD0;
     float3 normal : NORMAL;
     float4 weights : BLENDWEIGHT;
-    int4 indices : BLENDINDICES;
+    //int4 indices : BLENDINDICES;
+    float4 indices : BLENDINDICES;
 };
 
 struct PixelInputType
@@ -64,6 +65,7 @@ PixelInputType GeometryVertexShader( VertexInputType input )
     // Calculate the position
     //output.position = mul( float4( input.position.xyz, 1.0f ), worldMatrix );
     output.position = mul( float4( position.xyz, 1.0f ), worldMatrix );
+    //output.position = float4( position.xyz, 1.0f );
     output.world = output.position.xyz;
     output.position = mul( output.position, viewMatrix );
     output.depth = output.position.z;
@@ -73,6 +75,7 @@ PixelInputType GeometryVertexShader( VertexInputType input )
     output.tex = input.tex;
     
     // Calculate the normal vector against the world matrix only.
+    normal = normalize(normal);
     //output.normal = mul( input.normal, ( float3x3 )transpose( inverseWorldMatrix ) );
     output.normal = mul( normal, ( float3x3 )transpose( inverseWorldMatrix ) );
     

@@ -59,10 +59,17 @@ namespace BH
 		}
 
 		// Not direct x axis system, we convert scene
-		if ( sceneAxisSystem != FbxAxisSystem::DirectX )
+#if 1
+		if ( sceneAxisSystem != FbxAxisSystem::eDirectX )
 		{
-			FbxAxisSystem::DirectX.ConvertScene( scene );
+			//FbxAxisSystem::DirectX.ConvertScene( scene );
 		}
+#else
+		if ( sceneAxisSystem != FbxAxisSystem::eOpenGL )
+		{
+			FbxAxisSystem::OpenGL.ConvertScene( scene );
+		}
+#endif
 
 		return conversionMatrix;
 	}
@@ -385,9 +392,38 @@ namespace BH
 
 		bone.mBindPos = mat.GetT();
 		bone.mBindRot = mat.GetQ();
+		bone.mBindEuler = mat.GetR();
 
 		bone.mBoneSpacePos = Inverse.GetT();
 		bone.mBoneSpaceRot = Inverse.GetQ();
+		bone.mBoneSpaceEuler = Inverse.GetR();
+
+		/*
+		if (bone.mName == "Rig Foot_RightHeel")
+		{
+			bone.mBindRot[0] = 0.573576450;
+			bone.mBindRot[1] = 1.31626578e-007;
+			bone.mBindRot[2] = -0.819152057;
+			bone.mBindRot[3] = 0.000000000;
+
+			bone.mBoneSpaceRot[0] = 0.573576450;
+			bone.mBoneSpaceRot[1] = -1.06863190e-007;
+			bone.mBoneSpaceRot[2] = -0.819152057;
+			bone.mBoneSpaceRot[3] = 0.000000000;
+		}
+		else if (bone.mName == "Rig Foot_RightToe")
+		{
+			bone.mBindRot[0] = 0.573576450;
+			bone.mBindRot[1] = 4.36460482e-007;
+			bone.mBindRot[2] = -0.819152057;
+			bone.mBindRot[3] = 0.000000000;
+
+			bone.mBoneSpaceRot[0] = 0.573576450;
+			bone.mBoneSpaceRot[1] = -2.11122511e-007;
+			bone.mBoneSpaceRot[2] = -0.819152057;
+			bone.mBoneSpaceRot[3] = 0.000000000;
+		}
+		*/
 	}
 
 	bool MeshLoader::ExtractSkinWeights( FbxPose * pose, FbxNode * node, SkinData & skinData, SkeletonData & skeleton )
@@ -616,10 +652,18 @@ namespace BH
 															  static_cast<f32>( trans[1] ), 
 															  static_cast<f32>( trans[2] ) );	//Store translation
 			FbxQuaternion rot = localXForm.GetQ();
+			FbxVector4 euler = rot.DecomposeSphericalXYZ();
+
 			track.mKeyFrames[keyIndex].mRotation = Quaternion( static_cast<f32>( rot[0] ), 
 															   static_cast<f32>( rot[1] ), 
 															   static_cast<f32>( rot[2] ), 
 															   static_cast<f32>( rot[3] ) );	//Store rotation
+
+			track.mKeyFrames[keyIndex].mEuler = Vector3f( static_cast<f32>( euler[0] ),
+														  static_cast<f32>( euler[1] ),
+														  static_cast<f32>( euler[2] ) );
+
+
 		}
 	}
 
@@ -765,6 +809,7 @@ namespace BH
 		std::vector<SkinVertex> combinedSkinVertexBuffer;
 		if ( combinedSkinData.mSkin )
 		{
+			std::ofstream ofile("weights.csv");
 			s32 size = combinedVertexBuffer.size();
 			for ( s32 i = 0; i < size; ++i )
 			{
@@ -786,7 +831,14 @@ namespace BH
 				currSkinVertex.weightIndices[1] = combinedSkinData.mPointWeights[originalPosIndex][1].mIndex;
 				currSkinVertex.weightIndices[2] = combinedSkinData.mPointWeights[originalPosIndex][2].mIndex;
 				currSkinVertex.weightIndices[3] = combinedSkinData.mPointWeights[originalPosIndex][3].mIndex;
+
+				ofile << currSkinVertex.weightIndices[0] << ": " << currSkinVertex.weights[0] << ", " 
+					  << currSkinVertex.weightIndices[1] << ": " << currSkinVertex.weights[1] << ", " 
+					  << currSkinVertex.weightIndices[2] << ": " << currSkinVertex.weights[2] << ", " 
+					  << currSkinVertex.weightIndices[3] << ": " << currSkinVertex.weights[3] << std::endl;
 			}
+
+			ofile.close();
 
 			// Initialise Skinned Mesh
 			mesh.InitialiseBuffers( combinedSkinVertexBuffer, combinedIndexBuffer );
