@@ -14,6 +14,14 @@
 #include "Core/MaterialManager.h"
 #include "Core/Model.h"
 
+/*
+	Note:
+	http://www.geeks3d.com/20100622/programming-tips-direct3d-10-to-direct3d-11-transpose-your-matrices/
+
+	Matrix has to be in column major format and sent to GPU for the shader to work.
+	Therefore a transpose is called before sending matrix values to GPU.
+*/
+
 namespace BH
 {
 	f32 Renderer::Near = 1.0f;

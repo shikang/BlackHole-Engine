@@ -42,6 +42,7 @@ namespace BH
 			Bone & b = mBones[i];
 			b.boneIndex = i;
 
+#if 0
 			if ( b.parentIndex != -1 )
 				mBones[b.parentIndex].children.push_back( &b );
 			else
@@ -49,6 +50,10 @@ namespace BH
 
 			b.modelToBoneSpace = Matrix4::CreateTranslation( b.modelToBoneTranslation ) * Matrix4::CreateFromQuaternion( b.modelToBoneRotation );
 			b.bindTransform = Matrix4::CreateTranslation( b.bindTranslation ) * Matrix4::CreateFromQuaternion( b.bindRotation );
+#else
+			if ( b.parentIndex == -1 )
+				mRoots.push_back( &b );
+#endif
 		}
 	}
 
@@ -60,15 +65,25 @@ namespace BH
 		u32 size = mRoots.size();
 		for ( u32 i = 0; i < size; ++i )
 			RecursiveProcess( time, *mRoots[i], anim, buffer, trackData, transform );
+
+		u32 bufferSize = buffer.size();
+		for ( u32 i = 0; i < bufferSize; ++i )
+		{
+			//buffer[i] = mBones[i].modelToBoneSpace * buffer[i];
+			buffer[i] = buffer[i] * mBones[i].modelToBoneSpace;
+
+			// Row major to column major representation (Direct X shaders now read matrix as though it's column major)
+			buffer[i] = buffer[i].Transpose();
+		}
 	}
 
 	void Skeleton::RecursiveProcess( f32 time, const Bone & bone, const Animation & anim, MatrixBuffer & buffer,
-									 TrackBuffer & trackData, Matrix4 parentTransform ) const
+									 TrackBuffer & trackData, const Matrix4 & parentTransform ) const
 	{
 		Vector3f t;
 		Quaternion r;
 
-		time = 0.0f;
+		//time = 0.0f;
 		//f32 angle = time / anim.mDuration * 6.28319f;
 
 		anim.CalculateTransform( time, bone.boneIndex, t, r, trackData[bone.boneIndex] );

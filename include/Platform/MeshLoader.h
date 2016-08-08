@@ -161,6 +161,16 @@ namespace BH
 
 		// Get bounding volume
 		void GetBoundingVolume( const std::vector<Vertex> & vertices, AABB & aabb );
+		void GetBoundingVolume( const std::vector<SkinVertex> & vertices, AABB & aabb, 
+								const std::vector<Bone> & bones );
+
+		// Populate bone matrices
+		const std::vector<Matrix4> PopulateBoneMatrices( const std::vector<Bone> & bones );
+		void PopulateBoneMatricesRecurssive( const Bone & bone, std::vector<Matrix4> & boneMatrices, 
+											 const Matrix4 & parentTransform );
+
+		// Transform to bind position
+		Vector3f TransformToBindPosition( const SkinVertex & vertex, const std::vector<Matrix4> & boneMatrices );
 
 	private:
 		FbxManager * mFBXManager;

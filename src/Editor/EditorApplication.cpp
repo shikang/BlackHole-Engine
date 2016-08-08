@@ -1107,6 +1107,7 @@ namespace BH
 			if ( mCurrentObject && i.first == mCurrentObject->GetName() )
 				continue;
 
+#if 1
 			const Vector3f & rot = i.second.mRotation;
 
 			Matrix4 rotation = Matrix4::CreateFromYawPitchRoll( rot.y, rot.x, rot.z );
@@ -1129,6 +1130,30 @@ namespace BH
 
 			Vector4f color = Vector4f::ONE;
 			mRenderer->DrawLines( transform, color, &mLineCube );
+#else
+			const Vector3f & rot = i.second.mRotation;
+
+			Matrix4 rotation = Matrix4::CreateFromYawPitchRoll( rot.y, rot.x, rot.z );
+			Matrix4 trans = Matrix4::CreateTranslation( i.second.mPosition );
+			Matrix4 scale = Matrix4::CreateScale( i.second.mScale );
+
+			trans = trans * scale;// *gModelMatrix;
+
+			Vector3f n_min = trans * i.second.mAABB.mMin;
+			Vector3f n_max = trans * i.second.mAABB.mMax;
+			Vector3f n_scale = ( n_max - n_min );
+			Vector3f n_pos = n_min + 0.5f * n_scale;
+
+			Matrix4 trans_o = Matrix4::CreateTranslation( n_pos - i.second.mPosition );
+
+			trans = Matrix4::CreateTranslation( i.second.mPosition );
+			scale = Matrix4::CreateScale( n_scale );
+
+			Matrix4 transform = trans * rotation * scale;
+
+			Vector4f color = Vector4f::ONE;
+			mRenderer->DrawLines( transform, color, &mLineCube );
+#endif
 		}
 
 		// Draw selected object BB
@@ -1136,6 +1161,7 @@ namespace BH
 			 mCurrentObjectInfo.mPositionX  &&
 			 mCurrentObjectInfo.mModelName )
 		{
+#if 1
 			Vector3f pos( *mCurrentObjectInfo.mPositionX, *mCurrentObjectInfo.mPositionY, *mCurrentObjectInfo.mPositionZ );
 			Matrix4 rotation = Matrix4::CreateFromYawPitchRoll( Math::DegToRad( *mCurrentObjectInfo.mRotationY ), 
 																Math::DegToRad( *mCurrentObjectInfo.mRotationX ), 
@@ -1160,6 +1186,32 @@ namespace BH
 
 			Vector4f color = Vector4f::UNIT_X + Vector4f::UNIT_W;
 			mRenderer->DrawLines( transform, color, &mLineCube );
+#else
+			Vector3f pos( *mCurrentObjectInfo.mPositionX, *mCurrentObjectInfo.mPositionY, *mCurrentObjectInfo.mPositionZ );
+			Matrix4 rotation = Matrix4::CreateFromYawPitchRoll( Math::DegToRad( *mCurrentObjectInfo.mRotationY ), 
+																Math::DegToRad( *mCurrentObjectInfo.mRotationX ), 
+																Math::DegToRad( *mCurrentObjectInfo.mRotationZ ) );
+			Matrix4 trans = Matrix4::CreateTranslation( pos );
+			Matrix4 scale = Matrix4::CreateScale( *mCurrentObjectInfo.mScaleX, *mCurrentObjectInfo.mScaleY, *mCurrentObjectInfo.mScaleZ );
+
+			AABB aabb = SYSTEM_MANAGER.GetGameComponentFromSystem<ModelManager>()->GetAABB( *mCurrentObjectInfo.mModelName );
+			trans = trans * scale;// *gModelMatrix;
+
+			Vector3f n_min = trans * aabb.mMin;
+			Vector3f n_max = trans * aabb.mMax;
+			Vector3f n_scale = ( n_max - n_min );
+			Vector3f n_pos = n_min + 0.5f * n_scale;
+
+			Matrix4 trans_o = Matrix4::CreateTranslation( n_pos - pos );
+
+			trans = Matrix4::CreateTranslation( pos );
+			scale = Matrix4::CreateScale( n_scale );
+
+			Matrix4 transform = trans * rotation * scale;
+
+			Vector4f color = Vector4f::UNIT_X + Vector4f::UNIT_W;
+			mRenderer->DrawLines( transform, color, &mLineCube );
+#endif
 		}
 	}
 

@@ -43,60 +43,6 @@
 </Object>
 
 <Object>
-    <Hash Type="Floor"/>
-    <Hash Name="FloorArcheType"/>
-    <ObjectComponentVector Size="3">
-        <ScriptComponent>
-            <ScriptType>
-                <String Type="TransformComponent"/>
-            </ScriptType>
-            <TransformComponent>
-                <BHVector3f>
-                    <Float32 x="1"/>
-                    <Float32 y="1"/>
-                    <Float32 z="1"/>
-                </BHVector3f>
-                <BHVector3f>
-                    <Float32 x="15"/>
-                    <Float32 y="0.5"/>
-                    <Float32 z="15"/>
-                </BHVector3f>
-                <BHVector3f>
-                    <Float32 x="0"/>
-                    <Float32 y="0"/>
-                    <Float32 z="0"/>
-                </BHVector3f>
-                <BHObject/>
-            </TransformComponent>
-        </ScriptComponent>
-        <ScriptComponent>
-            <ScriptType>
-                <String Type="ModelComponent"/>
-            </ScriptType>
-            <ModelComponent>
-                <BHModel>
-                    <String Model="Cube"/>
-                </BHModel>
-                <BHMaterial>
-                    <String Material="Plastic"/>
-                </BHMaterial>
-                <BHObject/>
-            </ModelComponent>
-        </ScriptComponent>
-        <ScriptComponent>
-            <ScriptType>
-                <String Type="StationaryBoxCollider"/>
-            </ScriptType>
-            <StationaryBoxCollider>
-                <Boolean mPassable="false"/>
-                <String mTag="NoTag"/>
-                <BHObject/>
-            </StationaryBoxCollider>
-        </ScriptComponent>
-    </ObjectComponentVector>
-</Object>
-
-<Object>
     <Hash Type="Wall"/>
     <Hash Name="WallArcheType"/>
     <ObjectComponentVector Size="3">
@@ -144,6 +90,60 @@
             <StationaryBoxCollider>
                 <Boolean mPassable="false"/>
                 <String mTag="Wall"/>
+                <BHObject/>
+            </StationaryBoxCollider>
+        </ScriptComponent>
+    </ObjectComponentVector>
+</Object>
+
+<Object>
+    <Hash Type="Floor"/>
+    <Hash Name="FloorArcheType"/>
+    <ObjectComponentVector Size="3">
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="TransformComponent"/>
+            </ScriptType>
+            <TransformComponent>
+                <BHVector3f>
+                    <Float32 x="1"/>
+                    <Float32 y="1"/>
+                    <Float32 z="1"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="15"/>
+                    <Float32 y="0.5"/>
+                    <Float32 z="15"/>
+                </BHVector3f>
+                <BHVector3f>
+                    <Float32 x="0"/>
+                    <Float32 y="0"/>
+                    <Float32 z="0"/>
+                </BHVector3f>
+                <BHObject/>
+            </TransformComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="ModelComponent"/>
+            </ScriptType>
+            <ModelComponent>
+                <BHModel>
+                    <String Model="Cube"/>
+                </BHModel>
+                <BHMaterial>
+                    <String Material="Plastic"/>
+                </BHMaterial>
+                <BHObject/>
+            </ModelComponent>
+        </ScriptComponent>
+        <ScriptComponent>
+            <ScriptType>
+                <String Type="StationaryBoxCollider"/>
+            </ScriptType>
+            <StationaryBoxCollider>
+                <Boolean mPassable="false"/>
+                <String mTag="NoTag"/>
                 <BHObject/>
             </StationaryBoxCollider>
         </ScriptComponent>

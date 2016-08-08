@@ -36,7 +36,7 @@ namespace BH
 
 		// Recursive process
 		void RecursiveProcess( f32 time, const Bone & bone, const Animation & anim, MatrixBuffer & buffer, 
-							   TrackBuffer & trackData, Matrix4 parentTransform ) const;
+							   TrackBuffer & trackData, const Matrix4 & parentTransform ) const;
 
 	private:
 		std::vector<Bone> mBones;		//!< List of bones

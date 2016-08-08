@@ -29,8 +29,8 @@ struct VertexInputType
     float2 tex : TEXCOORD0;
     float3 normal : NORMAL;
     float4 weights : BLENDWEIGHT;
-    //int4 indices : BLENDINDICES;
-    float4 indices : BLENDINDICES;
+    int4 indices : BLENDINDICES;
+    //float4 indices : BLENDINDICES;  // Not sure why it only works for float4
 };
 
 struct PixelInputType
@@ -54,6 +54,7 @@ PixelInputType GeometryVertexShader( VertexInputType input )
 
     float weightsArray[4] = ( float[4] )input.weights;
     int indexArray[4] = ( int[4] )input.indices;
+    //int indexArray[4] = { input.indices.x, input.indices.y, input.indices.z, input.indices.w };
 
     // Apply weights
     for ( int i = 0; i < VERTEX_WEIGHTS_NUM; ++i )

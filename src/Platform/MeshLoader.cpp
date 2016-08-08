@@ -805,6 +805,55 @@ namespace BH
 
 		}
 
+		// Bone data
+		s32 boneSize = skeleton.size();
+		//for ( BoneData & b : skeleton )
+		for ( s32 i = 0; i < boneSize; ++i )
+		{
+			BoneData & b = skeleton[i];
+
+			Bone bone;
+
+			bone.name = b.mName;
+			bone.parentIndex = b.mParentIndex;
+			bone.boneIndex = i;
+
+			bone.bindTranslation.x = b.mBindPos[0];
+			bone.bindTranslation.y = b.mBindPos[1];
+			bone.bindTranslation.z = b.mBindPos[2];
+
+			bone.bindRotation.x = b.mBindRot[0];
+			bone.bindRotation.y = b.mBindRot[1];
+			bone.bindRotation.z = b.mBindRot[2];
+			bone.bindRotation.w = b.mBindRot[3];
+
+			bone.modelToBoneTranslation.x = b.mBoneSpacePos[0];
+			bone.modelToBoneTranslation.y = b.mBoneSpacePos[1];
+			bone.modelToBoneTranslation.z = b.mBoneSpacePos[2];
+
+			bone.modelToBoneRotation.x = b.mBoneSpaceRot[0];
+			bone.modelToBoneRotation.y = b.mBoneSpaceRot[1];
+			bone.modelToBoneRotation.z = b.mBoneSpaceRot[2];
+			bone.modelToBoneRotation.w = b.mBoneSpaceRot[3];
+
+			bone.modelToBoneSpace = Matrix4::CreateTranslation( bone.modelToBoneTranslation ) * Matrix4::CreateFromQuaternion( bone.modelToBoneRotation );
+			bone.bindTransform = Matrix4::CreateTranslation( bone.bindTranslation ) * Matrix4::CreateFromQuaternion( bone.bindRotation );
+
+			bones.push_back( bone );
+		}
+
+		for ( s32 i = 0; i < boneSize; ++i )
+		{
+			Bone & b = bones[i];
+			//b.boneIndex = i;
+
+			if ( b.parentIndex != -1 )
+				bones[b.parentIndex].children.push_back( &b );
+
+			//b.modelToBoneSpace = Matrix4::CreateTranslation( b.modelToBoneTranslation ) * Matrix4::CreateFromQuaternion( b.modelToBoneRotation );
+			//b.bindTransform = Matrix4::CreateTranslation( b.bindTranslation ) * Matrix4::CreateFromQuaternion( b.bindRotation );
+		}
+
 		// Skin data
 		std::vector<SkinVertex> combinedSkinVertexBuffer;
 		if ( combinedSkinData.mSkin )
@@ -842,44 +891,17 @@ namespace BH
 
 			// Initialise Skinned Mesh
 			mesh.InitialiseBuffers( combinedSkinVertexBuffer, combinedIndexBuffer );
+
+			GetBoundingVolume( combinedSkinVertexBuffer, aabb, bones );
+			//GetBoundingVolume( combinedVertexBuffer, aabb );
 		}
 		else
 		{
 			// Initialise Mesh
 			mesh.InitialiseBuffers( combinedVertexBuffer, combinedIndexBuffer );
+
+			GetBoundingVolume( combinedVertexBuffer, aabb );
 		}
-
-		// Bone data
-		for ( BoneData & b : skeleton )
-		{
-			Bone bone;
-
-			bone.name = b.mName;
-			bone.parentIndex = b.mParentIndex;
-
-			bone.bindTranslation.x = b.mBindPos[0];
-			bone.bindTranslation.y = b.mBindPos[1];
-			bone.bindTranslation.z = b.mBindPos[2];
-
-			bone.bindRotation.x = b.mBindRot[0];
-			bone.bindRotation.y = b.mBindRot[1];
-			bone.bindRotation.z = b.mBindRot[2];
-			bone.bindRotation.w = b.mBindRot[3];
-
-			bone.modelToBoneTranslation.x = b.mBoneSpacePos[0];
-			bone.modelToBoneTranslation.y = b.mBoneSpacePos[1];
-			bone.modelToBoneTranslation.z = b.mBoneSpacePos[2];
-
-			bone.modelToBoneRotation.x = b.mBoneSpaceRot[0];
-			bone.modelToBoneRotation.y = b.mBoneSpaceRot[1];
-			bone.modelToBoneRotation.z = b.mBoneSpaceRot[2];
-			bone.modelToBoneRotation.w = b.mBoneSpaceRot[3];
-
-			bones.push_back( bone );
-		}
-
-		GetBoundingVolume( combinedVertexBuffer, aabb );
-
 	}
 	
 	void MeshLoader::CollectMeshes( FbxNode * root, std::vector<FbxNode *> & fbxMeshes, bool skin )
@@ -946,6 +968,56 @@ namespace BH
 		scene->Destroy();
 	}
 
+	const std::vector<Matrix4> MeshLoader::PopulateBoneMatrices( const std::vector<Bone> & bones )
+	{
+		std::vector<Matrix4> boneMatrices ( bones.size() );
+
+		Matrix4 transform = Matrix4::IDENTITY;
+
+		u32 size = bones.size();
+		for ( u32 i = 0; i < size; ++i )
+		{
+			if( bones[i].parentIndex == -1 )
+				PopulateBoneMatricesRecurssive( bones[i], boneMatrices, transform );
+		}
+
+		u32 bufferSize = boneMatrices.size();
+		for ( u32 i = 0; i < bufferSize; ++i )
+		{
+			//buffer[i] = mBones[i].modelToBoneSpace * buffer[i];
+			boneMatrices[i] = boneMatrices[i] * bones[i].modelToBoneSpace;
+		}
+
+		return boneMatrices;
+	}
+
+	void MeshLoader::PopulateBoneMatricesRecurssive( const Bone & bone, std::vector<Matrix4> & boneMatrices, const Matrix4 & parentTransform )
+	{
+		Matrix4 localTransform = bone.bindTransform;
+		Matrix4 modelTransform = parentTransform * localTransform;
+
+		boneMatrices[bone.boneIndex] = modelTransform;
+
+		u32 size = bone.children.size();
+		for ( u32 i = 0; i < size; ++ i)
+		{
+			PopulateBoneMatricesRecurssive( *bone.children[i], boneMatrices, modelTransform );
+		}
+	}
+
+	Vector3f MeshLoader::TransformToBindPosition( const SkinVertex & vertex, const std::vector<Matrix4> & boneMatrices )
+	{
+		Vector3f position = Vector3f::ZERO;
+
+		// Apply weights
+		for ( s32 i = 0; i < BH_VERTEX_WEIGHTS_NUM; ++i )
+		{
+			position += ( boneMatrices[vertex.weightIndices[i]] * vertex.position ) * vertex.weights[i];
+		}
+
+		return position;
+	}
+
 	void MeshLoader::GetBoundingVolume( const std::vector<Vertex> & vertices, AABB & aabb )
 	{
 		if( vertices.empty() )
@@ -965,6 +1037,37 @@ namespace BH
 			max.x = std::max( max.x, vertices[i].position.x );
 			max.y = std::max( max.y, vertices[i].position.y );
 			max.z = std::max( max.z, vertices[i].position.z );
+		}
+
+		aabb.mMin = min;
+		aabb.mMax = max;
+	}
+
+	// @note: Not working
+	void MeshLoader::GetBoundingVolume( const std::vector<SkinVertex> & vertices, AABB & aabb,
+										const std::vector<Bone> & bones )
+	{
+		if( vertices.empty() )
+			return;
+
+		const std::vector<Matrix4> boneMatrices = PopulateBoneMatrices( bones );
+
+		Vector3f min = TransformToBindPosition( vertices[0], boneMatrices ),
+				 max = min;
+
+		u32 size = vertices.size();
+
+		for ( u32 i = 1; i < size; ++i )
+		{
+			Vector3f position = TransformToBindPosition( vertices[i], boneMatrices );
+
+			min.x = std::min( min.x, position.x );
+			min.y = std::min( min.y, position.y );
+			min.z = std::min( min.z, position.z );
+															
+			max.x = std::max( max.x, position.x );
+			max.y = std::max( max.y, position.y );
+			max.z = std::max( max.z, position.z );
 		}
 
 		aabb.mMin = min;
